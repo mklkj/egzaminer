@@ -1,0 +1,21 @@
+{
+  "name": "tester",
+  "homepage": "https://gitlab.com/word-team/tester",
+  "authors": [
+    "Mikołaj Pich <m.pich@outlook.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "GPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
