@@ -1,6 +1,8 @@
 <?php include '_head.html.php'; ?>
 
-<h1><?=$data['title'];?></h1>
+<div class="page-header">
+  <h1><?=$data['title'];?></h1>
+</div>
 
 <form action="" method="post">
   <?php foreach ($data['questions'] as $key => $question): ?>

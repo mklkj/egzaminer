@@ -1,6 +1,9 @@
 <?php include '_head.html.php'; ?>
 
-<h1>Testy</h1>
+<div class="page-header">
+	<h1>Testy</h1>
+</div>
+
 <?php if (!empty($tests)): ?>
 <ul>
 <?php foreach ($tests as $key => $value): ?>

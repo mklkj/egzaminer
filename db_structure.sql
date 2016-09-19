@@ -24,7 +24,8 @@ CREATE TABLE `questions` (
 CREATE TABLE `tests` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `questions` int(10) UNSIGNED NOT NULL
+  `questions` int(10) UNSIGNED NOT NULL,
+  `threshold` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ALTER TABLE `answers`

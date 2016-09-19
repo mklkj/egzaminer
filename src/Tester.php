@@ -81,4 +81,37 @@ class Tester
             'answers' => $answers,
         );
     }
+
+    /**
+     * Get one test with data to check it.
+     *
+     * @param array $post
+     * @param int   $id
+     *
+     * @return array
+     */
+    public function getTestCheck($post, $id)
+    {
+        $oneTest = new OneTest($this->db);
+        $questions = new Questions($this->db);
+        $answers = new Answers($this->db);
+        $testStat = new TestStat();
+
+        $testInfo = $oneTest->getInfo($id);
+
+        if (false === $testInfo) {
+            throw new TestNotExists('Test not exists!');
+        }
+
+        $questionsList = $questions->getByTestId($id);
+        $answersList = $answers->getAnswersByQuestions($questionsList);
+        $stats = $testStat->getStats($testInfo, $questionsList, $post);
+
+        return array(
+            'test' => $testInfo,
+            'questions' => $questionsList,
+            'answers' => $answersList,
+            'stats' => $stats,
+        );
+    }
 }
