@@ -3,6 +3,10 @@
     "version": "0.0.1",
     "type": "project",
     "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*"
     },
     "license": "GPL",
     "authors": [
