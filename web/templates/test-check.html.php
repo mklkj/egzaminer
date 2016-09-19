@@ -49,7 +49,7 @@
                 echo 'danger';
             }
           ?>">
-          <input type="radio" name="question_<?=$question['id'];?>" value="<?=$answerID;?>" id="answer_<?=$answerID;?>" <?=($answerID === $questionIDFromUser) ? 'checked' : '';?>>
+          <input type="radio" name="question_<?=$question['id'];?>" value="<?=$answerID;?>" id="answer_<?=$answerID;?>" <?=($answerID === $questionIDFromUser) ? 'checked' : '';?> disabled>
           <label for="answer_<?=$answerID;?>">
             <?=$answer['content'];?>
           </label>
