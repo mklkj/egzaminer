@@ -1,14 +1,8 @@
 <?php
 
 use Tester\Tester;
-use Whoops\Handler\PrettyPageHandler;
-use Whoops\Run as Whoops;
 
 include __DIR__.'/../vendor/autoload.php';
-
-$whoops = new Whoops();
-$whoops->pushHandler(new PrettyPageHandler());
-$whoops->register();
 
 $tester = new Tester($configFile = dirname(__DIR__).'/config.php');
 
