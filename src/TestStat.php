@@ -15,7 +15,7 @@ class TestStat
 
         return [
             'answers' => $answers,
-            'results' => $results
+            'results' => $results,
         ];
     }
 
