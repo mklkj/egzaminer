@@ -1,6 +1,6 @@
 <?php
 
-use Tester\TestStat;
+use Tester\One\TestStat;
 
 class TestStatTest extends \PHPUnit_Framework_TestCase
 {

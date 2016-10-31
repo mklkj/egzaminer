@@ -1,20 +1,20 @@
 <?php include '_head.html.php'; ?>
 
 <div class="page-header">
-  <h1><?=$data['test']['title'];?></h1>
+  <h1><?=$this->data['test-check']['test']['title'];?></h1>
 </div>
 
-<div class="alert alert-<?=($data['stats']['results']['pass']) ? 'success' : 'danger';?>" role="alert">
-    <h2><?=($data['stats']['results']['pass']) ? 'Zdałeś!' : 'Nie udało ci się zdać!'; ?></h2>
-    <p>Uzyskałeś <?=$data['stats']['results']['percentages'];?>%.</p>
-    <p>Próg zaliczenia to <?=$data['stats']['results']['threshold'];?>%.</p>
+<div class="alert alert-<?=($this->data['test-check']['stats']['results']['pass']) ? 'success' : 'danger';?>" role="alert">
+    <h2><?=($this->data['test-check']['stats']['results']['pass']) ? 'Zdałeś!' : 'Nie udało ci się zdać!'; ?></h2>
+    <p>Uzyskałeś <?=$this->data['test-check']['stats']['results']['percentages'];?>%.</p>
+    <p>Próg zaliczenia to <?=$this->data['test-check']['stats']['results']['threshold'];?>%.</p>
 </div>
 
 <form>
 
-  <?php foreach ($data['questions'] as $key => $question):
-    $questionIDFromUser = isset($data['stats']['answers'][$question['id']])
-        ? $data['stats']['answers'][$question['id']] : null;
+  <?php foreach ($this->data['test-check']['questions'] as $key => $question):
+    $questionIDFromUser = isset($this->data['test-check']['stats']['answers'][$question['id']])
+        ? $this->data['test-check']['stats']['answers'][$question['id']] : null;
   ?>
   <div class="question panel panel-default">
     <div class="panel-heading">
@@ -39,7 +39,7 @@
     <?php endif;?>
 
     <ul class="list-group">
-       <?php foreach ($data['answers'][$question['id']] as $key => $answer):
+       <?php foreach ($this->data['test-check']['answers'][$question['id']] as $key => $answer):
         $answerID = $answer['id'];
        ?>
         <li class="list-group-item list-group-item-<?php

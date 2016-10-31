@@ -1,8 +1,10 @@
 <?php
 
-namespace Tester\Model;
+namespace Tester\One;
 
-class Answers extends Model
+use Tester\AbstractModel;
+
+class Answers extends AbstractModel
 {
     public function getAnswersByQuestions($answers)
     {

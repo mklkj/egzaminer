@@ -1,8 +1,10 @@
 <?php
 
-namespace Tester\Model;
+namespace Tester\Roll;
 
-class TestsList extends Model
+use Tester\AbstractModel;
+
+class TestsList extends AbstractModel
 {
     public function getList()
     {

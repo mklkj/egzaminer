@@ -4,10 +4,10 @@
 	<h1>Testy</h1>
 </div>
 
-<?php if (!empty($tests)): ?>
+<?php if (!empty($this->data['tests_list'])): ?>
 <ul>
-<?php foreach ($tests as $key => $value): ?>
-  <li><a href="./?test=<?=$value['id'];?>"><?=$value['title'];?></a> - <?=$value['questions'];?> pytań</li>
+<?php foreach ($this->data['tests_list'] as $key => $value): ?>
+  <li><a href="./test/<?=$value['id'];?>"><?=$value['title'];?></a> - <?=$value['questions'];?> pytań</li>
 <?php endforeach; ?>
 </ul>
 <?php else: ?>

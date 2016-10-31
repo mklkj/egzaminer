@@ -1,8 +1,10 @@
 <?php
 
-namespace Tester\Model;
+namespace Tester\One;
 
-class Questions extends Model
+use Tester\AbstractModel;
+
+class Questions extends AbstractModel
 {
     public function getByTestId($id)
     {
