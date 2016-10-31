@@ -1,6 +1,6 @@
 {
     "name": "word-team/tester",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "type": "project",
     "require": {
         "php": ">=5.4.0"
