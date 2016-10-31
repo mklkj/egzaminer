@@ -10,6 +10,10 @@ class AbstractController
     {
         $list = new TestsList();
         $this->data['tests_list'] = $list->getList();
+
+        if (method_exists($this, 'init')) {
+            $this->init();
+        }
     }
 
     public function render($templateName)

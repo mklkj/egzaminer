@@ -7,4 +7,10 @@ return array(
     'pass' => 'wt/tester',
     'name' => 'wt/tester',
   ),
+  'users' => array(
+    [
+      'login' => 'admin',
+      'pass_hash' => '',
+    ],
+  ),
 );

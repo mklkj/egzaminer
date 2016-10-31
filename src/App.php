@@ -27,6 +27,19 @@ class App
             'Tester\One\Test::showAction',
             ['id' => '[1-9][0-9]*']
         ));
+
+        $this->routes->add('admin/login', new Route('admin/login(/)?',
+            'Tester\Admin\Login::loginAction'
+        ));
+
+        $this->routes->add('admin/dashboard', new Route('admin(/)?',
+            'Tester\Admin\Dashboard::indexAction'
+        ));
+
+        $this->routes->add('admin/test/edit', new Route('admin/test/edit/<id>$',
+            'Tester\Admin\TestEdit::editAction',
+            ['id' => '[1-9][0-9]*']
+        ));
     }
 
     /**
