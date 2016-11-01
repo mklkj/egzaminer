@@ -14,7 +14,7 @@
         <div class="form-group">
           <div class="col-sm-12">
             <input type="password" class="form-control" name="password"
-            value="<?=$_POST['password'];?>" autofocus required>
+            value="<?=isset($_POST['password']) ? $_POST['password'] : '';?>" autofocus required>
           </div>
         </div>
         <button class="btn btn-primary" name="submit">Generate!</button>
