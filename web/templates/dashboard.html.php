@@ -4,7 +4,7 @@
   <h1>Panel zarządzania</h1>
 </div>
 
-<a href="<?=$this->dir();?>/admin/add" class="btn btn-default">Dodaj test</a>
+<a href="<?=$this->dir();?>/admin/test/add" class="btn btn-default">Dodaj test</a>
 
 <hr>
 

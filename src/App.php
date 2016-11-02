@@ -40,6 +40,20 @@ class App
             'Tester\Admin\TestEdit::editAction',
             ['id' => '[1-9][0-9]*']
         ));
+
+        $this->routes->add('admin/question/edit', new Route('admin/test/edit/<testId>/question/edit/<id>$',
+            'Tester\Admin\TestQuestionEdit::editAction',
+            ['id' => '[1-9][0-9]*','testId' => '[1-9][0-9]*']
+        ));
+
+        $this->routes->add('admin/question/add', new Route('admin/test/edit/<testId>/question/add(/)?',
+            'Tester\Admin\TestQuestionAdd::addAction',
+            ['testId' => '[1-9][0-9]*']
+        ));
+
+        $this->routes->add('admin/test/add', new Route('admin/test/add(/)?',
+            'Tester\Admin\TestAdd::addAction'
+        ));
     }
 
     /**

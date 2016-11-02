@@ -2,6 +2,7 @@
 
 namespace Tester\One;
 
+use PDO;
 use Tester\AbstractModel;
 
 class Answers extends AbstractModel
@@ -15,12 +16,12 @@ class Answers extends AbstractModel
 
         $stmt = $this->db->prepare('SELECT * FROM answers WHERE '.trim($where, ' OR '));
         foreach ($answers as $key => $value) {
-            $stmt->bindValue(':question_id_'.md5($value['id']), $value['id'], \PDO::PARAM_INT);
+            $stmt->bindValue(':question_id_'.md5($value['id']), $value['id'], PDO::PARAM_INT);
         }
 
         $stmt->execute();
 
-        foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $key => $value) {
+        foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $key => $value) {
             $array[$value['question_id']][] = $value;
         }
 
@@ -29,5 +30,14 @@ class Answers extends AbstractModel
         }
 
         return $array;
+    }
+
+    public function getAnswersByOneQuestionId($id)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM answers WHERE question_id = :qid');
+        $stmt->bindValue(':qid', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
