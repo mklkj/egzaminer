@@ -41,7 +41,7 @@ class QuestionAddModel extends Model
     /**
      * Add correct answer to question.
      *
-     * @param int $id Question id
+     * @param int $id      Question id
      * @param int $correct Correct anwer id
      */
     public function addCorrectAnswerToQuestion($id, $correct)
