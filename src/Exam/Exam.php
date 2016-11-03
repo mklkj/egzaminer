@@ -5,7 +5,7 @@ namespace Egzaminer\Exam;
 use Exception;
 use Egzaminer\Question\Questions;
 use Egzaminer\Question\Answers;
-use Egzaminer\Admin\Dashboard as Controller;
+use Egzaminer\Controller as Controller;
 
 class Exam extends Controller
 {
