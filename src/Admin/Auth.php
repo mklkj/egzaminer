@@ -49,4 +49,17 @@ class Auth
 
         return false;
     }
+
+    /**
+     * Logout user.
+     *
+     * @return bool
+     */
+    public function logout()
+    {
+        $_SESSION['egzaminer_auth_un'] = false;
+        $_SESSION['ga_cookie'] = false;
+
+        return session_destroy();
+    }
 }

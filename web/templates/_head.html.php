@@ -53,6 +53,7 @@
               <ul class="dropdown-menu">
                 <li><a href="<?=$this->dir();?>/admin">Panel administracyjny</a></li>
                 <li><a href="<?=$this->dir();?>/admin/test/add">Dodaj test</a></li>
+                <li><a href="<?=$this->dir();?>/admin/logout">Wyloguj</a></li>
               </ul>
             </li>
             <?php endif ?> 

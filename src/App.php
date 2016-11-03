@@ -33,6 +33,9 @@ class App
         $router->map('GET|POST', '/admin/login', [
             'Egzaminer\Admin\Login', 'loginAction', ]);
 
+        $router->map('GET|POST', '/admin/logout', [
+            'Egzaminer\Admin\Logout', 'logoutAction', ]);
+
         $router->map('GET|POST', '/admin/test/add', [
             'Egzaminer\Exam\ExamAdd', 'addAction', ]);
 
