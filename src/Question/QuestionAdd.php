@@ -14,15 +14,16 @@ class QuestionAdd extends Controller
                 'content' => '',
                 'correct' => '',
             ],
-            'answers' => [ // lol
-                ['content' => '', 'id' => ''],
-                ['content' => '', 'id' => ''],
-                ['content' => '', 'id' => ''],
-                ['content' => '', 'id' => ''],
+            'answers' => [
+                ['content' => '', 'id' => '1'],
+                ['content' => '', 'id' => '2'],
+                ['content' => '', 'id' => '3'],
+                ['content' => '', 'id' => '4'],
             ],
         ];
         if (isset($_POST['submit'])) {
             $model = new QuestionAddModel();
+
             if ($id = $model->add($testId, $_POST)) {
                 $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin/test/edit/'.$testId.'/question/edit/'.$id);
@@ -31,6 +32,7 @@ class QuestionAdd extends Controller
                 $this->data['invalid'] = true;
             }
         }
+
         $this->render('admin-question', 'Dodawanie pytania');
     }
 }

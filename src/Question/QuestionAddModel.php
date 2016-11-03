@@ -10,7 +10,8 @@ class QuestionAddModel extends Model
     public function add($testId, $post)
     {
         $qid = $this->addQuestion($testId, $post['question']);
-        $this->addAnswers($testId, $qid, $post['answers']);
+        $cid = $this->addAnswers($testId, $qid, $post['question']['correct'], $post['answers']);
+        $c = $this->addCorrectAnswerToQuestion($qid, $cid);
 
         return $qid;
     }
@@ -25,14 +26,29 @@ class QuestionAddModel extends Model
      */
     private function addQuestion($testId, $question)
     {
-        $stmt = $this->db->prepare('INSERT INTO questions (test_id, content, correct)
-            VALUES (:test_id, :content, :correct)');
+        $stmt = $this->db->prepare('INSERT INTO questions (test_id, content)
+            VALUES (:test_id, :content)');
         $stmt->bindValue(':test_id', $testId, PDO::PARAM_INT);
         $stmt->bindValue(':content', trim($question['content']), PDO::PARAM_STR);
-        $stmt->bindValue(':correct', $question['correct'], PDO::PARAM_INT);
         $stmt->execute();
 
         return $this->db->lastInsertId();
+    }
+
+    /**
+     * Add correct answer to question.
+     *
+     * @param int $id Question id
+     * @param int $correct Correct anwer id
+     */
+    public function addCorrectAnswerToQuestion($id, $correct)
+    {
+        $stmt = $this->db->prepare('UPDATE questions SET correct = :correct
+            WHERE id = :id');
+        $stmt->bindValue(':correct', $correct, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+        return $stmt->execute();
     }
 
     /**
@@ -40,11 +56,12 @@ class QuestionAddModel extends Model
      *
      * @param int   $testId
      * @param int   $qid
+     * @param int   $correct
      * @param array $answers
      *
      * @return bool
      */
-    private function addAnswers($testId, $qid, $answers)
+    private function addAnswers($testId, $qid, $correct, $answers)
     {
         $stmt = $this->db->prepare('INSERT INTO answers (test_id, question_id, content)
             VALUES (:test_id, :question_id, :content)
@@ -56,8 +73,14 @@ class QuestionAddModel extends Model
             $stmt->bindValue(':question_id', $qid, PDO::PARAM_INT);
             $stmt->bindValue(':content', trim($value), PDO::PARAM_STR);
             $stmt->execute();
+
+            if ($correct == $key) {
+                $correctId = $this->db->lastInsertId();
+            }
         }
 
-        return $this->db->commit();
+        $this->db->commit();
+
+        return $correctId;
     }
 }
