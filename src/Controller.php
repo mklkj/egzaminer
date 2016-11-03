@@ -2,12 +2,14 @@
 
 namespace Egzaminer;
 
+use Egzaminer\Admin\Auth;
 use Egzaminer\Roll\ExamsList;
 
 class Controller
 {
     public function __construct()
     {
+        $this->auth = new Auth();
         $this->dir = App::getDir();
         $this->root = App::getRootDir();
 
@@ -20,6 +22,16 @@ class Controller
         if (method_exists($this, 'init')) {
             $this->init();
         }
+    }
+
+    /**
+     * Check is user logged.
+     *
+     * @return bool Return true, if logged
+     */
+    public function isLogged()
+    {
+        return $this->auth->isLogged();
     }
 
     public function render($templateName, $title = '')

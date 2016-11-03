@@ -8,8 +8,7 @@ class Dashboard extends Controller
 {
     protected function init()
     {
-        $auth = new Auth();
-        if (!$auth->isLogged()) {
+        if (!$this->isLogged()) {
             header('Location: '.$this->dir().'/admin/login');
             exit;
         }
