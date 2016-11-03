@@ -1,6 +1,6 @@
 {
     "name": "mklkj/egzaminer",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "type": "project",
     "require": {
         "php": ">=5.4.0"
