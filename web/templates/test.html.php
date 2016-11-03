@@ -1,9 +1,5 @@
 <?php include '_head.html.php'; ?>
 
-<div class="page-header">
-  <h1><?=$this->data['test']['title'];?></h1>
-</div>
-
 <form action="" method="post">
   <?php foreach ($this->data['test']['questions'] as $key => $question): ?>
   <div class="question panel panel-default">

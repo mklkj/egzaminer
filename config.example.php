@@ -1,16 +1,21 @@
 <?php
 
-return array(
-  'db' => array(
+return [
+  'db' => [
     'host' => 'localhost',
     'user' => 'wt/egzaminer',
     'pass' => 'wt/egzaminer',
     'name' => 'wt/egzaminer',
-  ),
-  'users' => array(
+  ],
+  'site' => [
+    'title' => 'Egzaminer',
+    'title_divider' => '|',
+  ],
+  'users' => [
     [
       'login' => 'admin',
       'pass_hash' => '',
+      'pass' => '',
     ],
-  ),
-);
+  ],
+];

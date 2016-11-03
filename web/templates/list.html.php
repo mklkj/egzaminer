@@ -1,9 +1,5 @@
 <?php include '_head.html.php'; ?>
 
-<div class="page-header">
-	<h1>Testy</h1>
-</div>
-
 <?php if (!empty($this->data['tests_list'])): ?>
 <ul>
 <?php foreach ($this->data['tests_list'] as $key => $value): ?>

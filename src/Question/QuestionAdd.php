@@ -31,6 +31,6 @@ class QuestionAdd extends Controller
                 $this->data['invalid'] = true;
             }
         }
-        $this->render('admin-question');
+        $this->render('admin-question', 'Dodawanie pytania');
     }
 }

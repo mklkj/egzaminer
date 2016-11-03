@@ -42,6 +42,6 @@ class Exam extends Controller
             $template = 'test';
         }
 
-        $this->render($template);
+        $this->render($template, $testInfo['title']);
     }
 }

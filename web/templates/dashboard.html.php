@@ -1,9 +1,5 @@
 <?php include '_head.html.php'; ?>
 
-<div class="page-header">
-  <h1>Panel zarządzania</h1>
-</div>
-
 <a href="<?=$this->dir();?>/admin/test/add" class="btn btn-default">Dodaj test</a>
 
 <hr>

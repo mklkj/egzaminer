@@ -17,6 +17,6 @@ class Dashboard extends Controller
 
     public function indexAction()
     {
-        $this->render('dashboard');
+        $this->render('dashboard', 'Panel zarządzania');
     }
 }

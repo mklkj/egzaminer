@@ -21,6 +21,6 @@ class Login extends Controller
             }
             $this->data['form']['invalid'] = true;
         }
-        $this->render('login');
+        $this->render('login', 'Logowanie');
     }
 }

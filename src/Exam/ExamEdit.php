@@ -35,6 +35,6 @@ class ExamEdit extends Controller
         $this->data['test-edit']['questions'] = $questions;
         // $this->data['test-edit']['answers'] = $answers;
 
-        $this->render('admin-test-edit');
+        $this->render('admin-test-edit', 'Edycja testu');
     }
 }

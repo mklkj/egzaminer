@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Egzaminer</title>
+    <title><?=$this->pageTitle;?></title>
     <link rel="stylesheet" href="<?=$this->dir();?>/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <style>
       .alert h2 {
@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?=$this->dir();?>/">Egzaminer</a>
+          <a class="navbar-brand" href="<?=$this->dir();?>/"><?=$this->siteTitle;?></a>
         </div>
 
         <div class="collapse navbar-collapse">
@@ -52,3 +52,6 @@
       </div>
     </nav>
     <section class="container">
+      <div class="page-header">
+        <h1><?=$this->title;?></h1>
+      </div>

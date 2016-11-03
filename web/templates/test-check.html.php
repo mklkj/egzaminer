@@ -1,9 +1,5 @@
 <?php include '_head.html.php'; ?>
 
-<div class="page-header">
-  <h1><?=$this->data['test-check']['test']['title'];?></h1>
-</div>
-
 <div class="alert alert-<?=($this->data['test-check']['stats']['results']['pass']) ? 'success' : 'danger';?>" role="alert">
     <h2><?=($this->data['test-check']['stats']['results']['pass']) ? 'Zdałeś!' : 'Nie udało ci się zdać!'; ?></h2>
     <p>Uzyskałeś <?=$this->data['test-check']['stats']['results']['percentages'];?>%.</p>

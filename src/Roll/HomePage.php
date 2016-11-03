@@ -8,6 +8,6 @@ class HomePage extends Controller
 {
     public function indexAction()
     {
-        $this->render('list');
+        $this->render('list', 'Testy');
     }
 }

@@ -32,6 +32,6 @@ class QuestionEdit extends Controller
         $this->data['question'] = $question;
         $this->data['answers'] = $answers;
 
-        $this->render('admin-question');
+        $this->render('admin-question', 'Edycja pytania');
     }
 }

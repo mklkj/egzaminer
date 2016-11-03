@@ -1,9 +1,5 @@
 <?php include '_head.html.php'; ?>
 
-<div class="page-header">
-    <h1>Edycja pytania</h1>
-</div>
-
 <?php if (isset($this->data['invalid'])): ?>
 <div class="alert alert-danger">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
