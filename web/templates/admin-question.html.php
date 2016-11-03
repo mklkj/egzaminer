@@ -16,6 +16,12 @@
   Wróć do edycji testu
 </a>
 
+<?php if (isset($this->templateType) and 'edit' === $this->templateType): ?>
+<a href="<?=$this->dir();?>/admin/test/edit/<?=$this->testId;?>/question/add" class="btn btn-default">
+  Dodaj nowe pytanie
+</a>
+<?php endif ?>
+
 <form class="form-horizontal" action="" method="post">
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
