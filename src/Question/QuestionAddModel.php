@@ -9,6 +9,9 @@ class QuestionAddModel extends Model
 {
     public function add($testId, $post)
     {
+        if (!isset($post['question']['correct'])) {
+            $post['question']['correct'] = 0;
+        }
         $qid = $this->addQuestion($testId, $post['question']);
         $cid = $this->addAnswers($testId, $qid, $post['question']['correct'], $post['answers']);
         $c = $this->addCorrectAnswerToQuestion($qid, $cid);
@@ -77,6 +80,10 @@ class QuestionAddModel extends Model
             if ($correct == $key) {
                 $correctId = $this->db->lastInsertId();
             }
+        }
+
+        if (!isset($correctId)) {
+            $correctId = 0;
         }
 
         $this->db->commit();
