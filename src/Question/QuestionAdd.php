@@ -1,8 +1,10 @@
 <?php
 
-namespace Egzaminer\Admin;
+namespace Egzaminer\Question;
 
-class TestQuestionAdd extends Dashboard
+use Egzaminer\Admin\Dashboard as Controller;
+
+class QuestionAdd extends Controller
 {
     public function addAction($testId)
     {
@@ -20,9 +22,9 @@ class TestQuestionAdd extends Dashboard
             ],
         ];
         if (isset($_POST['submit'])) {
-            $model = new TestQuestionAddModel();
+            $model = new QuestionAddModel();
             if ($id = $model->add($testId, $_POST)) {
-                $this->data['valid'] = true;
+                $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin/test/edit/'.$testId.'/question/edit/'.$id);
                 exit;
             } else {

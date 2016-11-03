@@ -1,11 +1,10 @@
 <?php
 
-namespace Egzaminer\Admin;
+namespace Egzaminer\Question;
 
-use Egzaminer\One\Questions;
-use Egzaminer\One\Answers;
+use Egzaminer\Admin\Dashboard as Controller;
 
-class TestQuestionEdit extends Dashboard
+class QuestionEdit extends Controller
 {
     public function editAction($testId, $id)
     {
@@ -16,7 +15,7 @@ class TestQuestionEdit extends Dashboard
         }
 
         if (isset($_POST['submit'])) {
-            $editModel = new TestQuestionEditModel();
+            $editModel = new QuestionEditModel();
 
             if ($editModel->edit($id, $_POST)) {
                 $_SESSION['valid'] = true;

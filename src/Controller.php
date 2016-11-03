@@ -2,13 +2,13 @@
 
 namespace Egzaminer;
 
-use Egzaminer\Roll\TestsList;
+use Egzaminer\Roll\ExamsList;
 
-class AbstractController
+class Controller
 {
     public function __construct()
     {
-        $list = new TestsList();
+        $list = new ExamsList();
         $this->data['tests_list'] = $list->getList();
 
         if (method_exists($this, 'init')) {

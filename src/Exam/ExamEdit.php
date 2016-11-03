@@ -1,12 +1,13 @@
 <?php
 
-namespace Egzaminer\Admin;
+namespace Egzaminer\Exam;
 
-use Egzaminer\One\OneTest;
-use Egzaminer\One\Questions;
-use Egzaminer\One\Answers;
+use Egzaminer\Question\Questions;
+use Egzaminer\Question\Answers;
 
-class TestEdit extends Dashboard
+use Egzaminer\Admin\Dashboard as Controller;
+
+class ExamEdit extends Controller
 {
     public function editAction($id)
     {
@@ -16,7 +17,7 @@ class TestEdit extends Dashboard
         }
 
         if (isset($_POST['edit'])) {
-            $editModel = new TestEditModel();
+            $editModel = new ExamEditModel();
 
             if ($editModel->edit($id, $_POST)) {
                 $_SESSION['test-edit-valid'] = true;
@@ -27,13 +28,13 @@ class TestEdit extends Dashboard
             }
         }
 
-        $oneTest = (new OneTest())->getInfo($id);
-        $questions = (new Questions())->getByTestId($id);
+        $exam = (new ExamModel())->getInfo($id);
+        $questions = (new Questions())->getByExamId($id);
         $answers = (new Answers())->getAnswersByQuestions($questions);
 
-        $this->data['test-edit']['test'] = $oneTest;
+        $this->data['test-edit']['test'] = $exam;
         $this->data['test-edit']['questions'] = $questions;
-        $this->data['test-edit']['answers'] = $answers;
+        // $this->data['test-edit']['answers'] = $answers;
 
         $this->render('admin-test-edit');
     }

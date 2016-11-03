@@ -2,9 +2,9 @@
 
 namespace Egzaminer\Admin;
 
-use Egzaminer\AbstractController;
+use Egzaminer\Controller;
 
-class Login extends AbstractController
+class Login extends Controller
 {
     public function loginAction()
     {

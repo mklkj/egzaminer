@@ -1,11 +1,11 @@
 <?php
 
-namespace Egzaminer\One;
+namespace Egzaminer\Question;
 
 use PDO;
-use Egzaminer\AbstractModel;
+use Egzaminer\Model;
 
-class Answers extends AbstractModel
+class Answers extends Model
 {
     public function getAnswersByQuestions($answers)
     {

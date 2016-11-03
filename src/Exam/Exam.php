@@ -1,26 +1,28 @@
 <?php
 
-namespace Egzaminer\One;
+namespace Egzaminer\Exam;
 
 use Exception;
-use Egzaminer\AbstractController;
+use Egzaminer\Question\Questions;
+use Egzaminer\Question\Answers;
+use Egzaminer\Admin\Dashboard as Controller;
 
-class Test extends AbstractController
+class Exam extends Controller
 {
     public function showAction($id)
     {
-        $testInfo = (new OneTest())->getInfo($id);
+        $testInfo = (new ExamModel())->getInfo($id);
 
         if (false === $testInfo) {
-            throw new Exception('Test not exists!');
+            throw new Exception('Exam not exists!');
         }
 
-        $questions = (new Questions())->getByTestId($id);
+        $questions = (new Questions())->getByExamId($id);
         $answers = (new Answers())->getAnswersByQuestions($questions);
 
         // if form was send
         if (!empty($_POST)) {
-            $stats = (new TestStat())->getStats($testInfo, $questions, $_POST);
+            $stats = (new ExamStat())->getStats($testInfo, $questions, $_POST);
 
             $this->data['test-check'] = [
                 'test' => $testInfo,

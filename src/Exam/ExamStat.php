@@ -1,8 +1,8 @@
 <?php
 
-namespace Egzaminer\One;
+namespace Egzaminer\Exam;
 
-class TestStat
+class ExamStat
 {
     public function getStats($testInfo, $correct, $post)
     {

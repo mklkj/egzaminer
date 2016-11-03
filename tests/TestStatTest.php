@@ -1,14 +1,14 @@
 <?php
 
-use Egzaminer\One\TestStat;
+use Egzaminer\Exam\ExamStat;
 
-class TestStatTest extends PHPUnit_Framework_TestCase
+class ExamStatTest extends PHPUnit_Framework_TestCase
 {
     public function testAnswers()
     {
         $data = $this->getData();
 
-        $stat = new TestStat();
+        $stat = new ExamStat();
         $results = $stat->getStats($data['testInfo'], $data['questions'], $data['userAnswers']);
 
         $this->assertEquals($results['answers'], $data['userAnswersCleared']);

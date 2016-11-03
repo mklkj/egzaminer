@@ -1,13 +1,13 @@
 <?php
 
-namespace Egzaminer\One;
+namespace Egzaminer\Question;
 
 use PDO;
-use Egzaminer\AbstractModel;
+use Egzaminer\Model;
 
-class Questions extends AbstractModel
+class Questions extends Model
 {
-    public function getByTestId($id)
+    public function getByExamId($id)
     {
         $stmt = $this->db->prepare('SELECT * FROM questions WHERE test_id = :test_id');
         $stmt->bindValue(':test_id', $id, PDO::PARAM_INT);

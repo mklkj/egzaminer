@@ -2,9 +2,9 @@
 
 namespace Egzaminer\Roll;
 
-use Egzaminer\AbstractModel;
+use Egzaminer\Model;
 
-class TestsList extends AbstractModel
+class ExamsList extends Model
 {
     public function getList()
     {

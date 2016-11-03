@@ -2,9 +2,9 @@
 
 namespace Egzaminer\Admin;
 
-use Egzaminer\AbstractController;
+use Egzaminer\Controller;
 
-class Dashboard extends AbstractController
+class Dashboard extends Controller
 {
     protected function init()
     {

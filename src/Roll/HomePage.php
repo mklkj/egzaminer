@@ -2,17 +2,12 @@
 
 namespace Egzaminer\Roll;
 
-use Egzaminer\AbstractController;
+use Egzaminer\Controller;
 
-class HomePage extends AbstractController
+class HomePage extends Controller
 {
     public function indexAction()
     {
-        // access on all pages - in AbstractController
-
-        // $list = new TestsList();
-        // $this->data['tests_list'] = $list->getList();
-
         $this->render('list');
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Egzaminer\One;
+namespace Egzaminer\Exam;
 
-use Egzaminer\AbstractModel;
+use Egzaminer\Model;
 
-class OneTest extends AbstractModel
+class ExamModel extends Model
 {
     public function getInfo($id)
     {

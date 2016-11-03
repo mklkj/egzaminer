@@ -4,7 +4,7 @@ namespace Egzaminer;
 
 use PDO;
 
-class AbstractModel
+class Model
 {
     protected $db;
 
