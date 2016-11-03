@@ -24,7 +24,7 @@ class App
         $router->map('GET', '/', [
             'Egzaminer\Roll\HomePage', 'indexAction', ]);
 
-        $router->map('GET', '/test/[i:id]', [
+        $router->map('GET|POST', '/test/[i:id]', [
             'Egzaminer\One\Test', 'showAction', ]);
 
         $router->map('GET', '/admin', [
