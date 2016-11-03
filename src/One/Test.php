@@ -1,9 +1,9 @@
 <?php
 
-namespace Tester\One;
+namespace Egzaminer\One;
 
 use Exception;
-use Tester\AbstractController;
+use Egzaminer\AbstractController;
 
 class Test extends AbstractController
 {

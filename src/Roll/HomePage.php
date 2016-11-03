@@ -1,8 +1,8 @@
 <?php
 
-namespace Tester\Roll;
+namespace Egzaminer\Roll;
 
-use Tester\AbstractController;
+use Egzaminer\AbstractController;
 
 class HomePage extends AbstractController
 {

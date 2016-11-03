@@ -1,6 +1,6 @@
 <?php
 
-namespace Tester;
+namespace Egzaminer;
 
 use PDO;
 

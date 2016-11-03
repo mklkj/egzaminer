@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>tester</title>
+    <title>Egzaminer</title>
     <link rel="stylesheet" href="<?=$this->dir();?>/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <style>
       .alert h2 {
@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?=$this->dir();?>">Tester</a>
+          <a class="navbar-brand" href="<?=$this->dir();?>/">Egzaminer</a>
         </div>
 
         <div class="collapse navbar-collapse">
@@ -32,7 +32,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="https://github.com/mklkj/tester">View project on GitHub</a></li>
+                <li><a href="https://github.com/mklkj/egzaminer">View project on GitHub</a></li>
               </ul>
             </li>
           </ul>

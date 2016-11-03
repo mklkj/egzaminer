@@ -1,9 +1,9 @@
 <?php
 
-namespace Tester\Admin;
+namespace Egzaminer\Admin;
 
 use PDO;
-use Tester\AbstractModel;
+use Egzaminer\AbstractModel;
 
 class TestQuestionAddModel extends AbstractModel
 {

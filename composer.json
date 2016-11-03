@@ -1,5 +1,5 @@
 {
-    "name": "word-team/tester",
+    "name": "mklkj/egzaminer",
     "version": "0.0.3",
     "type": "project",
     "require": {
@@ -17,7 +17,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Tester\\": "src/"
+            "Egzaminer\\": "src/"
         }
     }
 }

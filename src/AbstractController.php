@@ -1,8 +1,8 @@
 <?php
 
-namespace Tester;
+namespace Egzaminer;
 
-use Tester\Roll\TestsList;
+use Egzaminer\Roll\TestsList;
 
 class AbstractController
 {

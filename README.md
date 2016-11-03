@@ -1,6 +1,6 @@
-# tester
+# Egzaminer
 
-[![Build Status](https://travis-ci.org/mklkj/tester.svg?branch=master)](http://travis-ci.org/mklkj/tester)
+[![Build Status](https://travis-ci.org/mklkj/egzaminer.svg?branch=master)](http://travis-ci.org/mklkj/egzaminer)
 
 ## install
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Tester\Admin;
+namespace Egzaminer\Admin;
 
-use Tester\AbstractController;
+use Egzaminer\AbstractController;
 
 class Login extends AbstractController
 {

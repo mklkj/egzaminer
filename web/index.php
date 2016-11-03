@@ -1,6 +1,6 @@
 <?php
 
-use Tester\App;
+use Egzaminer\App;
 
 session_start();
 session_regenerate_id();

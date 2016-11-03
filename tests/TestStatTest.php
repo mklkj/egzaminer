@@ -1,8 +1,8 @@
 <?php
 
-use Tester\One\TestStat;
+use Egzaminer\One\TestStat;
 
-class TestStatTest extends \PHPUnit_Framework_TestCase
+class TestStatTest extends PHPUnit_Framework_TestCase
 {
     public function testAnswers()
     {

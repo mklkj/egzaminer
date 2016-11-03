@@ -1,6 +1,6 @@
 <?php
 
-namespace Tester\Admin;
+namespace Egzaminer\Admin;
 
 class TestQuestionAdd extends Dashboard
 {

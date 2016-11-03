@@ -1,9 +1,9 @@
 <?php
 
-namespace Tester\One;
+namespace Egzaminer\One;
 
 use PDO;
-use Tester\AbstractModel;
+use Egzaminer\AbstractModel;
 
 class Questions extends AbstractModel
 {

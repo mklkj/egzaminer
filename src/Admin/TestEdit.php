@@ -1,10 +1,10 @@
 <?php
 
-namespace Tester\Admin;
+namespace Egzaminer\Admin;
 
-use Tester\One\OneTest;
-use Tester\One\Questions;
-use Tester\One\Answers;
+use Egzaminer\One\OneTest;
+use Egzaminer\One\Questions;
+use Egzaminer\One\Answers;
 
 class TestEdit extends Dashboard
 {

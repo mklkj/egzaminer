@@ -1,8 +1,8 @@
 <?php
 
-namespace Tester\Roll;
+namespace Egzaminer\Roll;
 
-use Tester\AbstractModel;
+use Egzaminer\AbstractModel;
 
 class TestsList extends AbstractModel
 {

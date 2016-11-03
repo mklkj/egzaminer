@@ -1,8 +1,8 @@
 <?php
 
-namespace Tester\One;
+namespace Egzaminer\One;
 
-use Tester\AbstractModel;
+use Egzaminer\AbstractModel;
 
 class OneTest extends AbstractModel
 {

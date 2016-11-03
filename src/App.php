@@ -1,11 +1,11 @@
 <?php
 
-namespace Tester;
+namespace Egzaminer;
 
-use Tester\Routing\FrontController;
-use Tester\Routing\Route;
-use Tester\Routing\RouteCollection;
-use Tester\Routing\Router;
+use Egzaminer\Routing\FrontController;
+use Egzaminer\Routing\Route;
+use Egzaminer\Routing\RouteCollection;
+use Egzaminer\Routing\Router;
 use Exception;
 
 class App
@@ -20,39 +20,39 @@ class App
         $this->routes = new RouteCollection();
 
         $this->routes->add('index', new Route('/',
-            'Tester\Roll\HomePage::indexAction'
+            'Egzaminer\Roll\HomePage::indexAction'
         ));
 
         $this->routes->add('test', new Route('test/<id>$',
-            'Tester\One\Test::showAction',
+            'Egzaminer\One\Test::showAction',
             ['id' => '[1-9][0-9]*']
         ));
 
         $this->routes->add('admin/login', new Route('admin/login(/)?',
-            'Tester\Admin\Login::loginAction'
+            'Egzaminer\Admin\Login::loginAction'
         ));
 
         $this->routes->add('admin/dashboard', new Route('admin(/)?',
-            'Tester\Admin\Dashboard::indexAction'
+            'Egzaminer\Admin\Dashboard::indexAction'
         ));
 
         $this->routes->add('admin/test/edit', new Route('admin/test/edit/<id>$',
-            'Tester\Admin\TestEdit::editAction',
+            'Egzaminer\Admin\TestEdit::editAction',
             ['id' => '[1-9][0-9]*']
         ));
 
         $this->routes->add('admin/question/edit', new Route('admin/test/edit/<testId>/question/edit/<id>$',
-            'Tester\Admin\TestQuestionEdit::editAction',
+            'Egzaminer\Admin\TestQuestionEdit::editAction',
             ['id' => '[1-9][0-9]*','testId' => '[1-9][0-9]*']
         ));
 
         $this->routes->add('admin/question/add', new Route('admin/test/edit/<testId>/question/add(/)?',
-            'Tester\Admin\TestQuestionAdd::addAction',
+            'Egzaminer\Admin\TestQuestionAdd::addAction',
             ['testId' => '[1-9][0-9]*']
         ));
 
         $this->routes->add('admin/test/add', new Route('admin/test/add(/)?',
-            'Tester\Admin\TestAdd::addAction'
+            'Egzaminer\Admin\TestAdd::addAction'
         ));
     }
 

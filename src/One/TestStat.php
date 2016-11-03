@@ -1,6 +1,6 @@
 <?php
 
-namespace Tester\One;
+namespace Egzaminer\One;
 
 class TestStat
 {

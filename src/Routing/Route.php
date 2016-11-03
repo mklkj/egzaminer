@@ -1,6 +1,6 @@
 <?php
 
-namespace Tester\Routing;
+namespace Egzaminer\Routing;
 
 class Route
 {
