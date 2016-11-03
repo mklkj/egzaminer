@@ -21,14 +21,29 @@ class App
 
     private function addRoutes($router)
     {
-        $router->map('GET', '/', ['Egzaminer\Roll\HomePage', 'indexAction', ]);
-        $router->map('GET|POST', '/test/[i:id]', ['Egzaminer\Exam\Exam', 'showAction', ]);
-        $router->map('GET', '/admin', ['Egzaminer\Admin\Dashboard', 'indexAction', ]);
-        $router->map('GET|POST', '/admin/login', ['Egzaminer\Admin\Login', 'loginAction', ]);
-        $router->map('GET|POST', '/admin/test/add', ['Egzaminer\Exam\ExamAdd', 'addAction', ]);
-        $router->map('GET|POST', '/admin/test/edit/[i:id]', ['Egzaminer\Exam\ExamEdit', 'editAction', ]);
-        $router->map('GET|POST', '/admin/test/edit/[i:tid]/question/add', ['Egzaminer\Question\QuestionAdd', 'addAction', ]);
-        $router->map('GET|POST', '/admin/test/edit/[i:tid]/question/edit/[i:qid]', ['Egzaminer\Question\QuestionEdit', 'editAction', ]);
+        $router->map('GET', '/', [
+            'Egzaminer\Roll\HomePage', 'indexAction', ]);
+
+        $router->map('GET|POST', '/test/[i:id]', [
+            'Egzaminer\Exam\Exam', 'showAction', ]);
+
+        $router->map('GET', '/admin', [
+            'Egzaminer\Admin\Dashboard', 'indexAction', ]);
+
+        $router->map('GET|POST', '/admin/login', [
+            'Egzaminer\Admin\Login', 'loginAction', ]);
+
+        $router->map('GET|POST', '/admin/test/add', [
+            'Egzaminer\Exam\ExamAdd', 'addAction', ]);
+
+        $router->map('GET|POST', '/admin/test/edit/[i:id]', [
+            'Egzaminer\Exam\ExamEdit', 'editAction', ]);
+
+        $router->map('GET|POST', '/admin/test/edit/[i:tid]/question/add', [
+            'Egzaminer\Question\QuestionAdd', 'addAction', ]);
+
+        $router->map('GET|POST', '/admin/test/edit/[i:tid]/question/edit/[i:qid]', [
+            'Egzaminer\Question\QuestionEdit', 'editAction', ]);
     }
 
     /**
