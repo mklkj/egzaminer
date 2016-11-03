@@ -9,18 +9,17 @@ class QuestionAdd extends Controller
     public function addAction($testId)
     {
         $this->testId = $testId;
-        $this->data = [
-            'question' => [
-                'content' => '',
-                'correct' => '',
-            ],
-            'answers' => [
+        $this->data['question'] = [
+            'content' => '',
+            'correct' => '',
+        ];
+        $this->data['answers'] = [
                 ['content' => '', 'id' => '1'],
                 ['content' => '', 'id' => '2'],
                 ['content' => '', 'id' => '3'],
                 ['content' => '', 'id' => '4'],
-            ],
         ];
+
         if (isset($_POST['submit'])) {
             $model = new QuestionAddModel();
 
