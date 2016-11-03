@@ -2,58 +2,48 @@
 
 namespace Egzaminer;
 
-use Egzaminer\Routing\FrontController;
-use Egzaminer\Routing\Route;
-use Egzaminer\Routing\RouteCollection;
-use Egzaminer\Routing\Router;
-use Exception;
+use AltoRouter;
 
 class App
 {
-    private $routes;
+    private $url;
+    private $router;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->routes = new RouteCollection();
+        $this->setUrl($_SERVER['REQUEST_URI']);
+        $this->router = new AltoRouter();
+        $this->addRoutes($this->router);
+    }
 
-        $this->routes->add('index', new Route('/',
-            'Egzaminer\Roll\HomePage::indexAction'
-        ));
+    private function addRoutes($router)
+    {
+        $router->map('GET', '/', [
+            'Egzaminer\Roll\HomePage', 'indexAction', ]);
 
-        $this->routes->add('test', new Route('test/<id>$',
-            'Egzaminer\One\Test::showAction',
-            ['id' => '[1-9][0-9]*']
-        ));
+        $router->map('GET', '/test/[i:id]', [
+            'Egzaminer\One\Test', 'showAction', ]);
 
-        $this->routes->add('admin/login', new Route('admin/login(/)?',
-            'Egzaminer\Admin\Login::loginAction'
-        ));
+        $router->map('GET', '/admin', [
+            'Egzaminer\Admin\Dashboard', 'indexAction', ]);
 
-        $this->routes->add('admin/dashboard', new Route('admin(/)?',
-            'Egzaminer\Admin\Dashboard::indexAction'
-        ));
+        $router->map('GET|POST', '/admin/login', [
+            'Egzaminer\Admin\Login', 'loginAction', ]);
 
-        $this->routes->add('admin/test/edit', new Route('admin/test/edit/<id>$',
-            'Egzaminer\Admin\TestEdit::editAction',
-            ['id' => '[1-9][0-9]*']
-        ));
+        $router->map('GET|POST', '/admin/test/edit/[i:id]', [
+            'Egzaminer\Admin\TestEdit', 'editAction', ]);
 
-        $this->routes->add('admin/question/edit', new Route('admin/test/edit/<testId>/question/edit/<id>$',
-            'Egzaminer\Admin\TestQuestionEdit::editAction',
-            ['id' => '[1-9][0-9]*','testId' => '[1-9][0-9]*']
-        ));
+        $router->map('GET|POST', '/admin/test/edit/[i:tid]/question/edit/[i:qid]', [
+            'Egzaminer\Admin\TestQuestionEdit', 'editAction', ]);
 
-        $this->routes->add('admin/question/add', new Route('admin/test/edit/<testId>/question/add(/)?',
-            'Egzaminer\Admin\TestQuestionAdd::addAction',
-            ['testId' => '[1-9][0-9]*']
-        ));
+        $router->map('GET|POST', '/admin/test/edit/[i:tid]/question/add', [
+            'Egzaminer\Admin\TestQuestionAdd', 'addAction', ]);
 
-        $this->routes->add('admin/test/add', new Route('admin/test/add(/)?',
-            'Egzaminer\Admin\TestAdd::addAction'
-        ));
+        $router->map('GET|POST', '/admin/test/add', [
+            'Egzaminer\Admin\TestAdd', 'addAction', ]);
     }
 
     /**
@@ -61,17 +51,38 @@ class App
      */
     public function invoke()
     {
-        $router = new Router($_SERVER['REQUEST_URI'], static::getDir(), $this->routes);
-        $frontController = new FrontController($router);
+        $match = $this->router->match($this->url);
 
-        try {
-            $frontController->run();
-        } catch (Exception $e) {
+        // call closure or throw 404 status
+        if ($match && is_callable($match['target'])) {
+            call_user_func_array([
+                new $match['target'][0](), $match['target'][1],
+            ], $match['params']);
+        } else {
             http_response_code(404);
             // echo 'Error 404 not found<pre>';
             // print_r($e->getMessage());
             include $this->getRootDir().'/web/templates/error.html.php';
         }
+    }
+
+    /**
+     * Set request url.
+     *
+     * @param string $request
+     */
+    public function setUrl($request)
+    {
+        $basePath = $this->getDir();
+
+        if ($basePath) {
+            $pos = strpos($request, $basePath);
+
+            if (false !== $pos) {
+                $url = substr_replace($request, '', $pos, strlen($basePath));
+            }
+        }
+        $this->url = $url;
     }
 
     /**
