@@ -12,6 +12,10 @@
 </div>
 <?php endif; ?>
 
+<a href="<?=$this->dir();?>/admin/test/add" class="btn btn-default">
+  Dodaj nowy test
+</a>
+
 <form class="form-horizontal" action="" method="post">
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
