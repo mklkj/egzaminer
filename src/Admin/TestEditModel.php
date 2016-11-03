@@ -10,7 +10,7 @@ class TestEditModel extends AbstractModel
     /**
      * Edit test.
      *
-     * @param int $id
+     * @param int   $id
      * @param array $test
      *
      * @return bool

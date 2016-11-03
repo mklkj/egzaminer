@@ -21,6 +21,7 @@ class Auth
                 and $login === $user['login']) {
                 $_SESSION['egzaminer_auth_un'] = $user['login'];
                 $_SESSION['ga_cookie'] = password_hash($user['login'], PASSWORD_DEFAULT);
+
                 return true;
             }
         }
@@ -45,6 +46,7 @@ class Auth
                 return true;
             }
         }
+
         return false;
     }
 }

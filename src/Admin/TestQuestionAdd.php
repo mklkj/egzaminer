@@ -13,11 +13,11 @@ class TestQuestionAdd extends Dashboard
                 'correct' => '',
             ],
             'answers' => [ // lol
-                ['content' => '','id' => '',],
-                ['content' => '','id' => '',],
-                ['content' => '','id' => '',],
-                ['content' => '','id' => '',],
-            ]
+                ['content' => '', 'id' => ''],
+                ['content' => '', 'id' => ''],
+                ['content' => '', 'id' => ''],
+                ['content' => '', 'id' => ''],
+            ],
         ];
         if (isset($_POST['submit'])) {
             $model = new TestQuestionAddModel();

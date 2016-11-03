@@ -2,7 +2,6 @@
 
 namespace Egzaminer\Admin;
 
-use Egzaminer\One\OneTest;
 use Egzaminer\One\Questions;
 use Egzaminer\One\Answers;
 

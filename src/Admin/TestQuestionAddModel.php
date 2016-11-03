@@ -18,7 +18,7 @@ class TestQuestionAddModel extends AbstractModel
     /**
      * Add question for test.
      *
-     * @param int $testId
+     * @param int   $testId
      * @param array $question
      *
      * @return book
@@ -38,8 +38,8 @@ class TestQuestionAddModel extends AbstractModel
     /**
      * Add answers for test.
      *
-     * @param int $testId
-     * @param int $qid
+     * @param int   $testId
+     * @param int   $qid
      * @param array $answers
      *
      * @return bool

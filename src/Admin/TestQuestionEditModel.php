@@ -16,7 +16,7 @@ class TestQuestionEditModel extends AbstractModel
     /**
      * Edit question in test.
      *
-     * @param int $id
+     * @param int   $id
      * @param array $question
      *
      * @return book
