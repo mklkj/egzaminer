@@ -60,7 +60,6 @@ class App
             ], $match['params']);
         } else {
             http_response_code(404);
-            echo '<pre>Not collable'.var_export($match['target']).'</pre>';
             include $this->getRootDir().'/web/templates/error.html.php';
         }
     }
