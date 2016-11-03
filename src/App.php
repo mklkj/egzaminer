@@ -59,8 +59,7 @@ class App
                 new $match['target'][0](), $match['target'][1],
             ], $match['params']);
         } else {
-            http_response_code(404);
-            include $this->getRootDir().'/web/templates/error.html.php';
+            (new Error(404))->showAction();
         }
     }
 
