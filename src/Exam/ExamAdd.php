@@ -11,7 +11,7 @@ class ExamAdd extends Controller
         if (isset($_POST['add'])) {
             $model = new ExamAddModel();
             if ($id = $model->add($_POST)) {
-                $this->data['valid'] = true;
+                $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin/test/edit/'.$id);
                 exit;
             } else {
