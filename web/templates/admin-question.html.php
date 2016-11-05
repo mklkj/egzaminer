@@ -1,17 +1,5 @@
 <?php include '_head.html.php'; ?>
 
-<?php if (isset($this->data['invalid'])): ?>
-<div class="alert alert-danger">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  Coś wpisałeś nie poprawnie! Albo zepsuło się coś innego. Ale nie wiadomo co. Spróbuj jeszcze raz może.
-</div>
-<?php elseif(isset($this->data['valid'])): ?>
-<div class="alert alert-success">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  Udało się zrobić to, co chciałeś!
-</div>
-<?php endif; ?>
-
 <a href="<?=$this->dir();?>/admin/test/edit/<?=$this->testId;?>" class="btn btn-default">
   Wróć do edycji testu
 </a>

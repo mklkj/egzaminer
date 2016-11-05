@@ -1,12 +1,5 @@
 <?php include '_head.html.php'; ?>
 
-<?php if (isset($this->data['form']['invalid'])): ?>
-<div class="alert alert-danger">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  Nazwa użytkownika lub hasło jest niepoprawne!
-</div>
-<?php endif; ?>
-
 <form class="form-horizontal" action="<?=$this->dir();?>/admin/login" method="post">
   <div class="form-group">
     <label for="login" class="col-sm-2 control-label">Nazwa użytkownika</label>

@@ -1,17 +1,5 @@
 <?php include '_head.html.php'; ?>
 
-<?php if (isset($this->data['test-add']['invalid'])): ?>
-<div class="alert alert-danger">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  Coś wpisałeś nie poprawnie! Albo zepsuło się coś innego. Ale nie wiadomo co. Spróbuj jeszcze raz może.
-</div>
-<?php elseif(isset($this->data['test-add']['valid'])): ?>
-<div class="alert alert-success">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  Udało się zrobić to, co chciałeś!
-</div>
-<?php endif; ?>
-
 <form class="form-horizontal" action="" method="post">
   <div class="form-group">
     <label for="title" class="col-sm-2 control-label">Tytuł testu</label>

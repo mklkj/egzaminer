@@ -10,20 +10,20 @@ class ExamEdit extends Controller
 {
     public function editAction($id)
     {
-        if (isset($_SESSION['test-edit-valid'])) {
-            $this->data['test-edit']['valid'] = true;
-            unset($_SESSION['test-edit-valid']);
+        if (isset($_SESSION['valid'])) {
+            $this->data['valid'] = true;
+            unset($_SESSION['valid']);
         }
 
         if (isset($_POST['edit'])) {
             $editModel = new ExamEditModel();
 
             if ($editModel->edit($id, $_POST)) {
-                $_SESSION['test-edit-valid'] = true;
+                $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin/test/edit/'.$id);
                 exit;
             } else {
-                $this->data['test-edit']['invalid'] = true;
+                $this->data['valid'] = false;
             }
         }
 
@@ -35,6 +35,6 @@ class ExamEdit extends Controller
         $this->data['test-edit']['questions'] = $questions;
         // $this->data['test-edit']['answers'] = $answers;
 
-        $this->render('admin-test-edit', 'Edycja testu');
+        $this->render('admin-exam-edit', 'Edycja testu');
     }
 }

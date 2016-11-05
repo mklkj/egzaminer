@@ -11,11 +11,11 @@ class ExamAdd extends Controller
         if (isset($_POST['add'])) {
             $model = new ExamAddModel();
             if ($id = $model->add($_POST)) {
-                $this->data['test-add']['valid'] = true;
+                $this->data['valid'] = true;
                 header('Location: '.$this->dir().'/admin/test/edit/'.$id);
                 exit;
             } else {
-                $this->data['test-add']['invalid'] = true;
+                $this->data['valid'] = false;
             }
         }
         $this->render('admin-test-add', 'Dodawanie testu');

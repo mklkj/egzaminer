@@ -65,3 +65,15 @@
       <div class="page-header">
         <h1><?=$this->title;?></h1>
       </div>
+
+      <?php if (false === $this->data['valid']): ?> 
+      <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Operacja nie powiodła się!
+      </div>
+      <?php elseif ($this->data['valid']): ?> 
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Operacja powiodła się!
+      </div>
+      <?php endif; ?> 

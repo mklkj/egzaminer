@@ -28,7 +28,7 @@ class QuestionAdd extends Controller
                 header('Location: '.$this->dir().'/admin/test/edit/'.$testId.'/question/edit/'.$id);
                 exit;
             } else {
-                $this->data['invalid'] = true;
+                $this->data['valid'] = false;
             }
         }
 

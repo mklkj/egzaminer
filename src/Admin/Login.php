@@ -18,7 +18,7 @@ class Login extends Controller
                 header('Location: '.$this->dir().'/admin');
                 exit;
             }
-            $this->data['form']['invalid'] = true;
+            $this->data['valid'] = true;
         }
         $this->render('login', 'Logowanie');
     }

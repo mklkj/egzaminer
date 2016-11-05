@@ -9,10 +9,6 @@ class QuestionEdit extends Controller
     public function editAction($testId, $id)
     {
         $this->testId = $testId;
-        if (isset($_SESSION['valid'])) {
-            $this->data['valid'] = true;
-            unset($_SESSION['valid']);
-        }
 
         if (isset($_POST['submit'])) {
             $editModel = new QuestionEditModel();
@@ -22,7 +18,7 @@ class QuestionEdit extends Controller
                 header('Location: '.$this->dir().'/admin/test/edit/'.$testId.'/question/edit/'.$id);
                 exit;
             } else {
-                $this->data['invalid'] = true;
+                $this->data['valid'] = false;
             }
         }
 
