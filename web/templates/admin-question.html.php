@@ -22,14 +22,8 @@
     <label class="col-sm-2 control-label" for="question">Pytanie</label>
 
     <div class="col-sm-10">
-      <input
-        class="form-control"
-        id="question"
-        name="question[content]"
-        placeholder="Pytanie."
-        value="<?=$this->data['question']['content'];?>"
-        type="text"
-      >
+      <textarea name="question[content]" id="question" class="form-control"
+      rows="2"><?=$this->escape($this->data['question']['content']);?></textarea>
     </div>
   </div>
 
@@ -57,7 +51,7 @@
           name="answers[<?=$answer['id'];?>]"
           placeholder="Odpowiedź <?=$key;?>."
           type="text"
-          value="<?=$answer['content'];?>"
+          value="<?=$this->escape($answer['content']);?>"
         >
       </div>
     </div>

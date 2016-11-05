@@ -14,7 +14,7 @@
     <label for="title" class="col-sm-2 control-label">Tytuł testu</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="title" name="title"
-        placeholder="Tytuł testu" value="<?=$this->data['test-edit']['test']['title'];?>">
+        placeholder="Tytuł testu" value="<?=$this->escape($this->data['test-edit']['test']['title']);?>">
     </div>
   </div>
   <div class="form-group">

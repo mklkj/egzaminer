@@ -47,7 +47,7 @@
           ?>">
           <input type="radio" name="question_<?=$question['id'];?>" value="<?=$answerID;?>" id="answer_<?=$answerID;?>" <?=($answerID === $questionIDFromUser) ? 'checked' : '';?> disabled>
           <label for="answer_<?=$answerID;?>">
-            <?=$answer['content'];?>
+            <?=$this->escape($answer['content']);?> 
           </label>
         </li>
        <?php endforeach; ?>

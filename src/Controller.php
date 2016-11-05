@@ -58,4 +58,9 @@ class Controller
     {
         return $this->dir;
     }
+
+    public function escape($string)
+    {
+        return htmlspecialchars($string);
+    }
 }

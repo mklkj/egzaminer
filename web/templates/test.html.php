@@ -12,7 +12,7 @@
         <li class="list-group-item">
           <input type="radio" name="question_<?=$question['id'];?>" value="<?=$answer['id'];?>" id="answer_<?=$answer['id'];?>">
           <label for="answer_<?=$answer['id'];?>">
-            <?=$answer['content'];?> 
+            <?=$this->escape($answer['content']);?> 
           </label>
         </li>
        <?php endforeach; ?> 
