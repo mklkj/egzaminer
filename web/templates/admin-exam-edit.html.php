@@ -46,7 +46,7 @@
           <th>ID</th>
           <th>ID poprawnej odpowiedzi</th>
           <th>treść pytania</th>
-          <th>akcje</th>
+          <th>Akcje</th>
         </tr>
       </thead>
       <tbody>
@@ -57,8 +57,11 @@
           <td><?=$question['correct'];?></td>
           <td><?=$question['content'];?></td>
           <td>
-            <a href="<?=$this->dir();?>/admin/test/edit/<?=$this->data['test-edit']['test']['id'];?>/question/edit/<?=$question['id'];?>" class="btn btn-xs">
+            <a href="<?=$this->dir();?>/admin/test/edit/<?=$this->data['test-edit']['test']['id'];?>/question/edit/<?=$question['id'];?>" class="btn btn-xs btn-primary">
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edytuj
+            </a>
+            <a href="<?=$this->dir();?>/admin/test/edit/<?=$this->data['test-edit']['test']['id'];?>/question/del/<?=$question['id'];?>" class="btn btn-xs btn-danger">
+              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Usuń
             </a>
           </td>
         </tr>

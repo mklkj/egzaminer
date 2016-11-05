@@ -42,11 +42,17 @@ class App
         $router->map('GET|POST', '/admin/test/edit/[i:id]', [
             'Egzaminer\Exam\ExamEdit', 'editAction', ]);
 
+        $router->map('GET|POST', '/admin/test/del/[i:id]', [
+            'Egzaminer\Exam\ExamDelete', 'deleteAction', ]);
+
         $router->map('GET|POST', '/admin/test/edit/[i:tid]/question/add', [
             'Egzaminer\Question\QuestionAdd', 'addAction', ]);
 
         $router->map('GET|POST', '/admin/test/edit/[i:tid]/question/edit/[i:qid]', [
             'Egzaminer\Question\QuestionEdit', 'editAction', ]);
+
+        $router->map('GET|POST', '/admin/test/edit/[i:tid]/question/del/[i:qid]', [
+            'Egzaminer\Question\QuestionDelete', 'deleteAction', ]);
     }
 
     /**

@@ -27,8 +27,11 @@
           </td>
           <td><?=$value['questions'];?></td>
           <td>
-            <a href="<?=$this->dir();?>/admin/test/edit/<?=$value['id'];?>">
+            <a href="<?=$this->dir();?>/admin/test/edit/<?=$value['id'];?>" class="btn btn-xs btn-primary">
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edytuj
+            </a>
+            <a href="<?=$this->dir();?>/admin/test/del/<?=$value['id'];?>" class="btn btn-xs btn-danger">
+              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Usuń
             </a>
           </td>
         </tr>
