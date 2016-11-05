@@ -11,13 +11,13 @@ CREATE TABLE `answers` (
   `id` int(10) UNSIGNED NOT NULL,
   `test_id` int(10) UNSIGNED NOT NULL,
   `question_id` int(11) UNSIGNED NOT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `content` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `questions` (
   `id` int(10) UNSIGNED NOT NULL,
   `test_id` int(10) UNSIGNED NOT NULL,
-  `content` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `correct` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
