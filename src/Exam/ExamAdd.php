@@ -18,6 +18,6 @@ class ExamAdd extends Controller
                 $this->data['valid'] = false;
             }
         }
-        $this->render('admin-test-add', 'Dodawanie testu');
+        $this->render('admin-exam-add', 'Dodawanie testu');
     }
 }
