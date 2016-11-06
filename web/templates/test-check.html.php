@@ -16,6 +16,12 @@
     <div class="panel-heading">
         <b><?=$key + 1;?>.</b> <?=$question['content'];?>
     </div>
+    <?php if ($question['image']): ?>
+    <div class="panel-body">
+      <img src="<?=$this->dir().'/storage/'.$question['id'].'_'
+        .$question['image'];?>" class="img-responsive">
+    </div>
+    <?php endif ?>
 
     <?php if ($question['correct'] === $questionIDFromUser): ?>
     <div class="panel-body bg-success">

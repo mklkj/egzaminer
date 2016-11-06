@@ -4,6 +4,7 @@ namespace Egzaminer\Question;
 
 use PDO;
 use Egzaminer\Model;
+use Egzaminer\App;
 
 class QuestionEditModel extends Model
 {
@@ -28,9 +29,24 @@ class QuestionEditModel extends Model
         $stmt->bindValue(':content', trim($question['content']), PDO::PARAM_STR);
         $stmt->bindValue(':correct', $question['correct'], PDO::PARAM_INT);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
+        $status = $stmt->execute();
 
-        return $stmt->execute();
+        if (isset($question['delete-img'])) {
+            array_map('unlink', glob(App::getRootDir().'/web/storage/'.$id.'_*'));
+            $stmt = $this->db->prepare('UPDATE questions SET image = \'\' WHERE id = ?');
+            $stmt->execute([$id]);
+        } elseif (!empty($_FILES['image']['name'])) {
+            if(is_uploaded_file($_FILES['image']['tmp_name'])) {
+                array_map('unlink', glob(App::getRootDir().'/web/storage/'.$id.'_*'));
+                $file = App::getRootDir().'/web/storage/'.$id.'_'.$_FILES['image']['name'];
+                move_uploaded_file($_FILES['image']['tmp_name'], $file);
+            }
+
+            $stmt = $this->db->prepare('UPDATE questions SET image = ? WHERE id = ?');
+            $stmt->execute([$_FILES['image']['name'], $id]);
+        }
+
+        return $status;
     }
 
     /**

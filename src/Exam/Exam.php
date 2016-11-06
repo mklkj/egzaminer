@@ -34,6 +34,7 @@ class Exam extends Controller
             $template = 'test-check';
         } else {
             $this->data['test'] = [
+                'id' => $testInfo['id'],
                 'title' => $testInfo['title'],
                 'questions' => $questions,
                 'answers' => $answers,

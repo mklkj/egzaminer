@@ -12,6 +12,7 @@ class QuestionAdd extends Controller
         $this->data['question'] = [
             'content' => '',
             'correct' => '',
+            'image' => '',
         ];
         $this->data['answers'] = [
                 ['content' => '', 'id' => '1'],

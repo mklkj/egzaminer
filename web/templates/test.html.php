@@ -6,7 +6,12 @@
     <div class="panel-heading">
       <b><?=$key + 1;?>.</b> <?=$question['content'];?> 
     </div>
-
+    <?php if ($question['image']): ?>
+    <div class="panel-body">
+      <img src="<?=$this->dir().'/storage/'.$question['id'].'_'
+        .$question['image'];?>" class="img-responsive">
+    </div>
+    <?php endif ?>
      <ul class="list-group">
        <?php foreach ($this->data['test']['answers'][$question['id']] as $key => $answer): ?> 
         <li class="list-group-item">

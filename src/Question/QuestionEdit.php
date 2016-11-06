@@ -9,20 +9,23 @@ class QuestionEdit extends Controller
     public function editAction($testId, $id)
     {
         $this->testId = $testId;
+        $this->id = $id;
+
+        $question = (new Questions())->getByQuestionId($id);
 
         if (isset($_POST['submit'])) {
             $editModel = new QuestionEditModel();
 
             if ($editModel->edit($id, $_POST)) {
                 $_SESSION['valid'] = true;
-                header('Location: '.$this->dir().'/admin/test/edit/'.$testId.'/question/edit/'.$id);
+                header('Location: '.$this->dir().'/admin/test/edit/'.$testId
+                    .'/question/edit/'.$id);
+
                 exit;
             } else {
                 $this->data['valid'] = false;
             }
         }
-
-        $question = (new Questions())->getByQuestionId($id);
         $answers = (new Answers())->getAnswersByOneQuestionId($id);
 
         $this->data['question'] = $question;
