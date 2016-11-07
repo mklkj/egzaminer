@@ -51,7 +51,7 @@ class Controller
         $this->siteTitle = $this->config['title'];
         $this->pageTitle = $title.' '.$this->config['title_divider'].' '.$this->siteTitle;
 
-        include $this->root.'/web/templates/'.$templateName.'.html.php';
+        include $this->root.'/web/themes/'.$this->config['theme'].'/templates/'.$templateName.'.html.php';
     }
 
     public function dir()

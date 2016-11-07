@@ -10,6 +10,7 @@ return [
   'site' => [
     'title' => 'Egzaminer',
     'title_divider' => '|',
+    'theme' => 'bs',
   ],
   'users' => [
     [
