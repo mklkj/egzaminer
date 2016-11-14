@@ -25,6 +25,7 @@
       .page-content {
         max-width: 1100px;
         margin: 0 auto 40px;
+        padding: 15px;
       }
       .mdl-layout__content {
         flex: 1 0 auto;
