@@ -72,10 +72,11 @@
         overflow-wrap: break-word;
       }
       .table--responsive {
+        display: block;
         width: 100%;
-        margin-bottom: 15px;
-        overflow-y: hidden;
-        overflow-x: scroll;
+        min-height: 0%;
+        overflow-x: auto;
+        margin-bottom: 20px;
       }
       .mdl-data-table {
         width: 100%;

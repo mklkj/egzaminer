@@ -15,22 +15,22 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>Nazwa testu</th>
-        <th>Liczba pytań</th>
-        <th>Akcje</th>
+        <th class="mdl-data-table__cell--non-numeric">Nazwa testu</th>
+        <th class="mdl-data-table__cell--non-numeric">Liczba pytań</th>
+        <th class="mdl-data-table__cell--non-numeric">Akcje</th>
       </tr>
     </thead>
     <tbody>
       <?php foreach ($this->data['tests_list'] as $key => $value): ?>
         <tr>
           <td><?=++$key;?></td>
-          <td>
+          <td class="mdl-data-table__cell--non-numeric">
             <a href="<?=$this->dir();?>/test/<?=$value['id'];?>" title="zobacz test">
               <?=$value['title'];?>
             </a>
           </td>
-          <td><?=$value['questions'];?></td>
-          <td>
+          <td class="mdl-data-table__cell--non-numeric"><?=$value['questions'];?></td>
+          <td class="mdl-data-table__cell--non-numeric">
             <a href="<?=$this->dir();?>/admin/test/edit/<?=$value['id'];?>" class="mdl-button">
               <i class="material-icons">edit</i> Edytuj
             </a>

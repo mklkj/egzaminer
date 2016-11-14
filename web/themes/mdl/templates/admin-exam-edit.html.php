@@ -30,22 +30,22 @@
   </div>
 
   <div class="table--responsive">
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <table class="mdl-data-table">
       <thead>
         <tr>
           <th>#</th>
-          <th>treść pytania</th>
-          <th>Akcje</th>
+          <th class="mdl-data-table__cell--non-numeric">treść pytania</th>
+          <th class="mdl-data-table__cell--non-numeric">Akcje</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach ($this->data['test-edit']['questions'] as $qkey => $question): $qkey++; ?>
         <tr>
           <th><?=$qkey;?></th>
-          <td class="table-truncate-container">
+          <td class="mdl-data-table__cell--non-numeric table-truncate-container">
             <span class="table-truncate"><?=$question['content'];?></span>
           </td>
-          <td>
+          <td class="mdl-data-table__cell--non-numeric">
             <a href="<?=$this->dir();?>/admin/test/edit/<?=$this->data['test-edit']['test']['id'];?>/question/edit/<?=$question['id'];?>" class="mdl-button">
               <i class="material-icons">edit</i> Edytuj
             </a>
@@ -59,7 +59,10 @@
     </table>
   </div>
 
-  <button type="submit" name="edit" class="mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect">Zapisz</button>
+  <p>
+    <button type="submit" name="edit" class="mdl-button mdl-js-button
+      mdl-button--colored mdl-button--raised mdl-js-ripple-effect">Zapisz</button>
+  </p>
 </form>
 
 <?php include '_foot.html.php'; ?>
