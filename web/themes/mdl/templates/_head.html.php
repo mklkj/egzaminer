@@ -37,7 +37,7 @@
       }
       .alert--big {
         padding: 25px;
-        margin: 10px 10px 30px;
+        margin: 10px 0 30px;
       }
       .alert--success {
         color: #3c763d;
@@ -127,11 +127,11 @@
           </div>
 
           <?php if (false === $this->data['valid']): ?>
-          <div class="alert alert--big alert--danger">
+          <div class="alert alert--big alert--danger mdl-shadow--2dp">
             Operacja nie powiodła się!
           </div>
           <?php elseif ($this->data['valid']): ?>
-          <div class="alert alert--big alert--success">
+          <div class="alert alert--big alert--success mdl-shadow--2dp">
             Operacja powiodła się!
           </div>
           <?php endif; ?>
