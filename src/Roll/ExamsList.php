@@ -13,4 +13,13 @@ class ExamsList extends Model
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function getExamsByGroupId($gid)
+    {
+        $stmt = $this->db->prepare('SELECT id, title, questions FROM tests WHERE group_id = :gid');
+        $stmt->bindValue(':gid', $gid, \PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

@@ -8,6 +8,9 @@ class HomePage extends Controller
 {
     public function indexAction()
     {
-        $this->render('list', 'Testy');
+        $model = new ExamsGroupModel();
+        $this->data['groups'] = $model->getExamsGroups();
+
+        $this->render('homepage', 'Testy');
     }
 }

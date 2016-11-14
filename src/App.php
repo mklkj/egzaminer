@@ -24,6 +24,9 @@ class App
         $router->map('GET', '/', [
             'Egzaminer\Roll\HomePage', 'indexAction', ]);
 
+        $router->map('GET', '/group/[i:id]', [
+            'Egzaminer\Roll\ExamsGroup', 'indexAction', ]);
+
         $router->map('GET|POST', '/test/[i:id]', [
             'Egzaminer\Exam\Exam', 'showAction', ]);
 
