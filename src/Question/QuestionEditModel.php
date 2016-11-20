@@ -32,13 +32,13 @@ class QuestionEditModel extends Model
         $status = $stmt->execute();
 
         if (isset($question['delete-img'])) {
-            array_map('unlink', glob(App::getRootDir().'/web/storage/'.$id.'_*'));
+            array_map('unlink', glob(App::getRootDir().'/public/storage/'.$id.'_*'));
             $stmt = $this->db->prepare('UPDATE questions SET image = \'\' WHERE id = ?');
             $stmt->execute([$id]);
         } elseif (!empty($_FILES['image']['name'])) {
             if(is_uploaded_file($_FILES['image']['tmp_name'])) {
-                array_map('unlink', glob(App::getRootDir().'/web/storage/'.$id.'_*'));
-                $file = App::getRootDir().'/web/storage/'.$id.'_'.$_FILES['image']['name'];
+                array_map('unlink', glob(App::getRootDir().'/public/storage/'.$id.'_*'));
+                $file = App::getRootDir().'/public/storage/'.$id.'_'.$_FILES['image']['name'];
                 move_uploaded_file($_FILES['image']['tmp_name'], $file);
             }
 
