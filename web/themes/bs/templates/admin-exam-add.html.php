@@ -9,6 +9,17 @@
     </div>
   </div>
   <div class="form-group">
+    <label class="col-sm-2 control-label" for="exams_group_id">Grupa testów</label>
+    <div class="col-sm-10">
+      <select id="exams_group_id" name="group_id" class="form-control">
+        <option value=""></option>
+        <?php foreach ($this->data['exams_groups'] as $key => $value): ?>
+          <option value="<?=$value['id'];?>"><?=$value['title'];?></option>
+        <?php endforeach ?>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
     <label for="questions" class="col-sm-2 control-label">Liczba pytań</label>
     <div class="col-sm-10">
       <input type="number" class="form-control" id="questions" name="questions"
