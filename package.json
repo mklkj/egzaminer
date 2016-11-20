@@ -1,0 +1,42 @@
+{
+  "name": "egzaminer",
+  "version": "0.0.7",
+  "description": "",
+  "main": " ",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cache": "^0.4.5",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-concat": "^2.6.0",
+    "gulp-group-css-media-queries": "^1.2.0",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "mdl-selectfield": "^1.0.4",
+    "material-design-lite": "^1.2.1",
+    "run-sequence": "^1.2.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "merge-stream": "^1.0.0"
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/mklkj/egzaminer.git"
+  },
+  "author": "mklkj <m.pich@outlook.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://gitlab.com/mklkj/egzaminer/issues"
+  },
+  "homepage": "https://gitlab.com/mklkj/egzaminer#README"
+}

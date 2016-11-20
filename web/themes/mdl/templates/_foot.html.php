@@ -10,5 +10,6 @@
         </div>
       </footer>
     </div>
+    <script defer src="<?=$this->dir();?>/themes/mdl/js/main.js"></script>
   </body>
 </html>

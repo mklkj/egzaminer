@@ -4,88 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?=$this->pageTitle;?></title>
+    <link rel="stylesheet" href="<?=$this->dir();?>/themes/mdl/css/main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Roboto:400,100,500,300italic,500italic,700italic,900,300" rel="stylesheet">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.deep_purple-blue.min.css">
-    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-    <style>
-      .mdl-layout__drawer {
-        width: 290px;
-        transform: translateX(-290px);
-      }
-      .mdl-layout-title a {
-        color: inherit;
-        text-decoration: inherit;
-      }
-      .img-responsive {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-      .page-content {
-        max-width: 1100px;
-        margin: 0 auto 40px;
-        padding: 15px;
-      }
-      .mdl-layout__content {
-        flex: 1 0 auto;
-      }
-
-      .alert {
-        padding: 10px;
-        margin: 10px;
-      }
-      .alert--big {
-        padding: 25px;
-        margin: 10px 0 30px;
-      }
-      .alert--success {
-        color: #3c763d;
-        background: #dff0d8;
-      }
-      .alert__text--success {
-        color: #3c763d !important;
-      }
-      .alert--warning {
-        color: #8a6d3b;
-        background: #fcf8e3;
-      }
-      .alert__text--warning {
-        color: #8a6d3b !important;
-      }
-      .alert--danger {
-        color: #a94442;
-        background: #f2dede;
-      }
-      .alert__text--danger {
-        color: #a94442 !important;
-      }
-      .alert .material-icons {
-        margin-right: 5px;
-      }
-      .table-truncate-container {
-        max-width: 700px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .table-truncate {
-        overflow-wrap: break-word;
-      }
-      .table--responsive {
-        display: block;
-        width: 100%;
-        min-height: 0%;
-        overflow-x: auto;
-        margin-bottom: 20px;
-      }
-      .mdl-data-table {
-        width: 100%;
-      }
-      .mdl-textfield {
-        width: 100%;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,500,300italic,500italic,700italic,900,300" rel="stylesheet">
   </head>
   <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">

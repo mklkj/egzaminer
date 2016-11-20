@@ -1,5 +1,7 @@
-/vendor/
 composer.lock
 composer.phar
 config.php
-web/storage
+node_modules
+public/storage
+public/themes
+vendor

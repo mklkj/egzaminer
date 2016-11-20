@@ -5,6 +5,7 @@ namespace Egzaminer\Exam;
 use Egzaminer\Question\Questions;
 use Egzaminer\Question\Answers;
 use Egzaminer\Admin\Dashboard as Controller;
+use Egzaminer\Roll\ExamsGroupModel;
 
 class ExamEdit extends Controller
 {
@@ -33,6 +34,8 @@ class ExamEdit extends Controller
 
         $this->data['test-edit']['test'] = $exam;
         $this->data['test-edit']['questions'] = $questions;
+
+        $this->data['exams_groups'] = (new ExamsGroupModel())->getExamsGroups();
         // $this->data['test-edit']['answers'] = $answers;
 
         $this->render('admin-exam-edit', 'Edycja testu');
