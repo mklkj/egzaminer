@@ -1,6 +1,5 @@
-.mdl-layout__drawer {
+.mdl-layout__drawer.is-visible {
   width: 290px;
-  transform: translateX(-290px);
 }
 .mdl-layout-title a {
   color: inherit;
