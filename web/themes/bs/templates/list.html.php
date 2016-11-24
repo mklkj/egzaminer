@@ -1,8 +1,8 @@
 <?php include '_head.html.php'; ?>
 
-<?php if (!empty($this->data['exams-group'])): ?>
+<?php if (!empty($this->data['exams_list'])): ?>
 <ul>
-<?php foreach ($this->data['exams-group'] as $key => $value): ?>
+<?php foreach ($this->data['exams_list'] as $key => $value): ?>
   <li><a href="<?=$this->dir();?>/test/<?=$value['id'];?>"><?=$value['title'];?></a> - <?=$value['questions'];?> pytań</li>
 <?php endforeach; ?>
 </ul>

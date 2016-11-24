@@ -9,7 +9,7 @@ class ExamsGroup extends Controller
     public function indexAction($examId)
     {
         $list = new ExamsList();
-        $this->data['exams-group'] = $list->getExamsByGroupId($examId);
+        $this->data['exams_list'] = $list->getExamsByGroupId($examId);
 
         $one = new ExamsGroupModel();
         $info = $one->getExamsGroupInfoById($examId);

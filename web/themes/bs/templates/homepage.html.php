@@ -1,10 +1,10 @@
 <?php include '_head.html.php'; ?>
 
 
-<?php if (!empty($this->data['groups'])): ?>
+<?php if (!empty($this->data['exams_groups'])): ?>
 <div class="row">
 
-<?php foreach ($this->data['groups'] as $value): ?>
+<?php foreach ($this->data['exams_groups'] as $value): ?>
 
 <div class="col-md-4">
   <div class="panel panel-default">

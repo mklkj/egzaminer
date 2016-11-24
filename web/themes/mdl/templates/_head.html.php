@@ -30,9 +30,9 @@
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title"><?=$this->siteTitle;?></span>
         <nav class="mdl-navigation">
-          <?php if (!empty($this->data['tests_list'])): ?>
-            <?php foreach ($this->data['tests_list'] as $key => $value): ?>
-            <a class="mdl-navigation__link" href="<?=$this->dir();?>/test/<?=$value['id'];?>">
+          <?php if (!empty($this->data['exams_groups'])): ?>
+            <?php foreach ($this->data['exams_groups'] as $key => $value): ?>
+            <a class="mdl-navigation__link" href="<?=$this->dir();?>/group/<?=$value['id'];?>">
               <?=$value['title'];?>
             </a>
             <?php endforeach; ?>

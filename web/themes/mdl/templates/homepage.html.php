@@ -1,10 +1,10 @@
 <?php include '_head.html.php'; ?>
 
 
-<?php if (!empty($this->data['groups'])): ?>
+<?php if (!empty($this->data['exams_groups'])): ?>
 <div class="mdl-grid">
 
-<?php foreach ($this->data['groups'] as $value): ?>
+<?php foreach ($this->data['exams_groups'] as $value): ?>
 
 <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand">

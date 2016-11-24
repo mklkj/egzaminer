@@ -3,7 +3,7 @@
 namespace Egzaminer;
 
 use Egzaminer\Admin\Auth;
-use Egzaminer\Roll\ExamsList;
+use Egzaminer\Roll\ExamsGroupModel;
 
 class Controller
 {
@@ -16,8 +16,8 @@ class Controller
         $config = include $this->root.'/config.php';
         $this->config = $config['site'];
 
-        $list = new ExamsList();
-        $this->data['tests_list'] = $list->getList();
+        $list = new ExamsGroupModel();
+        $this->data['exams_groups'] = $list->getExamsGroups();
 
         // flash validation messages
         $this->data['valid'] = null;

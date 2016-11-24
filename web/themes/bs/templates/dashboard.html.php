@@ -4,7 +4,7 @@
 
 <hr>
 
-<?php if (!empty($this->data['tests_list'])): ?>
+<?php if (!empty($this->data['exams_list'])): ?>
 
 <div class="table-responsive">
   <table class="table table-hover table-bordered">
@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($this->data['tests_list'] as $key => $value): ?>
+      <?php foreach ($this->data['exams_list'] as $key => $value): ?>
         <tr>
           <td><?=++$key;?></td>
           <td>

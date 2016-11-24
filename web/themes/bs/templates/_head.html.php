@@ -28,13 +28,13 @@
         </div>
 
         <div class="collapse navbar-collapse">
-          <?php if (!empty($this->data['tests_list'])): ?> 
+          <?php if (!empty($this->data['exams_groups'])): ?> 
           <ul class="nav navbar-nav navbar-left">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Testy <span class="caret"></span></a>
               <ul class="dropdown-menu">
-              <?php foreach ($this->data['tests_list'] as $key => $value): ?> 
-                <li><a href="<?=$this->dir();?>/test/<?=$value['id'];?>"><?=$value['title'];?></a></li>
+              <?php foreach ($this->data['exams_groups'] as $key => $value): ?> 
+                <li><a href="<?=$this->dir();?>/group/<?=$value['id'];?>"><?=$value['title'];?></a></li>
               <?php endforeach; ?> 
               </ul>
             </li>

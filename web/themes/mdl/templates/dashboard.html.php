@@ -8,7 +8,7 @@
 
 <hr>
 
-<?php if (!empty($this->data['tests_list'])): ?>
+<?php if (!empty($this->data['exams_list'])): ?>
 
 <div class="table--responsive">
   <table class="mdl-data-table table--conensed mdl-js-data-table mdl-shadow--2dp">
@@ -21,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($this->data['tests_list'] as $key => $value): ?>
+      <?php foreach ($this->data['exams_list'] as $key => $value): ?>
         <tr>
           <td><?=++$key;?></td>
           <td class="mdl-data-table__cell--non-numeric">
