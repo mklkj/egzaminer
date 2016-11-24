@@ -12,7 +12,6 @@
       <tr>
         <th>#</th>
         <th>Nazwa testu</th>
-        <th>Liczba pytań</th>
         <th>Akcje</th>
       </tr>
     </thead>
@@ -25,7 +24,6 @@
               <?=$value['title'];?>
             </a>
           </td>
-          <td><?=$value['questions'];?></td>
           <td>
             <a href="<?=$this->dir();?>/admin/test/edit/<?=$value['id'];?>" class="btn btn-xs btn-primary">
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edytuj

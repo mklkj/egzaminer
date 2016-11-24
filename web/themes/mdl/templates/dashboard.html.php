@@ -16,7 +16,6 @@
       <tr>
         <th>#</th>
         <th class="mdl-data-table__cell--non-numeric">Nazwa testu</th>
-        <th class="mdl-data-table__cell--non-numeric">Liczba pytań</th>
         <th class="mdl-data-table__cell--non-numeric">Akcje</th>
       </tr>
     </thead>
@@ -29,7 +28,6 @@
               <?=$value['title'];?>
             </a>
           </td>
-          <td class="mdl-data-table__cell--non-numeric"><?=$value['questions'];?></td>
           <td class="mdl-data-table__cell--non-numeric">
             <a href="<?=$this->dir();?>/admin/test/edit/<?=$value['id'];?>" class="mdl-button">
               <i class="material-icons">edit</i> Edytuj
