@@ -7,9 +7,6 @@ php:
   - '7.0'
   - hhvm
 
-env:
-  - TRAVIS_NODE_VERSION="4"
-
 before_script:
   - if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi
   - composer install
@@ -20,7 +17,9 @@ script:
 before_deploy:
   - rm -rf vendor
   - composer install --no-dev --optimize-autoloader
-  - npm install -g npm@2
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
   - npm install
   - node_modules/.bin/gulp build
   - cp config.example.php config.php
