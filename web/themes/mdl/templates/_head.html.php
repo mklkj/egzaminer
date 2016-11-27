@@ -46,13 +46,3 @@
               <h1 class="mdl-typography--display-2"><?=$this->title;?></h1>
             </div>
           </div>
-
-          <?php if (false === $this->data['valid']): ?>
-          <div class="alert alert--big alert--danger mdl-shadow--2dp">
-            Operacja nie powiodła się!
-          </div>
-          <?php elseif ($this->data['valid']): ?>
-          <div class="alert alert--big alert--success mdl-shadow--2dp">
-            Operacja powiodła się!
-          </div>
-          <?php endif; ?>
