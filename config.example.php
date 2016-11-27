@@ -11,6 +11,7 @@ return [
     'title' => 'Egzaminer',
     'title_divider' => '|',
     'theme' => 'bs',
+    'homepage-header' => 'Exams',
   ],
   'users' => [
     [

@@ -11,6 +11,6 @@ class HomePage extends Controller
         $model = new ExamsGroupModel();
         $this->data['exams_groups'] = $model->getExamsGroups();
 
-        $this->render('homepage', 'Testy');
+        $this->render('homepage', $this->config['homepage-header']);
     }
 }
