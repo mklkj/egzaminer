@@ -16,8 +16,11 @@ before_script:
 
 script:
   - phpunit
+
+before_deploy:
   - rm -rf vendor
   - composer install --no-dev --optimize-autoloader
+  - npm install -g npm@2
   - npm install
   - node_modules/.bin/gulp build
   - cp config.example.php config.php
