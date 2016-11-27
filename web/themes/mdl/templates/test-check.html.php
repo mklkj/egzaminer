@@ -50,7 +50,7 @@
                 } elseif ($answer['id'] === $questionIDFromUser) {
                   echo 'alert__text--danger';
                 } ?>">
-                <?=$this->escape($answer['content']);?>
+                <?=$answer['content'];?>
               </span>
             </label>
           </p>

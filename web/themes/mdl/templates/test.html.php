@@ -20,7 +20,7 @@
                   class="mdl-radio__button" name="question_<?=$question['id'];?>"
                   value="<?=$answer['id'];?>">
                 <span class="mdl-radio__label">
-                  <?=$this->escape($answer['content']);?>
+                  <?=$answer['content'];?>
                 </span>
               </label>
             </p>
