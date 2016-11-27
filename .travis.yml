@@ -11,4 +11,21 @@ before_script:
 - if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi
 - composer install
 
-script: phpunit
+script:
+- phpunit
+
+deploy:
+  provider: releases
+    api_key:
+      secure: "bn0bVm/OL2chNyeFFPmLQXoi3Vl8a5Ak/yKxWtYv+JJW3V0pa8BmZl5mWWdyec99/dtLucoNI57/rBqtswT11Fc3v8EvMHVAzIw+AzbLX1rdeEq0SH+nhqimSbkSYSXNx6LXTCKgVQpEa0Ooy7kYoS8jF4Pysk0xQvMSfnmY9Q2cTyOY1tqU63cKyNt9UMZ8pP1TVNZGO40rLWFy2+skhrO1Cd0vud2grBOCr6dfMI8OK8QQ+jbJMjSiyaSa8IuRrqpWNdwJvF4N+kgD5xe5mduPkYDxUIDBRXhw2mUcWLX7aZxf+G4ejprbIcUHhdTL8TzaA0ia4IUZBJG1uz7wo0wFvdi9fTfj6YH0RsxUclGLmMJWXdQnmvw0FMCW+d6KmWe0COEU6iZ6kJk3jmF+aiI0fIkz9T/2XLI3nurOXliK9MDlBRIafBR/2Opto4riENotc2Qx47JoIy8I1yrN/5WTwhRcQWOixdt/6rm4H9fFVf9+iCi4+jFY8eXrrdpJLtxZQr5lfI5akVmux/mHY1BCVyD3K5LADUfKm7b1CU6kwJ7H/q65BcqJy36vsphmMMqB1vjDWWvA3eTNTrRnHgnfK+OlBgi5PMrccGt22GpaK6EtlDwdrsJPJEzz3vGMSzqqLYTI0uOslhPZLrsKjuPdmAggq6Jay0wH7kb8vwI="
+  script:
+    - rm -rf vendor
+    - composer install --no-dev --optimize-autoloader
+    - npm install
+    - node_modules/.bin/gulp build
+    - cp config.example.php config.php
+    - zip -r release public src vendor web config.php pass_gen.php LICENSE
+  file: 'release.zip'
+  skip_cleanup: true
+  on:
+    tags
