@@ -2,8 +2,13 @@
 
 <div class="mdl-shadow--4dp alert alert--big alert--<?=($this->data['test-check']['stats']['results']['pass']) ? 'success' : 'danger';?>" role="alert">
     <h3><?=($this->data['test-check']['stats']['results']['pass']) ? 'Zdałeś!' : 'Nie udało ci się zdać!'; ?></h3>
-    <p>Uzyskałeś <?=$this->data['test-check']['stats']['results']['percentages'];?>%.</p>
-    <p>Próg zaliczenia to <?=$this->data['test-check']['stats']['results']['threshold'];?>%.</p>
+    <p>
+      Uzyskałeś <?=$this->data['test-check']['stats']['results']['percentages'];?>%
+      (próg zaliczenia to <?=$this->data['test-check']['stats']['results']['threshold'];?>%).
+    </p>
+    <p>
+      Twój wynik punktowy to: <?=$this->data['test-check']['stats']['results']['correct'];?>/<?=$this->data['test-check']['test']['questions'];?>
+    </p>
 </div>
 
 <form>

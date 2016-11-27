@@ -63,8 +63,9 @@ class ExamStat
         }
 
         return [
-            'percentages' => round(($correct / $testInfo['questions']) * 100, 1),
-            'threshold' => round(($testInfo['threshold'] / $testInfo['questions']) * 100, 1),
+            'correct' => $correct,
+            'percentages' => round(($correct / $testInfo['questions']) * 100, 2),
+            'threshold' => round(($testInfo['threshold'] / $testInfo['questions']) * 100, 2),
             'pass' => $correct >= $testInfo['threshold'],
         ];
     }
