@@ -3,6 +3,7 @@
 namespace Egzaminer;
 
 use AltoRouter;
+use Exception;
 
 class App
 {
@@ -65,13 +66,18 @@ class App
     {
         $match = $this->router->match($this->url);
 
-        // call closure or throw 404 status
-        if ($match && is_callable($match['target'])) {
-            call_user_func_array([
-                new $match['target'][0](), $match['target'][1],
-            ], $match['params']);
-        } else {
+        try {
+            // call closure or throw 404 status
+            if ($match && is_callable($match['target'])) {
+                call_user_func_array([
+                    new $match['target'][0](), $match['target'][1],
+                ], $match['params']);
+            } else {
+                throw new Exception('Page not exist!');
+            }
+        } catch (Exception $e) {
             (new Error(404))->showAction();
+            exit;
         }
     }
 
