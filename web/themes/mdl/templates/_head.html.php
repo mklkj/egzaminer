@@ -28,7 +28,7 @@
         </div>
       </header>
       <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title"><?=$this->siteTitle;?></span>
+        <span class="mdl-layout-title">Egzaminy</span>
         <nav class="mdl-navigation">
           <?php if (!empty($this->data['exams_groups'])): ?>
             <?php foreach ($this->data['exams_groups'] as $key => $value): ?>
