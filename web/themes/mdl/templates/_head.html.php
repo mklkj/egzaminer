@@ -20,9 +20,9 @@
           <?php if ($this->isLogged()): ?>
           <div class="mdl-layout-spacer"></div>
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="<?=$this->dir();?>/admin">Panel administracyjny</a></li>
-            <a class="mdl-navigation__link" href="<?=$this->dir();?>/admin/test/add">Dodaj test</a></li>
-            <a class="mdl-navigation__link" href="<?=$this->dir();?>/admin/logout">Wyloguj</a></li>
+            <a class="mdl-navigation__link" href="<?=$this->dir();?>/admin">Panel administracyjny</a>
+            <a class="mdl-navigation__link" href="<?=$this->dir();?>/admin/test/add">Dodaj test</a>
+            <a class="mdl-navigation__link" href="<?=$this->dir();?>/admin/logout">Wyloguj</a>
           </nav>
           <?php endif; ?>
         </div>
