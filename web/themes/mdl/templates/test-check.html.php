@@ -21,9 +21,9 @@
     <div class="mdl-grid">
 
       <div class="mdl-cell mdl-cell--<?=($question['image'])?'6':'12';?>-col">
-        <p>
+        <div class="paragraph">
           <b><?=$key + 1;?>.</b> <?=$question['content'];?>
-        </p>
+        </div>
 
         <?php if ($question['correct'] === $questionIDFromUser): ?>
         <div class="alert alert--success">
@@ -45,7 +45,7 @@
         <div class="mdl-card__supporting-text no-padding">
         <?php foreach ($this->data['test-check']['answers'][$question['id']] as $key => $answer): ?>
 
-         <p class="">
+         <div class="paragraph">
             <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
               for="answer_<?=$answer['id'];?>">
               <input type="radio" id="answer_<?=$answer['id'];?>"
@@ -58,7 +58,7 @@
                 <?=$answer['content'];?>
               </span>
             </label>
-          </p>
+          </div>
 
          <?php endforeach; ?>
         </div>
