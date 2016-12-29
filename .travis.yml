@@ -22,8 +22,8 @@ before_deploy:
   - nvm use stable
   - npm install
   - node_modules/.bin/gulp build
-  - cp config.example.php config.php
-  - zip -r release public src vendor web config.php pass_gen.php LICENSE
+  - cp docs/config-examples/* config/
+  - zip -r release config docs public src vendor resources LICENSE
 
 deploy:
   provider: releases
