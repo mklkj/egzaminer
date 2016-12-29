@@ -105,7 +105,7 @@ class App
      *
      * @return string
      */
-    public function getRootDir()
+    public static function getRootDir()
     {
         return dirname(__DIR__);
     }

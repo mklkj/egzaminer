@@ -13,8 +13,7 @@ class Controller
         $this->dir = App::getDir();
         $this->root = App::getRootDir();
 
-        $config = include $this->root.'/config.php';
-        $this->config = $config['site'];
+        $this->config = include $this->root.'/config/site.php';
 
         $list = new ExamsGroupModel();
         $this->data['exams_groups'] = $list->getExamsGroups();
@@ -51,7 +50,7 @@ class Controller
         $this->siteTitle = $this->config['title'];
         $this->pageTitle = $title.' '.$this->config['title_divider'].' '.$this->siteTitle;
 
-        include $this->root.'/web/themes/'.$this->config['theme'].'/templates/'.$templateName.'.html.php';
+        include $this->root.'/resources/themes/'.$this->config['theme'].'/templates/'.$templateName.'.html.php';
     }
 
     public function dir()

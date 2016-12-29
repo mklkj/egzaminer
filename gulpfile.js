@@ -11,7 +11,7 @@ var uglify = require('gulp-uglify');
 var gcmq = require('gulp-group-css-media-queries');
 var merge = require('merge-stream');
 
-var srcThemesPath = './web/themes/';
+var srcThemesPath = './resources/themes/';
 var destThemesPath = './public/themes/';
 
 gulp.task('sass-dev', function() {
