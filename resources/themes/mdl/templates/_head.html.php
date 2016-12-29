@@ -6,7 +6,7 @@
     <title><?=$this->pageTitle;?></title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,500,300italic,500italic,700italic,900,300" rel="stylesheet">
-    <link href="<?=$this->dir();?>/themes/mdl/css/main.css" rel="stylesheet">
+    <link href="<?=$this->dir();?>/assets/mdl/main.css" rel="stylesheet">
   </head>
   <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">

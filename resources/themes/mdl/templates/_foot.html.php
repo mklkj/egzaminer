@@ -10,7 +10,7 @@
         </div>
       </footer>
     </div>
-    <script src="<?=$this->dir();?>/themes/mdl/js/main.js"></script>
+    <script src="<?=$this->dir();?>/assets/mdl/main.js"></script>
 
 <?php if (isset($this->data['valid'])) : ?>
   <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">

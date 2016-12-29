@@ -12,14 +12,14 @@ var gcmq = require('gulp-group-css-media-queries');
 var merge = require('merge-stream');
 
 var srcThemesPath = './resources/themes/';
-var destThemesPath = './public/themes/';
+var destThemesPath = './public/assets/';
 
 gulp.task('sass-dev', function() {
   var bs = gulp.src([srcThemesPath + 'bs/scss/**/*.scss'])
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(destThemesPath + 'bs/css'));
+    .pipe(gulp.dest(destThemesPath + 'bs'));
 
   var mdl = gulp.src([
       srcThemesPath + 'mdl/scss/*.scss',
@@ -30,7 +30,7 @@ gulp.task('sass-dev', function() {
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('main.css'))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(destThemesPath + 'mdl/css'));
+    .pipe(gulp.dest(destThemesPath + 'mdl'));
 
   return merge(bs, mdl);
 });
@@ -49,7 +49,7 @@ gulp.task('sass-prod', function() {
       console.log(details.name + ' after: ' + details.stats.minifiedSize);
     }))
     .pipe(concat('main.css'))
-    .pipe(gulp.dest(destThemesPath + 'bs/css'));
+    .pipe(gulp.dest(destThemesPath + 'bs'));
 
   var mdl = gulp.src([
       srcThemesPath + 'mdl/scss/*.scss',
@@ -67,7 +67,7 @@ gulp.task('sass-prod', function() {
       console.log(details.name + ' before: ' + details.stats.originalSize);
       console.log(details.name + ' after: ' + details.stats.minifiedSize);
     }))
-    .pipe(gulp.dest(destThemesPath + 'mdl/css'));
+    .pipe(gulp.dest(destThemesPath + 'mdl'));
 
   return merge(bs, mdl);
 });
@@ -86,14 +86,14 @@ gulp.task('js', function() {
     ])
     .pipe(concat('main.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(destThemesPath + 'mdl/js'));
+    .pipe(gulp.dest(destThemesPath + 'mdl'));
 
   return merge(bs, mdl);
 });
 
 
 gulp.task('clean', function() {
-  return del.sync('./public/themes');
+  return del.sync('./public/assets');
 })
 
 gulp.task('watch', function(){
