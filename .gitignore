@@ -1,7 +1,6 @@
+/config
+/node_modules
+/public/assets
+/public/storage
+/vendor
 composer.lock
-composer.phar
-config.php
-node_modules
-public/storage
-public/assets
-vendor

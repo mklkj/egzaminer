@@ -14,9 +14,9 @@ class Auth
      */
     public function login($login, $password)
     {
-        $config = include dirname(dirname(__DIR__)).'/config.php';
+        $users = include dirname(dirname(__DIR__)).'/config/users.php';
 
-        foreach ($config['users'] as $user) {
+        foreach ($users as $user) {
             if (password_verify($password, $user['pass_hash'])
                 and $login === $user['login']) {
                 $_SESSION['egzaminer_auth_un'] = $user['login'];
@@ -38,9 +38,9 @@ class Auth
             return false;
         }
 
-        $config = include dirname(dirname(__DIR__)).'/config.php';
+        $users = include dirname(dirname(__DIR__)).'/config/users.php';
 
-        foreach ($config['users'] as $user) {
+        foreach ($users as $user) {
             if (password_verify($user['login'], $_SESSION['ga_cookie'])
                 and $_SESSION['egzaminer_auth_un'] === $user['login']) {
                 return true;
