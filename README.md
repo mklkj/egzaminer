@@ -10,6 +10,6 @@
 
 `node_modules/.bin/gulp build`
 
-`cp config.example.php config.php`
+`cp docs/config-examples/* config/`
 
-Then adjust the settings in config.php to your preferences.
+Then adjust the settings files in config/ to your preferences.
