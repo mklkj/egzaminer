@@ -1,6 +1,6 @@
 {
   "name": "egzaminer",
-  "version": "0.0.10",
+  "version": "0.10.0",
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
