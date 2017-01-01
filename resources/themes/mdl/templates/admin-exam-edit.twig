@@ -1,0 +1,95 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  <form action="{{ dir }}/admin/test/{{ exam.id }}" method="post">
+
+    <a href="{{ dir }}/admin/test/add"
+      class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+      Dodaj nowy test
+    </a>
+    <a href="{{ dir }}/admin/test/edit/{{ exam.id }}/question/add"
+      class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised mdl-js-ripple-effect">
+      Dodaj pytanie
+    </a>
+    <button type="submit" name="edit"
+      class="mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect">
+      Zapisz
+    </button>
+
+    <hr>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="title" name="title"
+        value="{{ exam.title }}">
+      <label class="mdl-textfield__label" for="title">Tytuł testu</label>
+    </div>
+
+    <br>
+
+    <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+      <select id="exams_group_id" name="group_id" class="mdl-selectfield__select">
+        <option value=""></option>
+        {% for item in examsGroups %}
+          <option {% if item.id == exam.group_id %}selected="selected"{% endif %}
+            value="{{ item.id }}">{{ item.title }}</option>
+        {% endfor %}
+      </select>
+      <label class="mdl-selectfield__label" for="exams_group_id">Grupa testów</label>
+    </div>
+
+    <br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="number" name="questions"
+        value="{{ exam.questions }}"
+        pattern="-?[0-9]*(\.[0-9]+)?" id="questions">
+      <label class="mdl-textfield__label" for="questions">Liczba pytań</label>
+      <span class="mdl-textfield__error">To nie jest liczba!</span>
+    </div>
+
+    <br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="number" name="threshold"
+        value="{{ exam.threshold }}"
+        pattern="-?[0-9]*(\.[0-9]+)?" id="threshold">
+      <label class="mdl-textfield__label" for="threshold">Próg zaliczenia</label>
+      <span class="mdl-textfield__error">To nie jest liczba!</span>
+    </div>
+
+    <div class="table--responsive">
+      <table class="mdl-data-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th class="mdl-data-table__cell--non-numeric">treść pytania</th>
+            <th class="mdl-data-table__cell--non-numeric">Akcje</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in questions %}
+          <tr>
+            <th>{{ loop.index }}</th>
+            <td class="mdl-data-table__cell--non-numeric table-truncate-container">
+              <span class="table-truncate">{{ item.content|raw }}</span>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <a href="{{ dir }}/admin/test/edit/{{ exam.id }}/question/edit/{{ item.id }}" class="mdl-button">
+                <i class="material-icons">edit</i> Edytuj
+              </a>
+              <a href="{{ dir }}/admin/test/edit/{{ exam.id }}/question/del/{{ item.id }}" class="mdl-button">
+                <i class="material-icons">delete</i> Usuń
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      <button type="submit" name="edit" class="mdl-button mdl-js-button
+        mdl-button--colored mdl-button--raised mdl-js-ripple-effect">Zapisz</button>
+    </p>
+  </form>
+{% endblock %}

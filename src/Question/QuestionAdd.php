@@ -8,13 +8,12 @@ class QuestionAdd extends Controller
 {
     public function addAction($testId)
     {
-        $this->testId = $testId;
-        $this->data['question'] = [
+        $question = [
             'content' => '',
             'correct' => '',
             'image' => '',
         ];
-        $this->data['answers'] = [
+        $answers = [
                 ['content' => '', 'id' => '1'],
                 ['content' => '', 'id' => '2'],
                 ['content' => '', 'id' => '3'],
@@ -33,6 +32,11 @@ class QuestionAdd extends Controller
             }
         }
 
-        $this->render('admin-question', 'Dodawanie pytania');
+        $this->render('admin-question', [
+            'title' => 'Dodawanie pytania',
+            'testId' => $testId,
+            'question' => $question,
+            'answers' => $answers,
+        ]);
     }
 }

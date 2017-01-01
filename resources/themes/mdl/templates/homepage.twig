@@ -1,0 +1,25 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  {% if examsGroups %}
+    <div class="mdl-grid">
+
+    {% for item in examsGroups %}
+      <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-card--expand">
+          <h3 class="mdl-card__title-text">{{ item.title }}</h3>
+        </div>
+        <div class="mdl-card__supporting-text">{{ item.description }}</div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a href="{{ dir }}/group/{{ item.id }}"
+              class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Zobacz testy
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+
+    </div>
+  {% endif %}
+
+{% endblock %}

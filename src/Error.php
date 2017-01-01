@@ -13,6 +13,6 @@ class Error extends Controller
     public function showAction()
     {
         http_response_code($this->code);
-        $this->render('error', 'Error '.$this->code);
+        $this->render('error', ['title' => 'Error '.$this->code]);
     }
 }

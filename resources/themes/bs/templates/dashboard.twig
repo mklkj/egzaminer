@@ -1,0 +1,43 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  <a href="{{ dir }}/admin/test/add" class="btn btn-default">Dodaj test</a>
+
+  <hr>
+
+  {% if examsList %}
+
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nazwa testu</th>
+            <th>Akcje</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in examsList %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>
+                <a href="{{ dir }}/test/{{ item.id }}" title="zobacz test">{{ item.title }}</a>
+              </td>
+              <td>
+                <a href="{{ dir }}/admin/test/edit/{{ item.id }}" class="btn btn-xs btn-primary">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edytuj
+                </a>
+                <a href="{{ dir }}/admin/test/del/{{ item.id }}" class="btn btn-xs btn-danger">
+                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Usuń
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-info">Brak testów do wyświetlenia!</div>
+  {% endif %}
+
+{% endblock %}

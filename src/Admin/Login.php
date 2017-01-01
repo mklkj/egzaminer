@@ -21,6 +21,8 @@ class Login extends Controller
             }
             $this->data['valid'] = false;
         }
-        $this->render('login', 'Logowanie');
+        $this->render('login', [
+            'title' => 'Logowanie',
+        ]);
     }
 }

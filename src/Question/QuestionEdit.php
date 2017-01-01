@@ -8,11 +8,6 @@ class QuestionEdit extends Controller
 {
     public function editAction($testId, $id)
     {
-        $this->testId = $testId;
-        $this->id = $id;
-
-        $question = (new Questions())->getByQuestionId($id);
-
         if (isset($_POST['submit'])) {
             $editModel = new QuestionEditModel();
 
@@ -20,18 +15,22 @@ class QuestionEdit extends Controller
                 $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin/test/edit/'.$testId
                     .'/question/edit/'.$id);
-
                 exit;
             } else {
                 $this->data['valid'] = false;
             }
         }
+
+        $question = (new Questions())->getByQuestionId($id);
         $answers = (new Answers())->getAnswersByOneQuestionId($id);
 
-        $this->data['question'] = $question;
-        $this->data['answers'] = $answers;
-        $this->templateType = 'edit';
-
-        $this->render('admin-question', 'Edycja pytania');
+        $this->render('admin-question', [
+            'title' => 'Edycja pytania',
+            'id' => $id,
+            'testId' => $testId,
+            'question' => $question,
+            'answers' => $answers,
+            'templateType' => 'edit',
+        ]);
     }
 }

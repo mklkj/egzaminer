@@ -1,0 +1,75 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
+
+    <a href="{{ dir }}/admin/test/edit/{{ testId }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+      Wróć do edycji testu
+    </a>
+
+    {% if templateType == 'edit' %}
+      <a href="{{ dir }}/admin/test/edit/{{ testId }}/question/add"
+      class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised mdl-js-ripple-effect">
+        Dodaj nowe pytanie
+      </a>
+    {% endif %}
+    <button type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect">Zapisz</button>
+
+    <hr>
+
+    <div class="mdl-textfield mdl-js-textfield">
+      <textarea class="mdl-textfield__input" name="question[content]" type="text"
+        rows= "3" id="question" >{{ question.content }}</textarea>
+      <label class="mdl-textfield__label" for="question">Pytanie</label>
+    </div>
+
+    {% for item in answers %}
+      <div class="mdl-grid">
+
+        <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-phone mdl-cell--1-col-tablet">
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+            for="answer_{{ item.id }}">
+
+            <input type="radio" id="answer_{{ item.id }}"
+              class="mdl-radio__button" name="question[correct]"
+              value="{{ item.id }}"
+              {% if question.correct == item.id %}checked{% endif %}
+            >
+          </label>
+        </div>
+
+        <div class="mdl-cell mdl-cell--11-col mdl-cell--3-col-phone mdl-cell--7-col-tablet">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="answer_{{ loop.index }}"
+              name="answers[{{ item.id }}]" value="{{ item.content }}">
+            <label class="mdl-textfield__label" for="answer_{{ loop.index }}">Treść odpowiedzi nr {{ loop.index }}</label>
+          </div>
+        </div>
+
+      </div>
+    {% endfor %}
+
+    {% if templateType == 'edit' %}
+    <hr>
+
+      <label class="control-label">Miniatura</label>
+
+        <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+        <p><input name="image" type="file"></p>
+
+        {% if question.image %}
+          <label>
+            <input type="checkbox" name="question[delete-img]" value="1">
+            <span>Usuń obrazek</span>
+          </label>
+
+          <a href="{{ dir }}/storage/{{ id }}_{{ question.image }}" target="_blank">
+            <img src="{{ dir }}/storage/{{ id }}_{{ question.image }}"
+            class="img-responsive" alt="obrazek do pytania">
+          </a>
+        {% endif %}
+
+    {% endif %}
+
+  </form>
+{% endblock %}

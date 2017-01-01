@@ -4,6 +4,11 @@ namespace Egzaminer;
 
 use Egzaminer\Admin\Auth;
 use Egzaminer\Roll\ExamsGroupModel;
+use Twig_Environment;
+use Twig_Error_Loader;
+use Twig_Loader_Filesystem;
+use Twig_Error_Syntax;
+use Twig_Extension_Debug;
 
 class Controller
 {
@@ -14,9 +19,6 @@ class Controller
         $this->root = App::getRootDir();
 
         $this->config = include $this->root.'/config/site.php';
-
-        $list = new ExamsGroupModel();
-        $this->data['exams_groups'] = $list->getExamsGroups();
 
         // flash validation messages
         $this->data['valid'] = null;
@@ -34,6 +36,12 @@ class Controller
         }
     }
 
+    public function dir()
+    {
+        return $this->dir;
+    }
+
+
     /**
      * Check is user logged.
      *
@@ -44,22 +52,33 @@ class Controller
         return $this->auth->isLogged();
     }
 
-    public function render($templateName, $title = '')
+    /**
+     * @param string $template Template name
+     * @param array $data Data to use in template
+     */
+    public function render($template, $data = [])
     {
-        $this->title = $title;
-        $this->siteTitle = $this->config['title'];
-        $this->pageTitle = $title.' '.$this->config['title_divider'].' '.$this->siteTitle;
 
-        include $this->root.'/resources/themes/'.$this->config['theme'].'/templates/'.$templateName.'.html.php';
-    }
+        $loader = new Twig_Loader_Filesystem(
+            $this->root.'/resources/themes/'.$this->config['theme'].'/templates/'
+        );
+        $twig = new Twig_Environment($loader, [
+            'cache' => $this->config['cache'] ? $this->root.'/var/twig' : false,
+            'debug' => $this->config['debug'] ? true : false,
+        ]);
+        // $twig->addExtension(new Twig_Extension_Debug());
 
-    public function dir()
-    {
-        return $this->dir;
-    }
+        $data['valid'] = $this->data['valid'];
+        $data['dir'] = $this->dir;
+        $data['siteTitle'] = $this->config['title'];
+        $data['isLogged'] = $this->isLogged();
+        $data['headerTitle'] = isset($data['title']) ? $data['title'] : '';
+        $data['pageTitle'] = isset($data['title'])
+            ? $data['title'].' '.$this->config['title_divider'].' '.$this->config['title']
+            : $this->config['title'];
 
-    public function escape($string)
-    {
-        return htmlspecialchars($string);
+        $data['examsGroups'] = (new ExamsGroupModel())->getExamsGroups();
+
+        echo $twig->render($template.'.twig', $data);
     }
 }

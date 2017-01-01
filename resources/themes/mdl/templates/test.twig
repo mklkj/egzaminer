@@ -1,0 +1,85 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  {% if score %}
+    <div class="mdl-shadow--4dp alert alert--big alert--{% if score.isPass %}success{% else %}danger{% endif %}" role="alert">
+      <h3>{% if score.isPass %}Zdałeś{% else %}Nie udało ci się zdać!{% endif %}</h3>
+      <p>Uzyskałeś {{ score.percentages }}% (próg zaliczenia to {{ test.thresholdPercentages }}%).</p>
+      <p>Twój wynik punktowy to: {{ score.score }}/{{ test.questions }}</p>
+    </div>
+  {% endif %}
+
+  <form action="{{ dir }}/test/{{ test.id }}" method="post">
+
+    {% for q in questions %}
+      <div class="mdl-cell mdl-cell--12-col mdl-shadow--4dp">
+        <div class="mdl-grid">
+
+          <div class="mdl-cell mdl-cell--{% if q.image %}6{% else %}12{% endif %}-col">
+            <div class="paragraph">
+              <b>{{ loop.index }}.</b> {{ q.content|raw }}
+            </div>
+
+            {% if score %}
+              {% if q.correct == q.userAnswer %}
+                <div class="alert alert--success">
+                  <i class="material-icons">check</i>
+                  <span>Twoja odpowiedź jest poprawna!</span>
+                </div>
+              {% elseif null == q.userAnswer %}
+                <div class="alert alert--warning">
+                    <i class="material-icons">warning</i>
+                    <span>Nie udzielono odpowiedzi!</span>
+                </div>
+              {% elseif q.correct != q.userAnswer %}
+                <div class="alert alert--danger">
+                  <i class="material-icons">close</i>
+                  <span>Zła odpowiedź!</span>
+                </div>
+              {% endif %}
+            {% endif %}
+
+            <div class="mdl-card__supporting-text no-padding">
+              {% for a in q.answers %}
+                <div class="paragraph">
+                  <label for="answer_{{ a.id }}" class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+                    <input value="{{ a.id }}"
+                      type="radio" id="answer_{{ a.id }}"
+                      class="mdl-radio__button"
+                      name="question_{{ q.id }}"
+                      {% if a.id == q.userAnswer %}checked{% endif %}
+                      {% if score %} disabled{% endif %}
+                    >
+                    <span
+                      class="mdl-radio__label
+                        {% if score %}
+                          {% if a.id == q.correct %}alert__text--success
+                          {% elseif a.id == q.userAnswer %}alert__text--danger{% endif %}
+                        {% endif %}
+                      ">
+                      {{ a.content|raw }}
+                    </span>
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+
+          </div>
+
+          {% if q.image %}
+            <div class="mdl-cell mdl-cell--6-col">
+              <img src="{{ dir }}/storage/{{ q.id }}_{{ q.image }}" class="img-responsive">
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+    {% endfor %}
+
+    {% if not score %}
+      <div class="mdl-grid">
+        <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" name="send" value="Sprawdź odpowiedzi">
+      </div>
+    {% endif %}
+  </form>
+{% endblock %}

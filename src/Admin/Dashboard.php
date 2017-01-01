@@ -18,8 +18,10 @@ class Dashboard extends Controller
     public function indexAction()
     {
         $list = new ExamsList();
-        $this->data['exams_list'] = $list->getList();
 
-        $this->render('dashboard', 'Panel zarządzania');
+        $this->render('dashboard', [
+            'title' => 'Panel zarządzania',
+            'examsList' => $list->getList(),
+        ]);
     }
 }

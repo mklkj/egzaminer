@@ -1,0 +1,13 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  {% if examsList %}
+    <ul>
+    {% for item in examsList %}
+      <li><a href="{{ dir }}/test/{{ item.id }}">{{ item.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="alert alert-info">Brak testów do wyświetlenia!</div>
+  {% endif %}
+{% endblock %}

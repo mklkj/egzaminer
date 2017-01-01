@@ -1,0 +1,70 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  {% if score %}
+    <div class="alert alert-{% if score.isPass %}success{% else %}danger{% endif %}" role="alert">
+      <h2>{% if score.isPass %}Zdałeś{% else %}Nie udało ci się zdać!{% endif %}</h2>
+      <p>Uzyskałeś {{ score.percentages }}% (próg zaliczenia to {{ test.thresholdPercentages }}%).</p>
+      <p>Twój wynik punktowy to: {{ score.score }}/{{ test.questions }}</p>
+    </div>
+  {% endif %}
+
+  <form action="{{ dir }}/test/{{ test.id }}" method="post">
+
+    {% for q in questions %}
+      <div class="question panel panel-default">
+        <div class="panel-heading">
+            <b>{{ loop.index }}.</b> {{ q.content|raw }}
+        </div>
+
+        {% if q.image %}
+          <div class="panel-body">
+            <img src="{{ dir }}/storage/{{ q.id }}_{{ q.image }}" class="img-responsive">
+          </div>
+        {% endif %}
+
+        {% if score %}
+          {% if q.correct == q.userAnswer %}
+            <div class="panel-body bg-success">
+              <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+              Twoja odpowiedź jest poprawna!
+            </div>
+          {% elseif null == q.userAnswer %}
+            <div class="panel-body bg-warning">
+              <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+              Nie udzielono odpowiedzi
+            </div>
+          {% elseif q.correct != q.userAnswer %}
+            <div class="panel-body bg-danger">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              Zła odpowiedź!
+            </div>
+          {% endif %}
+        {% endif %}
+
+        <ul class="list-group">
+          {% for a in q.answers %}
+            <li class="list-group-item {% if score %}list-group-item-{% if a.id == q.correct %}success{% elseif a.id == q.userAnswer %}danger{% endif %}{% endif %}"
+            >
+              <input value="{{ a.id }}"
+                type="radio"
+                id="answer_{{ a.id }}"
+                name="question_{{ q.id }}"
+                {% if a.id == q.userAnswer %}checked{% endif %}
+                {% if score %} disabled{% endif %}
+              >
+              <label for="answer_{{ a.id }}">
+                {{ a.content|raw }}
+              </label>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+
+    {% if not score %}
+      <input type="submit" class="btn btn-primary pull-right" name="send" value="Sprawdź odpowiedzi">
+    {% endif %}
+
+</form>
+{% endblock %}

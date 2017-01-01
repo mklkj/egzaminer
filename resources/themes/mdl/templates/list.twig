@@ -1,0 +1,19 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  {% if examsList %}
+    <ul class="mdl-list">
+      {% for item in examsList %}
+        <li class="mdl-list__item">
+          <span class="mdl-list__item-primary-content">
+            <a href="{{ dir }}/test/{{ item.id }}">{{ item.title }}</a>
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="alert alert--info mdl-shadow--2dp">
+      <p>Brak testów do wyświetlenia!</p>
+    </div>
+  {% endif %}
+{% endblock %}

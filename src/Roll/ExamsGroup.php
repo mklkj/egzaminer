@@ -10,7 +10,7 @@ class ExamsGroup extends Controller
     public function indexAction($examId)
     {
         $list = new ExamsList();
-        $this->data['exams_list'] = $list->getExamsByGroupId($examId);
+        $examsList = $list->getExamsByGroupId($examId);
 
         $one = new ExamsGroupModel();
         $info = $one->getExamsGroupInfoById($examId);
@@ -19,6 +19,6 @@ class ExamsGroup extends Controller
             throw new Exception('Exams group does not exist!');
         }
 
-        $this->render('list', $info[0]['title']);
+        $this->render('list', ['title' => $info->title, 'examsList' => $examsList]);
     }
 }

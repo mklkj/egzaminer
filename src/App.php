@@ -76,7 +76,11 @@ class App
                 throw new Exception('Page not exist!');
             }
         } catch (Exception $e) {
-            (new Error(404))->showAction();
+            if ($this->config['debug']) {
+                $e->getMessage();
+            } else {
+                (new Error(404))->showAction();
+            }
             exit;
         }
     }

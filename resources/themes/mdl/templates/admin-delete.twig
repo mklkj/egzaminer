@@ -1,0 +1,10 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  <p>{{ content|raw }}</p>
+
+  <form action="" method="post">
+    <input type="submit" name="confirm" value="Usuń" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+  </form>
+
+{% endblock %}

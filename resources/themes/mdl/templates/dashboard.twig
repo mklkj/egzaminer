@@ -1,0 +1,46 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  <a href="{{ dir }}/admin/test/add"
+    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+    <i class="material-icons">add</i>
+    Dodaj test
+  </a>
+
+  <hr>
+
+  {% if examsList %}
+    <div class="table--responsive">
+      <table class="mdl-data-table table--conensed mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th class="mdl-data-table__cell--non-numeric">Nazwa testu</th>
+            <th class="mdl-data-table__cell--non-numeric">Akcje</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in examsList %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <a href="{{ dir }}/test/{{ item.id }}" title="zobacz test">{{ item.title }}</a>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+                <a href="{{ dir }}/admin/test/edit/{{ item.id }}" class="mdl-button">
+                  <i class="material-icons">edit</i> Edytuj
+                </a>
+                <a href="{{ dir }}/admin/test/del/{{ item.id }}" class="mdl-button">
+                  <i class="material-icons">delete</i> Usuń
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert--info">Brak testów do wyświetlenia!</div>
+  {% endif %}
+
+{% endblock %}

@@ -8,7 +8,6 @@ class ExamDelete extends Controller
 {
     public function deleteAction($id)
     {
-        $this->id = $id;
         if (isset($_SESSION['valid'])) {
             $this->data['valid'] = true;
             unset($_SESSION['valid']);
@@ -27,8 +26,10 @@ class ExamDelete extends Controller
         }
 
         $exam = (new ExamModel())->getInfo($id);
-        $this->data['content'] = 'Czy na pewno chcesz usunąć '.$exam['title'].'?';
 
-        $this->render('admin-delete', 'Usuwanie testu');
+        $this->render('admin-delete', [
+            'title' => 'Usuwanie testu',
+            'content' => 'Czy na pewno chcesz usunąć '.$exam['title'].'?',
+        ]);
     }
 }

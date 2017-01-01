@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ pageTitle }}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,500,300italic,500italic,700italic,900,300" rel="stylesheet">
+    <link href="{{ dir }}/assets/mdl/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">
+            <a href="{{ dir }}/">
+              {{ siteTitle }}
+            </a>
+          </span>
+          {% if isLogged %}
+          <div class="mdl-layout-spacer"></div>
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="{{ dir }}/admin">Panel administracyjny</a>
+            <a class="mdl-navigation__link" href="{{ dir }}/admin/test/add">Dodaj test</a>
+            <a class="mdl-navigation__link" href="{{ dir }}/admin/logout">Wyloguj</a>
+          </nav>
+          {% endif %}
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Egzaminy</span>
+        <nav class="mdl-navigation">
+        {% for item in examsGroups %}
+          <a class="mdl-navigation__link" href="{{ dir }}/group/{{ item.id }}">{{ item.title }}</a>
+        {% endfor %}
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h1 class="mdl-typography--display-2">{{ headerTitle }}</h1>
+            </div>
+          </div>
+          <div>
+            {% block content %}{% endblock %}
+          </div>
+        </div>
+      </main>
+      <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+          <div class="mdl-logo">Egzaminer</div>
+          <ul class="mdl-mini-footer__link-list">
+            <li><a href="https://github.com/mklkj/egzaminer">GitHub</a></li>
+            <li><a href="https://github.com/mklkj/egzaminer/issues">Report issue</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+    <script src="{{ dir }}/assets/mdl/main.js"></script>
+    {% if valid %}
+      <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+          <div class="mdl-snackbar__text"></div>
+          <button class="mdl-snackbar__action" type="button"></button>
+        </div>
+        <script>
+          window.addEventListener('load', function(){
+            var notification = document.querySelector('.mdl-js-snackbar');
+            notification.MaterialSnackbar.showSnackbar({
+                message: '{% if valid %}Operacja powiodła się!{% else %}Operacja nie powiodła się!{% endif %}'
+            });
+          });
+      </script>
+    {% endif %}
+  </body>
+</html>

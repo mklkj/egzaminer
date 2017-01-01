@@ -30,14 +30,11 @@ class ExamEdit extends Controller
 
         $exam = (new ExamModel())->getInfo($id);
         $questions = (new Questions())->getByExamId($id);
-        $answers = (new Answers())->getAnswersByQuestions($questions);
 
-        $this->data['test-edit']['test'] = $exam;
-        $this->data['test-edit']['questions'] = $questions;
-
-        $this->data['exams_groups'] = (new ExamsGroupModel())->getExamsGroups();
-        // $this->data['test-edit']['answers'] = $answers;
-
-        $this->render('admin-exam-edit', 'Edycja testu');
+        $this->render('admin-exam-edit', [
+            'title' => 'Edycja testu',
+            'exam' => $exam,
+            'questions' => $questions,
+        ]);
     }
 }

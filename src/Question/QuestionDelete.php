@@ -8,7 +8,6 @@ class QuestionDelete extends Controller
 {
     public function deleteAction($testId, $id)
     {
-        $this->id = $id;
         if (isset($_SESSION['valid'])) {
             $this->data['valid'] = true;
             unset($_SESSION['valid']);
@@ -27,8 +26,10 @@ class QuestionDelete extends Controller
         }
 
         $question = (new Questions())->getByQuestionId($id);
-        $this->data['content'] = 'Czy na pewno chcesz usunąć pytanie <i>'.$question['content'].'</i>?';
 
-        $this->render('admin-delete', 'Usuwanie pytania');
+        $this->render('admin-delete', [
+            'title' => 'Usuwanie pytania',
+            'content' => 'Czy na pewno chcesz usunąć pytanie <i>'.$question['content'].'</i>?',
+        ]);
     }
 }

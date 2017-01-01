@@ -22,27 +22,27 @@ class Exam extends Controller
 
         // if form was send
         if (!empty($_POST)) {
-            $stats = (new ExamStat())->getStats($testInfo, $questions, $_POST);
+            $compareAnswers = new CompareUserAnswersWithQuestions($_POST, $questions);
+            $questions = $compareAnswers->getCompared();
 
-            $this->data['test-check'] = [
-                'test' => $testInfo,
-                'questions' => $questions,
-                'answers' => $answers,
-                'stats' => $stats,
-            ];
-
-            $template = 'test-check';
+            $score = new CalculateScore($testInfo, $questions);
+            $scoreInfo = $score->getScoreInfo();
         } else {
-            $this->data['test'] = [
-                'id' => $testInfo['id'],
-                'title' => $testInfo['title'],
-                'questions' => $questions,
-                'answers' => $answers,
-            ];
-
-            $template = 'test';
+            $scoreInfo = null;
         }
 
-        $this->render($template, $testInfo['title']);
+        // put answers to questions
+        foreach ($questions as $qkey => $qvalue) {
+            foreach ($answers[$qvalue['id']] as $akey => $avalue) {
+                $questions[$qkey]['answers'][] = $avalue;
+            }
+        }
+
+        $this->render('test', [
+            'title' => $testInfo['title'],
+            'test' => $testInfo,
+            'questions' => $questions,
+            'score' => $scoreInfo,
+        ]);
     }
 }
