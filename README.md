@@ -1,6 +1,7 @@
 # Egzaminer
 
 [![Build Status](https://travis-ci.org/mklkj/egzaminer.svg?branch=master)](http://travis-ci.org/mklkj/egzaminer)
+[![Coverage Status](https://coveralls.io/repos/github/mklkj/egzaminer/badge.svg?branch=master)](https://coveralls.io/github/mklkj/egzaminer?branch=master)
 
 ## How to install?
 
