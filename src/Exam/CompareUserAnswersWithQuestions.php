@@ -6,18 +6,20 @@ class CompareUserAnswersWithQuestions
 {
     public function __construct($post, $questions)
     {
-        $this->post = $this->normalizeUserPost($post);
+        $this->post = $post;
         $this->questions = $questions;
     }
 
-    public function normalizeUserPost($post)
+    public function getNormalizeUserPost()
     {
-        unset($post['send']);
-        if (empty($post)) {
+        unset($this->post['send']);
+        if (empty($this->post)) {
             return;
         }
 
-        foreach ($post as $key => $value) {
+        $post = null;
+
+        foreach ($this->post as $key => $value) {
             $post[str_replace('question_', '', $key)] = $value;
         }
 
@@ -26,9 +28,11 @@ class CompareUserAnswersWithQuestions
 
     public function getCompared()
     {
+        $post = $this->getNormalizeUserPost();
+
         foreach ($this->questions as $key => $value) {
-            if (isset($this->post[$value['id']])) {
-                $userAnswer = $this->post[$value['id']];
+            if (isset($post[$value['id']])) {
+                $userAnswer = $post[$value['id']];
             } else {
                 $userAnswer = null;
             }
