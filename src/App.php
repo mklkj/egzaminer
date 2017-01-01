@@ -9,6 +9,7 @@ class App
 {
     private $url;
     private $router;
+    private $config;
 
     /**
      * Constructor.
@@ -18,6 +19,12 @@ class App
         $this->setUrl($_SERVER['REQUEST_URI']);
         $this->router = new AltoRouter();
         $this->addRoutes($this->router);
+
+        $configPath = $this->getRootDir().'/config/site.php';
+        if (!file_exists($configPath)) {
+            throw new Exception('Config file does not exist');
+        }
+        $this->config = include $configPath;
     }
 
     private function addRoutes($router)
@@ -70,14 +77,14 @@ class App
             // call closure or throw 404 status
             if ($match && is_callable($match['target'])) {
                 call_user_func_array([
-                    new $match['target'][0](), $match['target'][1],
+                    new $match['target'][0]($this->config), $match['target'][1],
                 ], $match['params']);
             } else {
-                throw new Exception('Page not exist!');
+                throw new Exception('Page not exist! No route match');
             }
         } catch (Exception $e) {
             if ($this->config['debug']) {
-                $e->getMessage();
+                echo $e->getMessage();
             } else {
                 (new Error(404))->showAction();
             }

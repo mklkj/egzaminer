@@ -4,21 +4,19 @@ namespace Egzaminer;
 
 use Egzaminer\Admin\Auth;
 use Egzaminer\Roll\ExamsGroupModel;
+use Exception;
 use Twig_Environment;
-use Twig_Error_Loader;
+// use Twig_Extension_Debug;
 use Twig_Loader_Filesystem;
-use Twig_Error_Syntax;
-use Twig_Extension_Debug;
 
 class Controller
 {
-    public function __construct()
+    public function __construct($config)
     {
         $this->auth = new Auth();
         $this->dir = App::getDir();
         $this->root = App::getRootDir();
-
-        $this->config = include $this->root.'/config/site.php';
+        $this->config = $config;
 
         // flash validation messages
         $this->data['valid'] = null;
@@ -58,7 +56,6 @@ class Controller
      */
     public function render($template, $data = [])
     {
-
         $loader = new Twig_Loader_Filesystem(
             $this->root.'/resources/themes/'.$this->config['theme'].'/templates/'
         );

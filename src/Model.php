@@ -2,7 +2,9 @@
 
 namespace Egzaminer;
 
+use Exception;
 use PDO;
+use PDOException;
 
 class Model
 {
@@ -10,15 +12,26 @@ class Model
 
     public function __construct()
     {
-        $config = include dirname(__DIR__).'/config/db.php';
-        $dsn = 'mysql'
-        .':dbname='.$config['name']
-        .';host='.$config['host']
-        .';charset=utf8';
+        $configPath = dirname(__DIR__).'/config/db.php';
 
-        $user = $config['user'];
-        $password = $config['pass'];
+        if (!file_exists($configPath)) {
+            throw new Exception('Config file does not exist');
+        }
 
-        $this->db = new PDO($dsn, $user, $password);
+        $config = include $configPath;
+
+        try {
+            $dsn = 'mysql'
+            .':dbname='.$config['name']
+            .';host='.$config['host']
+            .';charset=utf8';
+
+            $user = $config['user'];
+            $password = $config['pass'];
+
+            $this->db = new PDO($dsn, $user, $password);
+        } catch (PDOException $e) {
+            echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+        }
     }
 }

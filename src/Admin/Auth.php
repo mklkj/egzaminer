@@ -4,6 +4,14 @@ namespace Egzaminer\Admin;
 
 class Auth
 {
+    public function __construct()
+    {
+        $configPath = dirname(dirname(__DIR__)).'/config/users.php';
+        if (!file_exists($configPath)) {
+            throw new Exception('Config file users.php does not exist');
+        }
+        $this->users = include $configPath;
+    }
     /**
      * Login.
      *
@@ -14,9 +22,7 @@ class Auth
      */
     public function login($login, $password)
     {
-        $users = include dirname(dirname(__DIR__)).'/config/users.php';
-
-        foreach ($users as $user) {
+        foreach ($this->users as $user) {
             if (password_verify($password, $user['pass_hash'])
                 and $login === $user['login']) {
                 $_SESSION['egzaminer_auth_un'] = $user['login'];
@@ -38,9 +44,7 @@ class Auth
             return false;
         }
 
-        $users = include dirname(dirname(__DIR__)).'/config/users.php';
-
-        foreach ($users as $user) {
+        foreach ($this->users as $user) {
             if (password_verify($user['login'], $_SESSION['ga_cookie'])
                 and $_SESSION['egzaminer_auth_un'] === $user['login']) {
                 return true;
