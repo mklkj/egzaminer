@@ -16,7 +16,7 @@ class Model
         if (!file_exists($configSitePath)) {
             throw new Exception('Config site file does not exist');
         }
-        $this->configSite = include $configSitePath;
+        $configSite = include $configSitePath;
 
         $configPath = dirname(__DIR__).'/config/db.php';
 
@@ -37,7 +37,7 @@ class Model
 
             $this->db = new PDO($dsn, $user, $password);
         } catch (PDOException $e) {
-            if ($this->configSite['debug']) {
+            if ($configSite['debug']) {
                 echo $e->getMessage();
             } else {
                 (new Error(404))->showAction();

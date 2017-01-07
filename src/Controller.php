@@ -32,10 +32,6 @@ class Controller
             }
             unset($_SESSION['valid']);
         }
-
-        if (method_exists($this, 'init')) {
-            $this->init();
-        }
     }
 
     public function dir()

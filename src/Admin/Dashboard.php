@@ -7,8 +7,10 @@ use Egzaminer\Roll\ExamsList;
 
 class Dashboard extends Controller
 {
-    protected function init()
+    public function __construct()
     {
+        parent::__construct();
+
         if (!$this->isLogged()) {
             header('Location: '.$this->dir().'/admin/login');
             exit;
