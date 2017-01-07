@@ -37,12 +37,7 @@ class Model
 
             $this->db = new PDO($dsn, $user, $password);
         } catch (PDOException $e) {
-            if ($configSite['debug']) {
-                echo $e->getMessage();
-            } else {
-                (new Error(404))->showAction();
-            }
-            die();
+            throw new Exception($e->getMessage());
         }
     }
 }

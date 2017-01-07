@@ -86,7 +86,7 @@ class App
             if ($this->config['debug']) {
                 echo $e->getMessage();
             } else {
-                (new Error(404))->showAction();
+                (new Error($this->config))->showAction(404);
             }
             exit;
         }

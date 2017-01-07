@@ -4,6 +4,7 @@ namespace Egzaminer;
 
 use Egzaminer\Admin\Auth;
 use Egzaminer\Roll\ExamsGroupModel;
+use Exception;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
 
@@ -55,14 +56,6 @@ class Controller
      */
     public function render($template, $data = [])
     {
-        $loader = new Twig_Loader_Filesystem(
-            $this->root.'/resources/themes/'.$this->config['theme'].'/templates/'
-        );
-        $twig = new Twig_Environment($loader, [
-            'cache' => $this->config['cache'] ? $this->root.'/var/twig' : false,
-            'debug' => $this->config['debug'] ? true : false,
-        ]);
-
         $data['valid'] = $this->data['valid'];
         $data['dir'] = $this->dir;
         $data['siteTitle'] = $this->config['title'];
@@ -74,6 +67,23 @@ class Controller
 
         $data['examsGroups'] = (new ExamsGroupModel())->getExamsGroups();
 
-        echo $twig->render($template.'.twig', $data);
+        $loader = new Twig_Loader_Filesystem(
+            $this->root.'/resources/themes/'.$this->config['theme'].'/templates/'
+        );
+        $twig = new Twig_Environment($loader, [
+            'cache' => $this->config['cache'] ? $this->root.'/var/twig' : false,
+            'debug' => $this->config['debug'] ? true : false,
+        ]);
+
+        try {
+            echo $twig->render($template.'.twig', $data);
+        } catch (Exception $e) {
+            if ($this->config['debug']) {
+                echo $e->getMessage();
+            } else {
+                echo 'Error 500';
+            }
+            die;
+        }
     }
 }

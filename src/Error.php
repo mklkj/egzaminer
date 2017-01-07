@@ -2,18 +2,12 @@
 
 namespace Egzaminer;
 
-class Error
+class Error extends Controller
 {
-    private $code;
-
-    public function __construct($code)
+    public function showAction($code = 404)
     {
-        $this->code = $code;
-    }
+        http_response_code($code);
 
-    public function showAction()
-    {
-        http_response_code($this->code);
-        echo 'Error '.$this->code;
+        $this->render('error', ['title' => 'Error '.$code]);
     }
 }
