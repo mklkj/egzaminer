@@ -28,7 +28,7 @@
     "url": "git+ssh://git@gitlab.com/mklkj/egzaminer.git"
   },
   "author": "mklkj <m.pich@outlook.com>",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://gitlab.com/mklkj/egzaminer/issues"
   },
