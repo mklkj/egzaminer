@@ -11,7 +11,7 @@ class ExamEditModel extends Model
      * Edit test.
      *
      * @param int   $id
-     * @param array $test
+     * @param array $post
      *
      * @return bool
      */

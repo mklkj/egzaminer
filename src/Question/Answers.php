@@ -20,6 +20,7 @@ class Answers extends Model
         }
 
         $stmt->execute();
+        $array = [];
 
         foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $key => $value) {
             $array[$value['question_id']][] = $value;

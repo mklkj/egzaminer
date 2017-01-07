@@ -4,6 +4,10 @@ namespace Egzaminer\Exam;
 
 class CalculateScore
 {
+    private $test;
+
+    private $comparedAnswers;
+
     private $score = 0;
 
     public function __construct(array $test, array $comparedAnswers)

@@ -5,11 +5,16 @@ namespace Egzaminer;
 use Egzaminer\Admin\Auth;
 use Egzaminer\Roll\ExamsGroupModel;
 use Twig_Environment;
-// use Twig_Extension_Debug;
 use Twig_Loader_Filesystem;
 
 class Controller
 {
+    protected $auth;
+    protected $dir;
+    protected $root;
+    protected $config;
+    protected $data;
+
     public function __construct($config)
     {
         $this->auth = new Auth();
@@ -61,7 +66,6 @@ class Controller
             'cache' => $this->config['cache'] ? $this->root.'/var/twig' : false,
             'debug' => $this->config['debug'] ? true : false,
         ]);
-        // $twig->addExtension(new Twig_Extension_Debug());
 
         $data['valid'] = $this->data['valid'];
         $data['dir'] = $this->dir;

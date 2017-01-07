@@ -100,6 +100,7 @@ class App
     public function setUrl($request)
     {
         $basePath = $this->getDir();
+        $url = null;
 
         if ($basePath) {
             $pos = strpos($request, $basePath);

@@ -4,6 +4,10 @@ namespace Egzaminer\Exam;
 
 class CompareUserAnswersWithQuestions
 {
+    private $post;
+
+    private $questions;
+
     public function __construct($post, $questions)
     {
         $this->post = $post;
@@ -17,7 +21,7 @@ class CompareUserAnswersWithQuestions
             return;
         }
 
-        $post = null;
+        $post = [];
 
         foreach ($this->post as $key => $value) {
             $post[str_replace('question_', '', $key)] = $value;

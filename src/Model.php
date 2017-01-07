@@ -12,7 +12,6 @@ class Model
 
     public function __construct()
     {
-
         $configSitePath = dirname(__DIR__).'/config/site.php';
         if (!file_exists($configSitePath)) {
             throw new Exception('Config site file does not exist');

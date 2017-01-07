@@ -14,7 +14,7 @@ class QuestionAddModel extends Model
         }
         $qid = $this->addQuestion($testId, $post['question']);
         $cid = $this->addAnswers($testId, $qid, $post['question']['correct'], $post['answers']);
-        $c = $this->addCorrectAnswerToQuestion($qid, $cid);
+        $this->addCorrectAnswerToQuestion($qid, $cid);
 
         return $qid;
     }
