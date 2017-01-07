@@ -25,11 +25,11 @@ class QuestionEdit extends Controller
         $answers = (new Answers())->getAnswersByOneQuestionId($id);
 
         $this->render('admin-question', [
-            'title' => 'Edycja pytania',
-            'id' => $id,
-            'testId' => $testId,
-            'question' => $question,
-            'answers' => $answers,
+            'title'        => 'Edycja pytania',
+            'id'           => $id,
+            'testId'       => $testId,
+            'question'     => $question,
+            'answers'      => $answers,
             'templateType' => 'edit',
         ]);
     }

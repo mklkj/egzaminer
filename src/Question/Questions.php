@@ -2,8 +2,8 @@
 
 namespace Egzaminer\Question;
 
-use PDO;
 use Egzaminer\Model;
+use PDO;
 
 class Questions extends Model
 {

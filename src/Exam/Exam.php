@@ -2,10 +2,10 @@
 
 namespace Egzaminer\Exam;
 
-use Exception;
-use Egzaminer\Question\Questions;
-use Egzaminer\Question\Answers;
 use Egzaminer\Controller as Controller;
+use Egzaminer\Question\Answers;
+use Egzaminer\Question\Questions;
+use Exception;
 
 class Exam extends Controller
 {
@@ -39,10 +39,10 @@ class Exam extends Controller
         }
 
         $this->render('test', [
-            'title' => $testInfo['title'],
-            'test' => $testInfo,
+            'title'     => $testInfo['title'],
+            'test'      => $testInfo,
             'questions' => $questions,
-            'score' => $scoreInfo,
+            'score'     => $scoreInfo,
         ]);
     }
 }

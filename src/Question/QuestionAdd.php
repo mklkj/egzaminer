@@ -11,7 +11,7 @@ class QuestionAdd extends Controller
         $question = [
             'content' => '',
             'correct' => '',
-            'image' => '',
+            'image'   => '',
         ];
         $answers = [
                 ['content' => '', 'id' => '1'],
@@ -33,10 +33,10 @@ class QuestionAdd extends Controller
         }
 
         $this->render('admin-question', [
-            'title' => 'Dodawanie pytania',
-            'testId' => $testId,
+            'title'    => 'Dodawanie pytania',
+            'testId'   => $testId,
             'question' => $question,
-            'answers' => $answers,
+            'answers'  => $answers,
         ]);
     }
 }

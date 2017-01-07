@@ -2,8 +2,8 @@
 
 namespace Egzaminer\Admin;
 
-use Egzaminer\Roll\ExamsList;
 use Egzaminer\Controller;
+use Egzaminer\Roll\ExamsList;
 
 class Dashboard extends Controller
 {
@@ -20,7 +20,7 @@ class Dashboard extends Controller
         $list = new ExamsList();
 
         $this->render('dashboard', [
-            'title' => 'Panel zarządzania',
+            'title'     => 'Panel zarządzania',
             'examsList' => $list->getList(),
         ]);
     }

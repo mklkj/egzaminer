@@ -12,6 +12,7 @@ class Auth
         }
         $this->users = include $configPath;
     }
+
     /**
      * Login.
      *

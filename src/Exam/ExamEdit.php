@@ -2,10 +2,8 @@
 
 namespace Egzaminer\Exam;
 
-use Egzaminer\Question\Questions;
-use Egzaminer\Question\Answers;
 use Egzaminer\Admin\Dashboard as Controller;
-use Egzaminer\Roll\ExamsGroupModel;
+use Egzaminer\Question\Questions;
 
 class ExamEdit extends Controller
 {
@@ -32,8 +30,8 @@ class ExamEdit extends Controller
         $questions = (new Questions())->getByExamId($id);
 
         $this->render('admin-exam-edit', [
-            'title' => 'Edycja testu',
-            'exam' => $exam,
+            'title'     => 'Edycja testu',
+            'exam'      => $exam,
             'questions' => $questions,
         ]);
     }

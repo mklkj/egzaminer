@@ -7,7 +7,7 @@ class CompareUserAnswersWithQuestionsTest extends PHPUnit_Framework_TestCase
     public function testNormalizeUserPost()
     {
         $obj = new CompareUserAnswersWithQuestions([
-            'send' => 'yes',
+            'send'       => 'yes',
             'question_1' => 8,
             'question_2' => 1,
             'question_3' => 6,
@@ -33,7 +33,7 @@ class CompareUserAnswersWithQuestionsTest extends PHPUnit_Framework_TestCase
     public function testGetCompared()
     {
         $obj = new CompareUserAnswersWithQuestions([
-            'send' => 'yes',
+            'send'       => 'yes',
             'question_1' => 8,
             'question_2' => 1,
             'question_3' => 6,

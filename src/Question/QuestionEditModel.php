@@ -2,9 +2,9 @@
 
 namespace Egzaminer\Question;
 
-use PDO;
-use Egzaminer\Model;
 use Egzaminer\App;
+use Egzaminer\Model;
+use PDO;
 
 class QuestionEditModel extends Model
 {

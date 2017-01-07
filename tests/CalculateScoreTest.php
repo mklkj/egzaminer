@@ -7,7 +7,7 @@ class CalculateScoreTest extends PHPUnit_Framework_TestCase
     public function __construct()
     {
         $this->test = [
-            'title' => 'Calculate Score Test',
+            'title'     => 'Calculate Score Test',
             'questions' => 10,
             'threshold' => 8,
         ];
@@ -72,9 +72,9 @@ class CalculateScoreTest extends PHPUnit_Framework_TestCase
         $obj = new CalculateScore($this->test, $this->notPassAnswers);
 
         $this->assertEquals($obj->getScoreInfo(), [
-            'score' => 2,
+            'score'       => 2,
             'percentages' => 20,
-            'isPass' => false,
+            'isPass'      => false,
         ]);
     }
 }

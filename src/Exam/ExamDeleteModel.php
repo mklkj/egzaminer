@@ -2,8 +2,8 @@
 
 namespace Egzaminer\Exam;
 
-use PDO;
 use Egzaminer\Model;
+use PDO;
 
 class ExamDeleteModel extends Model
 {

@@ -31,7 +31,7 @@ class Model
 
             $this->db = new PDO($dsn, $user, $password);
         } catch (PDOException $e) {
-            echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+            echo 'Połączenie nie mogło zostać utworzone: '.$e->getMessage();
         }
     }
 }

@@ -12,7 +12,7 @@ class HomePage extends Controller
         $this->data['exams_groups'] = $model->getExamsGroups();
 
         $this->render('homepage', [
-            'title' => $this->config['homepage-header']
+            'title' => $this->config['homepage-header'],
         ]);
     }
 }

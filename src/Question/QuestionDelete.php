@@ -28,7 +28,7 @@ class QuestionDelete extends Controller
         $question = (new Questions())->getByQuestionId($id);
 
         $this->render('admin-delete', [
-            'title' => 'Usuwanie pytania',
+            'title'   => 'Usuwanie pytania',
             'content' => 'Czy na pewno chcesz usunąć pytanie <i>'.$question['content'].'</i>?',
         ]);
     }

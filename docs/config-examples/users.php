@@ -1,6 +1,8 @@
-<?php return [
+<?php
+
+return [
     [
-      'login' => 'admin',
+      'login'     => 'admin',
       'pass_hash' => '',
-    ]
+    ],
 ];

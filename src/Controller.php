@@ -4,7 +4,6 @@ namespace Egzaminer;
 
 use Egzaminer\Admin\Auth;
 use Egzaminer\Roll\ExamsGroupModel;
-use Exception;
 use Twig_Environment;
 // use Twig_Extension_Debug;
 use Twig_Loader_Filesystem;
@@ -39,7 +38,6 @@ class Controller
         return $this->dir;
     }
 
-
     /**
      * Check is user logged.
      *
@@ -52,7 +50,7 @@ class Controller
 
     /**
      * @param string $template Template name
-     * @param array $data Data to use in template
+     * @param array  $data     Data to use in template
      */
     public function render($template, $data = [])
     {

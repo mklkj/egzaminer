@@ -1,4 +1,6 @@
-<?php return [
+<?php
+
+return [
     'host' => 'localhost',
     'user' => 'username',
     'pass' => 'user_password',
