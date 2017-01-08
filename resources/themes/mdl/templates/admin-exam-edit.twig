@@ -3,10 +3,6 @@
 {% block content %}
   <form action="{{ dir }}/admin/test/edit/{{ exam.id }}" method="post">
 
-    <a href="{{ dir }}/admin/test/add"
-      class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-      Dodaj nowy test
-    </a>
     <a href="{{ dir }}/admin/test/edit/{{ exam.id }}/question/add"
       class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised mdl-js-ripple-effect">
       Dodaj pytanie

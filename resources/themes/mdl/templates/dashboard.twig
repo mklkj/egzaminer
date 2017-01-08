@@ -1,14 +1,6 @@
 {% extends "layout.twig" %}
 
 {% block content %}
-  <a href="{{ dir }}/admin/test/add"
-    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-    <i class="material-icons">add</i>
-    Dodaj test
-  </a>
-
-  <hr>
-
   {% if examsList %}
     <div class="table--responsive">
       <table class="mdl-data-table table--conensed mdl-js-data-table mdl-shadow--2dp">
