@@ -14,7 +14,7 @@ class QuestionDelete extends Controller
         }
 
         if (isset($_POST['confirm'])) {
-            $delModel = new QuestionDeleteModel();
+            $delModel = new QuestionDeleteModel($this->get('dbh'));
 
             if ($delModel->delete($id)) {
                 $_SESSION['valid'] = true;
@@ -25,7 +25,7 @@ class QuestionDelete extends Controller
             }
         }
 
-        $question = (new Questions())->getByQuestionId($id);
+        $question = (new Questions($this->get('dbh')))->getByQuestionId($id);
 
         $this->render('admin-delete', [
             'title'   => 'Usuwanie pytania',

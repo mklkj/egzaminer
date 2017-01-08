@@ -15,7 +15,7 @@ class ExamEdit extends Controller
         }
 
         if (isset($_POST['edit'])) {
-            $editModel = new ExamEditModel();
+            $editModel = new ExamEditModel($this->get('dbh'));
 
             if ($editModel->edit($id, $_POST)) {
                 $_SESSION['valid'] = true;
@@ -26,8 +26,8 @@ class ExamEdit extends Controller
             }
         }
 
-        $exam = (new ExamModel())->getInfo($id);
-        $questions = (new Questions())->getByExamId($id);
+        $exam = (new ExamModel($this->get('dbh')))->getInfo($id);
+        $questions = (new Questions($this->get('dbh')))->getByExamId($id);
 
         $this->render('admin-exam-edit', [
             'title'     => 'Edycja testu',

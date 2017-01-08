@@ -9,7 +9,7 @@ class ExamAdd extends Controller
     public function addAction()
     {
         if (isset($_POST['add'])) {
-            $model = new ExamAddModel();
+            $model = new ExamAddModel($this->get('dbh'));
             if ($id = $model->add($_POST)) {
                 $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin/test/edit/'.$id);

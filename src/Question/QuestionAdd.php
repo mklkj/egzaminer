@@ -21,7 +21,7 @@ class QuestionAdd extends Controller
         ];
 
         if (isset($_POST['submit'])) {
-            $model = new QuestionAddModel();
+            $model = new QuestionAddModel($this->get('dbh'));
 
             if ($id = $model->add($testId, $_POST)) {
                 $_SESSION['valid'] = true;

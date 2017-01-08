@@ -9,10 +9,10 @@ class ExamsGroup extends Controller
 {
     public function indexAction($examId)
     {
-        $list = new ExamsList();
+        $list = new ExamsList($this->get('dbh'));
         $examsList = $list->getExamsByGroupId($examId);
 
-        $one = new ExamsGroupModel();
+        $one = new ExamsGroupModel($this->get('dbh'));
         $info = $one->getExamsGroupInfoById($examId);
 
         if (empty($info)) {

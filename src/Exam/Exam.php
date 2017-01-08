@@ -11,14 +11,14 @@ class Exam extends Controller
 {
     public function showAction($id)
     {
-        $testInfo = (new ExamModel())->getInfo($id);
+        $testInfo = (new ExamModel($this->get('dbh')))->getInfo($id);
 
         if (false === $testInfo) {
             throw new Exception('Exam not exists!');
         }
 
-        $questions = (new Questions())->getByExamId($id);
-        $answers = (new Answers())->getAnswersByQuestions($questions);
+        $questions = (new Questions($this->get('dbh')))->getByExamId($id);
+        $answers = (new Answers($this->get('dbh')))->getAnswersByQuestions($questions);
 
         // if form was send
         if (!empty($_POST)) {

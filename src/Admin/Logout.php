@@ -6,7 +6,7 @@ class Logout extends Dashboard
 {
     public function logoutAction()
     {
-        $this->auth->logout();
+        $this->get('auth')->logout();
         header('Location: '.$this->dir().'/admin/login');
         exit;
     }

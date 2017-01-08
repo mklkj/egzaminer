@@ -8,11 +8,11 @@ class HomePage extends Controller
 {
     public function indexAction()
     {
-        $model = new ExamsGroupModel();
+        $model = new ExamsGroupModel($this->get('dbh'));
         $this->data['exams_groups'] = $model->getExamsGroups();
 
         $this->render('homepage', [
-            'title' => $this->config['homepage-header'],
+            'title' => $this->config('homepage-header'),
         ]);
     }
 }

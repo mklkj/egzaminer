@@ -14,7 +14,7 @@ class ExamDelete extends Controller
         }
 
         if (isset($_POST['confirm'])) {
-            $delModel = new ExamDeleteModel();
+            $delModel = new ExamDeleteModel($this->get('dbh'));
 
             if ($delModel->delete($id)) {
                 $_SESSION['valid'] = true;
@@ -25,7 +25,7 @@ class ExamDelete extends Controller
             }
         }
 
-        $exam = (new ExamModel())->getInfo($id);
+        $exam = (new ExamModel($this->get('dbh')))->getInfo($id);
 
         $this->render('admin-delete', [
             'title'   => 'Usuwanie testu',

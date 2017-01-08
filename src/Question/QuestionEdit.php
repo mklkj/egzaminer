@@ -9,7 +9,7 @@ class QuestionEdit extends Controller
     public function editAction($testId, $id)
     {
         if (isset($_POST['submit'])) {
-            $editModel = new QuestionEditModel();
+            $editModel = new QuestionEditModel($this->get('dbh'));
 
             if ($editModel->edit($id, $_POST)) {
                 $_SESSION['valid'] = true;
@@ -21,8 +21,8 @@ class QuestionEdit extends Controller
             }
         }
 
-        $question = (new Questions())->getByQuestionId($id);
-        $answers = (new Answers())->getAnswersByOneQuestionId($id);
+        $question = (new Questions($this->get('dbh')))->getByQuestionId($id);
+        $answers = (new Answers($this->get('dbh')))->getAnswersByOneQuestionId($id);
 
         $this->render('admin-question', [
             'title'        => 'Edycja pytania',
