@@ -21,10 +21,6 @@ class App
      */
     public function __construct()
     {
-        if (!session_id()) {
-            @session_start();
-        }
-
         try {
             $configPath = $this->getRootDir().'/config/site.php';
             if (!file_exists($configPath)) {
