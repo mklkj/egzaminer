@@ -22,11 +22,10 @@ class App
         $this->config = include $this->getRootDir().'/config/site.php';
 
         $this->container = [
-            'auth' => new Auth(),
-            'dbh' => $this->dbConnect(include $this->getRootDir().'/config/db.php'),
-            'config' => $this->config,
-            'dir' => $this->getDir(),
-            'rootDir' => $this->getRootDir(),
+            'auth'    => new Auth(),
+            'dbh'     => $this->dbConnect(include $this->getRootDir().'/config/db.php'),
+            'config'  => $this->config,
+            'dir'     => $this->getDir(),
         ];
 
         $this->router = new AltoRouter();
