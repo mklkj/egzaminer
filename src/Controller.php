@@ -6,26 +6,28 @@ use Egzaminer\Roll\ExamsGroupModel;
 use Exception;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
+use Egzaminer\Themes\MaterialDesignLite;
 
 class Controller
 {
+    /**
+     * @var array
+     */
     private $container;
+
+    /**
+     * @var array
+     */
     protected $data;
 
+    /**
+     * Constructor.
+     *
+     * @param array $container
+     */
     public function __construct(array $container)
     {
         $this->container = $container;
-
-        // flash validation messages
-        $this->data['valid'] = null;
-        if (isset($_SESSION['valid'])) {
-            if (true === $_SESSION['valid']) {
-                $this->data['valid'] = true;
-            } else {
-                $this->data['valid'] = false;
-            }
-            unset($_SESSION['valid']);
-        }
     }
 
     /**
@@ -72,12 +74,56 @@ class Controller
     }
 
     /**
+     * @param string $path Path to redirect
+     * @param string $type Message type
+     * @param mixed  $message Message content
+     *
+     * @return void
+     */
+    public function redirectWithMessage($path, $type = 'success', $message = 'Success')
+    {
+        switch ($type) {
+            case 'success':
+                $this->get('flash')->success($message);
+                break;
+            case 'info':
+                $this->get('flash')->info($message);
+                break;
+            case 'warning':
+                $this->get('flash')->warning($message);
+                break;
+            case 'error':
+                $this->get('flash')->error($message);
+                break;
+
+            default:
+                $this->get('flash')->error($message);
+                break;
+        }
+
+        header('Location: '.$this->dir().$path);
+
+        $this->terminate();
+    }
+
+    private function selectMessagesTemplate()
+    {
+        switch ($this->config('theme')) {
+            case 'mdl':
+                $this->get('flash')->setTemplate(new MaterialDesignLite());
+                break;
+        }
+    }
+
+    /**
      * @param string $template Template name
      * @param array  $data     Data to use in template
      */
     public function render($template, $data = [])
     {
-        $data['valid'] = $this->data['valid'];
+        $this->selectMessagesTemplate();
+
+        $data['flash'] = $this->get('flash')->display();
         $data['dir'] = $this->dir();
         $data['siteTitle'] = $this->config('title');
         $data['isLogged'] = $this->isLogged();

@@ -8,19 +8,19 @@ class ExamAdd extends Controller
 {
     public function addAction()
     {
-        if (isset($_POST['add'])) {
-            $model = new ExamAddModel($this->get('dbh'));
-            if ($id = $model->add($_POST)) {
-                $_SESSION['valid'] = true;
-                header('Location: '.$this->dir().'/admin/test/edit/'.$id);
-                $this->terminate();
-            } else {
-                $this->data['valid'] = false;
-            }
-        }
-
         $this->render('admin-exam-add', [
             'title' => 'Dodawanie testu',
         ]);
+    }
+
+    public function postAddAction()
+    {
+        $model = new ExamAddModel($this->get('dbh'));
+
+        if ($id = $model->add($_POST)) {
+            $this->redirectWithMessage('/admin/test/edit/'.$id, 'success', 'Dodano pomyślnie');
+        } else {
+            $this->redirectWithMessage('/admin/test/add', 'warning', 'Coś się zepsuło');
+        }
     }
 }

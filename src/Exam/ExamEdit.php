@@ -7,32 +7,26 @@ use Egzaminer\Question\Questions;
 
 class ExamEdit extends Controller
 {
-    public function editAction($id)
+    public function editAction($examID)
     {
-        if (isset($_SESSION['valid'])) {
-            $this->data['valid'] = true;
-            unset($_SESSION['valid']);
-        }
-
-        if (isset($_POST['edit'])) {
-            $editModel = new ExamEditModel($this->get('dbh'));
-
-            if ($editModel->edit($id, $_POST)) {
-                $_SESSION['valid'] = true;
-                header('Location: '.$this->dir().'/admin/test/edit/'.$id);
-                $this->terminate();
-            } else {
-                $this->data['valid'] = false;
-            }
-        }
-
-        $exam = (new ExamModel($this->get('dbh')))->getInfo($id);
-        $questions = (new Questions($this->get('dbh')))->getByExamId($id);
+        $exam = (new ExamModel($this->get('dbh')))->getInfo($examID);
+        $questions = (new Questions($this->get('dbh')))->getByExamId($examID);
 
         $this->render('admin-exam-edit', [
             'title'     => 'Edycja testu',
             'exam'      => $exam,
             'questions' => $questions,
         ]);
+    }
+
+    public function postEditAction($examID)
+    {
+        $editModel = new ExamEditModel($this->get('dbh'));
+
+        if ($editModel->edit($examID, $_POST)) {
+            $this->redirectWithMessage('/admin/test/edit/'.$examID, 'success', 'Uaktualniono pomyślnie!');
+        } else {
+            $this->redirectWithMessage('/admin/test/edit/'.$examID, 'warning', 'Coś się zepsuło!');
+        }
     }
 }

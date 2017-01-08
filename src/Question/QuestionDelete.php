@@ -8,28 +8,30 @@ class QuestionDelete extends Controller
 {
     public function deleteAction($testId, $id)
     {
-        if (isset($_SESSION['valid'])) {
-            $this->data['valid'] = true;
-            unset($_SESSION['valid']);
-        }
-
-        if (isset($_POST['confirm'])) {
-            $delModel = new QuestionDeleteModel($this->get('dbh'));
-
-            if ($delModel->delete($id)) {
-                $_SESSION['valid'] = true;
-                header('Location: '.$this->dir().'/admin/test/edit/'.$testId);
-                $this->terminate();
-            } else {
-                $this->data['valid'] = false;
-            }
-        }
-
         $question = (new Questions($this->get('dbh')))->getByQuestionId($id);
 
         $this->render('admin-delete', [
             'title'   => 'Usuwanie pytania',
             'content' => 'Czy na pewno chcesz usunąć pytanie <i>'.$question['content'].'</i>?',
         ]);
+    }
+
+    public function postDeleteAction($examID, $questionID)
+    {
+        $delModel = new QuestionDeleteModel($this->get('dbh'));
+
+        if ($delModel->delete($questionID)) {
+            $this->redirectWithMessage(
+                '/admin/test/edit/'.$examID,
+                'success',
+                'Usunięto pomyślnie!'
+            );
+        } else {
+            $this->redirectWithMessage(
+                '/admin/test/edit/'.$examID.'/question/del/'.$questionID,
+                'warning',
+                'Coś się zepsuło!'
+            );
+        }
     }
 }

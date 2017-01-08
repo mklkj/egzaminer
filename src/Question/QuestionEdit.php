@@ -8,18 +8,6 @@ class QuestionEdit extends Controller
 {
     public function editAction($testId, $id)
     {
-        if (isset($_POST['submit'])) {
-            $editModel = new QuestionEditModel($this->get('dbh'));
-
-            if ($editModel->edit($id, $_POST)) {
-                $_SESSION['valid'] = true;
-                header('Location: '.$this->dir().'/admin/test/edit/'.$testId.'/question/edit/'.$id);
-                $this->terminate();
-            } else {
-                $this->data['valid'] = false;
-            }
-        }
-
         $question = (new Questions($this->get('dbh')))->getByQuestionId($id);
         $answers = (new Answers($this->get('dbh')))->getAnswersByOneQuestionId($id);
 
@@ -31,5 +19,24 @@ class QuestionEdit extends Controller
             'answers'      => $answers,
             'templateType' => 'edit',
         ]);
+    }
+
+    public function postEditAction($examID, $questionID)
+    {
+        $editModel = new QuestionEditModel($this->get('dbh'));
+
+        if ($editModel->edit($questionID, $_POST)) {
+            $this->redirectWithMessage(
+                '/admin/test/edit/'.$examID.'/question/edit/'.$questionID,
+                'success',
+                'Uaktualniono pomyślnie!'
+            );
+        } else {
+            $this->redirectWithMessage(
+                '/admin/test/edit/'.$examID.'/question/edit/'.$questionID,
+                'warning',
+                'Coś się zepsuło!'
+            );
+        }
     }
 }

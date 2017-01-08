@@ -20,23 +20,30 @@ class QuestionAdd extends Controller
                 ['content' => '', 'id' => '4'],
         ];
 
-        if (isset($_POST['submit'])) {
-            $model = new QuestionAddModel($this->get('dbh'));
-
-            if ($id = $model->add($testId, $_POST)) {
-                $_SESSION['valid'] = true;
-                header('Location: '.$this->dir().'/admin/test/edit/'.$testId.'/question/edit/'.$id);
-                $this->terminate();
-            } else {
-                $this->data['valid'] = false;
-            }
-        }
-
         $this->render('admin-question', [
             'title'    => 'Dodawanie pytania',
             'testId'   => $testId,
             'question' => $question,
             'answers'  => $answers,
         ]);
+    }
+
+    public function postAddAction($examID)
+    {
+        $model = new QuestionAddModel($this->get('dbh'));
+
+        if ($id = $model->add($examID, $_POST)) {
+            $this->redirectWithMessage(
+                '/admin/test/edit/'.$examID.'/question/edit/'.$id,
+                'success',
+                'Dodano pomyślnie!'
+            );
+        } else {
+            $this->redirectWithMessage(
+                '/admin/test/edit/'.$examID.'/question/add',
+                'warning',
+                'Coś się zepsuło!'
+            );
+        }
     }
 }

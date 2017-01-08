@@ -66,19 +66,7 @@
         <h1>{{ headerTitle }}</h1>
       </div>
 
-      {% if valid is not null %}
-        {% if not valid %}
-        <div class="alert alert-danger">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Operacja nie powiodła się!
-        </div>
-        {% elseif valid %}
-        <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Operacja powiodła się!
-        </div>
-        {% endif %}
-      {% endif %}
+      {{ flash|raw }}
 
       <div>
         {% block content %}{% endblock %}
