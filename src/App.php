@@ -18,8 +18,10 @@ class App
 
     /**
      * Constructor.
+     *
+     * @param string $url
      */
-    public function __construct()
+    public function __construct($url)
     {
         try {
             $configPath = $this->getRootDir().'/config/site.php';
@@ -42,7 +44,7 @@ class App
         }
 
         $this->router = new AltoRouter();
-        $this->setUrl($_SERVER['REQUEST_URI']);
+        $this->setUrl($url);
     }
 
     /**

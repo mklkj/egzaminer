@@ -7,5 +7,5 @@ session_regenerate_id();
 
 include __DIR__.'/../vendor/autoload.php';
 
-$app = new App();
+$app = new App($_SERVER['REQUEST_URI']);
 $app->invoke();
