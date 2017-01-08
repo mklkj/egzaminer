@@ -6,6 +6,7 @@ use AltoRouter;
 use Egzaminer\Admin\Auth;
 use Exception;
 use PDO;
+use PDOException;
 
 class App
 {

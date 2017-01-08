@@ -2,7 +2,7 @@
 
 return [
     [
-      'login'     => 'admin',
-      'pass_hash' => '',
+        'login'     => 'admin',
+        'pass_hash' => '',
     ],
 ];

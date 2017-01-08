@@ -49,9 +49,9 @@ class CalculateScore
     public function getScoreInfo()
     {
         return [
-          'score'       => $this->getScore(),
-          'percentages' => $this->calculatePercentageScore(),
-          'isPass'      => $this->isPass(),
+            'score'       => $this->getScore(),
+            'percentages' => $this->calculatePercentageScore(),
+            'isPass'      => $this->isPass(),
         ];
     }
 }

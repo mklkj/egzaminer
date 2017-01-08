@@ -99,7 +99,6 @@ class Controller
             } else {
                 echo 'Error 500';
             }
-            die;
         }
     }
 }
