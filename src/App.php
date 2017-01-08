@@ -121,18 +121,18 @@ class App
             if ($this->config['debug']) {
                 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
+
+            return $dbh;
         } catch (PDOException $e) {
             http_response_code(500);
 
             if ($this->config['debug']) {
                 echo $e->getMessage();
             } else {
-                'Error 500';
+                echo 'Error 500';
             }
             $this->terminate();
         }
-
-        return $dbh;
     }
 
     public function terminate($code = 1)
