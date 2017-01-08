@@ -34,7 +34,11 @@ class CalculateScore
 
     public function calculatePercentageScore()
     {
-        return round($this->score / $this->test['questions'] * 100, 2);
+        if ($this->test['questions'] > 0) {
+            return round($this->score / $this->test['questions'] * 100, 2);
+        }
+
+        return;
     }
 
     public function isPass()

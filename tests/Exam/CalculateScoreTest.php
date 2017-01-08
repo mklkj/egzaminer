@@ -53,6 +53,13 @@ class CalculateScoreTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($obj->calculatePercentageScore(), 20);
     }
 
+    public function testCalculatePercentageScoreWhenNoQuestions()
+    {
+        $obj = new CalculateScore(['questions' => 0], []);
+
+        $this->assertNull($obj->calculatePercentageScore());
+    }
+
     public function testIsPass()
     {
         $obj = new CalculateScore($this->test, $this->notPassAnswers);

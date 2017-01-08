@@ -15,7 +15,10 @@ class ExamModel extends Model
         $stmt->execute();
 
         $data = $stmt->fetch();
-        $data['thresholdPercentages'] = round($data['threshold'] / $data['questions'] * 100);
+
+        if ($data['questions'] > 0) {
+            $data['thresholdPercentages'] = round($data['threshold'] / $data['questions'] * 100);
+        }
 
         return $data;
     }
