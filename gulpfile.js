@@ -97,8 +97,8 @@ gulp.task('clean', function() {
 })
 
 gulp.task('watch', function(){
-  gulp.watch('./web/themes/**/scss/**/*.scss', ['sass-dev']);
-  gulp.watch('./web/themes/**/js/**/*', ['js']);
+  gulp.watch(srcThemesPath + '**/scss/**/*.scss', ['sass-dev']);
+  gulp.watch(srcThemesPath + '**/js/**/*', ['js']);
 })
 
 // Build Sequences
