@@ -3,10 +3,10 @@
 namespace Egzaminer;
 
 use Egzaminer\Roll\ExamsGroupModel;
+use Egzaminer\Themes\MaterialDesignLite;
 use Exception;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
-use Egzaminer\Themes\MaterialDesignLite;
 
 class Controller
 {
@@ -74,8 +74,8 @@ class Controller
     }
 
     /**
-     * @param string $path Path to redirect
-     * @param string $type Message type
+     * @param string $path    Path to redirect
+     * @param string $type    Message type
      * @param mixed  $message Message content
      *
      * @return void

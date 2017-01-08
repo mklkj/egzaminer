@@ -7,7 +7,7 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
 
 class MaterialDesignLite extends BaseTemplate implements TemplateInterface
 {
-    protected $prefix  = '
+    protected $prefix = '
         var notification = document.querySelector(".mdl-js-snackbar");
         notification.MaterialSnackbar.showSnackbar({ message: "';
 
