@@ -36,6 +36,7 @@ before_deploy:
   - node_modules/.bin/gulp build
   - cp docs/config-examples/* config/
   - rename 's/.php$/.example.php/' config/*.php
+  - find . -type f -name '.gitkeep' -delete
   - zip -r release config docs public src vendor resources LICENSE
 
 deploy:
