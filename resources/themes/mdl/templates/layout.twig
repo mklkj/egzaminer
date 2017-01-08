@@ -20,9 +20,15 @@
           {% if isLogged %}
           <div class="mdl-layout-spacer"></div>
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="{{ dir }}/admin">Panel administracyjny</a>
-            <a class="mdl-navigation__link" href="{{ dir }}/admin/test/add">Dodaj test</a>
-            <a class="mdl-navigation__link" href="{{ dir }}/admin/logout">Wyloguj</a>
+            <a id="tooltip-add" class="mdl-navigation__link" href="{{ dir }}/admin/test/add">
+              <i class="icon material-icons">add</i>
+            </a><div class="mdl-tooltip" data-mdl-for="tooltip-add">Dodaj test</div>
+            <a id="tooltip-dashboard" class="mdl-navigation__link" href="{{ dir }}/admin">
+              <i class="material-icons">dashboard</i>
+            </a><div class="mdl-tooltip" data-mdl-for="tooltip-dashboard">Panel zarządzania</div>
+            <a id="tooltip-logout" class="mdl-navigation__link" href="{{ dir }}/admin/logout">
+              <i class="material-icons">exit_to_app</i>
+            </a><div class="mdl-tooltip" data-mdl-for="tooltip-logout">Wyloguj się</div>
           </nav>
           {% endif %}
         </div>
