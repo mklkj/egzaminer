@@ -58,7 +58,7 @@
       </footer>
     </div>
     <script src="{{ dir }}/assets/mdl/main.js"></script>
-    {% if valid %}
+    {% if valid is not null %}
       <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
           <div class="mdl-snackbar__text"></div>
           <button class="mdl-snackbar__action" type="button"></button>
