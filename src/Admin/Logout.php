@@ -8,6 +8,6 @@ class Logout extends Dashboard
     {
         $this->get('auth')->logout();
         header('Location: '.$this->dir().'/admin/login');
-        exit;
+        $this->terminate();
     }
 }

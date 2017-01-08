@@ -20,7 +20,7 @@ class ExamEdit extends Controller
             if ($editModel->edit($id, $_POST)) {
                 $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin/test/edit/'.$id);
-                exit;
+                $this->terminate();
             } else {
                 $this->data['valid'] = false;
             }

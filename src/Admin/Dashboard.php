@@ -13,7 +13,7 @@ class Dashboard extends Controller
 
         if (!$this->isLogged()) {
             header('Location: '.$this->dir().'/admin/login');
-            exit;
+            $this->terminate();
         }
     }
 

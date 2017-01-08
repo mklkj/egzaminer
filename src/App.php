@@ -20,14 +20,24 @@ class App
      */
     public function __construct()
     {
-        $this->config = include $this->getRootDir().'/config/site.php';
+        try {
+            $configPath = $this->getRootDir().'/config/site.php';
+            if (!file_exists($configPath)) {
+                throw new Exception('Config file site.php does not exist');
+            }
+            $this->config = include $configPath;
 
-        $this->container = [
-            'auth'    => new Auth(),
-            'dbh'     => $this->dbConnect(include $this->getRootDir().'/config/db.php'),
-            'config'  => $this->config,
-            'dir'     => $this->getDir(),
-        ];
+            $this->container = [
+                'auth'    => new Auth(),
+                'dbh'     => $this->dbConnect(include $this->getRootDir().'/config/db.php'),
+                'config'  => $this->config,
+                'dir'     => $this->getDir(),
+                'rootDir' => $this->getRootDir(),
+            ];
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            $this->terminate();
+        }
 
         $this->router = new AltoRouter();
         $this->setUrl($_SERVER['REQUEST_URI']);
@@ -91,7 +101,7 @@ class App
             } else {
                 (new Error($this->container))->showAction(404);
             }
-            exit;
+            $this->terminate();
         }
     }
 
@@ -119,11 +129,15 @@ class App
             } else {
                 'Error 500';
             }
-
-            die;
+            $this->terminate();
         }
 
         return $dbh;
+    }
+
+    public function terminate($code = 1)
+    {
+        exit($code);
     }
 
     /**

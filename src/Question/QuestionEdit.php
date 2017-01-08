@@ -13,9 +13,8 @@ class QuestionEdit extends Controller
 
             if ($editModel->edit($id, $_POST)) {
                 $_SESSION['valid'] = true;
-                header('Location: '.$this->dir().'/admin/test/edit/'.$testId
-                    .'/question/edit/'.$id);
-                exit;
+                header('Location: '.$this->dir().'/admin/test/edit/'.$testId.'/question/edit/'.$id);
+                $this->terminate();
             } else {
                 $this->data['valid'] = false;
             }

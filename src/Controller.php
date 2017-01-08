@@ -66,6 +66,11 @@ class Controller
         return $this->get('auth')->isLogged();
     }
 
+    public function terminate($code = 1)
+    {
+        exit($code);
+    }
+
     /**
      * @param string $template Template name
      * @param array  $data     Data to use in template

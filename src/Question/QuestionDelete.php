@@ -19,7 +19,7 @@ class QuestionDelete extends Controller
             if ($delModel->delete($id)) {
                 $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin/test/edit/'.$testId);
-                exit;
+                $this->terminate();
             } else {
                 $this->data['valid'] = false;
             }

@@ -2,6 +2,8 @@
 
 namespace Egzaminer\Admin;
 
+use Exception;
+
 class Auth
 {
     private $users;

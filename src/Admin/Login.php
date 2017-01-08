@@ -10,14 +10,14 @@ class Login extends Controller
     {
         if ($this->get('auth')->isLogged()) {
             header('Location: '.$this->dir().'/admin');
-            exit;
+            $this->terminate();
         }
 
         if (isset($_POST['login'])) {
             if (true === $this->get('auth')->login($_POST['username'], $_POST['password'])) {
                 $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin');
-                exit;
+                $this->terminate();
             }
             $this->data['valid'] = false;
         }

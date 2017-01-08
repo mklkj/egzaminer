@@ -19,7 +19,7 @@ class ExamDelete extends Controller
             if ($delModel->delete($id)) {
                 $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin');
-                exit;
+                $this->terminate();
             } else {
                 $this->data['valid'] = false;
             }

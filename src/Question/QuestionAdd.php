@@ -26,7 +26,7 @@ class QuestionAdd extends Controller
             if ($id = $model->add($testId, $_POST)) {
                 $_SESSION['valid'] = true;
                 header('Location: '.$this->dir().'/admin/test/edit/'.$testId.'/question/edit/'.$id);
-                exit;
+                $this->terminate();
             } else {
                 $this->data['valid'] = false;
             }
