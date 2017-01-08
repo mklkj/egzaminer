@@ -7,8 +7,12 @@ use PDO;
 
 class Answers extends Model
 {
-    public function getAnswersByQuestions($answers)
+    public function getAnswersByQuestions(array $answers)
     {
+        if (empty($answers)) {
+            return;
+        }
+
         $where = '';
         foreach ($answers as $key => $value) {
             $where .= ' OR question_id = :question_id_'.md5($value['id']);
@@ -20,8 +24,8 @@ class Answers extends Model
         }
 
         $stmt->execute();
-        $array = [];
 
+        $array = [];
         foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $key => $value) {
             $array[$value['question_id']][] = $value;
         }
