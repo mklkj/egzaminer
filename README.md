@@ -5,14 +5,18 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mklkj/egzaminer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mklkj/egzaminer/?branch=master)
 [![StyleCI](https://styleci.io/repos/67722995/shield?branch=master)](https://styleci.io/repos/67722995)
 
-## How to install?
+## Instalation
 
-`composer install --no-dev --optimize-autoloader`
+Via composer
 
-`npm install`
+`$ composer create-project mklkj/egzaminer`
 
-`node_modules/.bin/gulp build`
+`$ cd egzaminer`
 
-`cp docs/config-examples/* config/`
+`$ npm install`
+
+`$ gulp build`
+
+`$ cp docs/config-examples/* config/`
 
 Then adjust the settings files in config/ to your preferences.
