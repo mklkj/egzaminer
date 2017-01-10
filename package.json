@@ -9,16 +9,15 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean-css": "^2.0.13",
-    "gulp-concat": "^2.6.0",
     "gulp-group-css-media-queries": "^1.2.0",
+    "gulp-include": "^2.3.1",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "material-design-lite": "^1.2.1",
     "mdl-selectfield": "^1.0.4",
     "run-sequence": "^1.2.2",
-    "gulp": "^3.9.1",
-    "merge-stream": "^1.0.0"
+    "sass-module-importer": "^1.4.0"
   },
   "scripts": {
     "test": "phpunit"
