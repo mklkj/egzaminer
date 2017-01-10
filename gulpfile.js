@@ -41,7 +41,7 @@ gulp.task('js', function() {
   return gulp.src([srcThemesPath + '**/*.js'])
     .pipe(include())
     .pipe(include({
-      includePaths: [__dirname + "/node_modules"]
+      includePaths: ['./node_modules']
     })).on('error', console.log)
     .pipe(uglify())
     .pipe(gulp.dest(destThemesPath));
