@@ -123,11 +123,12 @@ class Controller
     {
         $this->selectMessagesTemplate();
 
-        $data['flash'] = $this->get('flash')->display();
+        $data['version'] = $this->get('version');
         $data['dir'] = $this->dir();
-        $data['siteTitle'] = $this->config('title');
-        $data['isLogged'] = $this->isLogged();
+        $data['flash'] = $this->get('flash')->display();
         $data['headerTitle'] = isset($data['title']) ? $data['title'] : '';
+        $data['isLogged'] = $this->isLogged();
+        $data['siteTitle'] = $this->config('title');
         $data['pageTitle'] = isset($data['title'])
             ? $data['title'].' '.$this->config('title_divider').' '.$this->config('title')
             : $this->config('title');

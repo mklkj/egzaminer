@@ -11,9 +11,26 @@ use Tamtamchik\SimpleFlash\Flash;
 
 class App
 {
+    const VERSION = '0.12.0';
+
+    /**
+     * @var string
+     */
     private $url;
+
+    /**
+     * @var AltoRouter
+     */
     private $router;
+
+    /**
+     * @var array
+     */
     private $config;
+
+    /**
+     * @var array
+     */
     private $container;
 
     /**
@@ -37,6 +54,7 @@ class App
                 'dir'     => $this->getDir(),
                 'flash'   => new Flash(),
                 'rootDir' => $this->getRootDir(),
+                'version' => self::VERSION,
             ];
         } catch (Exception $e) {
             echo $e->getMessage();
