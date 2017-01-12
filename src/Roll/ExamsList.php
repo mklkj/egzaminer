@@ -8,16 +8,16 @@ class ExamsList extends Model
 {
     public function getList()
     {
-        $stmt = $this->db->prepare('SELECT id, title, questions FROM tests');
+        $stmt = $this->db->prepare('SELECT id, title, questions FROM exams');
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function getExamsByGroupId($gid)
+    public function getExamsByGroupId($groupID)
     {
-        $stmt = $this->db->prepare('SELECT id, title, questions FROM tests WHERE group_id = :gid');
-        $stmt->bindValue(':gid', $gid, \PDO::PARAM_INT);
+        $stmt = $this->db->prepare('SELECT id, title, questions FROM exams WHERE group_id = :gid');
+        $stmt->bindValue(':gid', $groupID, \PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);

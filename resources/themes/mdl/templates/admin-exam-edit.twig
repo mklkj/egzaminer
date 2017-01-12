@@ -1,9 +1,9 @@
 {% extends "layout.twig" %}
 
 {% block content %}
-  <form action="{{ dir }}/admin/test/edit/{{ exam.id }}" method="post">
+  <form action="{{ dir }}/admin/exam/edit/{{ exam.id }}" method="post">
 
-    <a href="{{ dir }}/admin/test/edit/{{ exam.id }}/question/add"
+    <a href="{{ dir }}/admin/exam/edit/{{ exam.id }}/question/add"
       class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised mdl-js-ripple-effect">
       Dodaj pytanie
     </a>
@@ -70,10 +70,10 @@
               <span class="table-truncate">{{ item.content|raw }}</span>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              <a href="{{ dir }}/admin/test/edit/{{ exam.id }}/question/edit/{{ item.id }}" class="mdl-button">
+              <a href="{{ dir }}/admin/exam/edit/{{ exam.id }}/question/edit/{{ item.id }}" class="mdl-button">
                 <i class="material-icons">edit</i> Edytuj
               </a>
-              <a href="{{ dir }}/admin/test/edit/{{ exam.id }}/question/del/{{ item.id }}" class="mdl-button">
+              <a href="{{ dir }}/admin/exam/edit/{{ exam.id }}/question/del/{{ item.id }}" class="mdl-button">
                 <i class="material-icons">delete</i> Usuń
               </a>
             </td>

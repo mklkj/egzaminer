@@ -7,13 +7,13 @@ use Exception;
 
 class ExamsGroup extends Controller
 {
-    public function indexAction($examId)
+    public function indexAction($examID)
     {
         $list = new ExamsList($this->get('dbh'));
-        $examsList = $list->getExamsByGroupId($examId);
+        $examsList = $list->getExamsByGroupId($examID);
 
         $one = new ExamsGroupModel($this->get('dbh'));
-        $info = $one->getExamsGroupInfoById($examId);
+        $info = $one->getExamsGroupInfoById($examID);
 
         if (empty($info)) {
             throw new Exception('Exams group does not exist!');

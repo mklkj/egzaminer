@@ -9,7 +9,7 @@ class ExamAddModel extends Model
 {
     public function add($post)
     {
-        $stmt = $this->db->prepare('INSERT INTO tests (title, questions, threshold, group_id)
+        $stmt = $this->db->prepare('INSERT INTO exams (title, questions, threshold, group_id)
             VALUES (:title, :questions, :threshold, :group_id)'
         );
         $stmt->bindValue(':title', trim($post['title']), PDO::PARAM_STR);

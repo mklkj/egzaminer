@@ -14,10 +14,10 @@ class ExamsGroupModel extends Model
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function getExamsGroupInfoById($id)
+    public function getExamsGroupInfoById($groupID)
     {
         $stmt = $this->db->prepare('SELECT * FROM exams_groups WHERE id = :id');
-        $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+        $stmt->bindValue(':id', $groupID, \PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetch(\PDO::FETCH_OBJ);

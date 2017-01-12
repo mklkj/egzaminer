@@ -9,7 +9,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `answers` (
   `id` int(10) UNSIGNED NOT NULL,
-  `test_id` int(10) UNSIGNED NOT NULL,
+  `exam_id` int(10) UNSIGNED NOT NULL,
   `question_id` int(10) UNSIGNED NOT NULL,
   `content` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -22,13 +22,13 @@ CREATE TABLE `exams_groups` (
 
 CREATE TABLE `questions` (
   `id` int(10) UNSIGNED NOT NULL,
-  `test_id` int(10) UNSIGNED NOT NULL,
+  `exam_id` int(10) UNSIGNED NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `correct` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE `tests` (
+CREATE TABLE `exams` (
   `id` int(10) UNSIGNED NOT NULL,
   `group_id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -51,9 +51,9 @@ ALTER TABLE `questions`
 ALTER TABLE `questions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
-ALTER TABLE `tests`
+ALTER TABLE `exams`
   ADD PRIMARY KEY `id` (`id`);
-ALTER TABLE `tests`
+ALTER TABLE `exams`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 

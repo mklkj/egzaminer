@@ -9,15 +9,15 @@ use Exception;
 
 class Exam extends Controller
 {
-    public function showAction($id)
+    public function showAction($examID)
     {
-        $testInfo = (new ExamModel($this->get('dbh')))->getInfo($id);
+        $examInfo = (new ExamModel($this->get('dbh')))->getInfo($examID);
 
-        if (false === $testInfo) {
+        if (false === $examInfo) {
             throw new Exception('Exam not exists!');
         }
 
-        $questions = (new Questions($this->get('dbh')))->getByExamId($id);
+        $questions = (new Questions($this->get('dbh')))->getByExamId($examID);
         $answers = (new Answers($this->get('dbh')))->getAnswersByQuestions($questions);
 
         // if form was send
@@ -25,7 +25,7 @@ class Exam extends Controller
             $compareAnswers = new CompareUserAnswersWithQuestions($_POST, $questions);
             $questions = $compareAnswers->getCompared();
 
-            $score = new CalculateScore($testInfo, $questions);
+            $score = new CalculateScore($examInfo, $questions);
             $scoreInfo = $score->getScoreInfo();
         } else {
             $scoreInfo = null;
@@ -38,9 +38,9 @@ class Exam extends Controller
             }
         }
 
-        $this->render('test', [
-            'title'     => $testInfo['title'],
-            'test'      => $testInfo,
+        $this->render('exam', [
+            'title'     => $examInfo['title'],
+            'exam'      => $examInfo,
             'questions' => $questions,
             'score'     => $scoreInfo,
         ]);

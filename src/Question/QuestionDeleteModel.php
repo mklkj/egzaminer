@@ -10,14 +10,14 @@ class QuestionDeleteModel extends Model
     /**
      * Delete question.
      *
-     * @param int $id
+     * @param int $questionID
      *
      * @return bool
      */
-    public function delete($id)
+    public function delete($questionID)
     {
         $stmt = $this->db->prepare('DELETE FROM questions WHERE id = :id');
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $questionID, PDO::PARAM_INT);
 
         return $stmt->execute();
     }

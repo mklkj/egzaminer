@@ -3,12 +3,12 @@
 {% block content %}
   <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
 
-    <a href="{{ dir }}/admin/test/edit/{{ testId }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+    <a href="{{ dir }}/admin/exam/edit/{{ examID }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
       Wróć do edycji testu
     </a>
 
     {% if templateType == 'edit' %}
-      <a href="{{ dir }}/admin/test/edit/{{ testId }}/question/add"
+      <a href="{{ dir }}/admin/exam/edit/{{ examID }}/question/add"
       class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised mdl-js-ripple-effect">
         Dodaj nowe pytanie
       </a>

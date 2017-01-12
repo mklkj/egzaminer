@@ -8,16 +8,16 @@ use PDO;
 class ExamDeleteModel extends Model
 {
     /**
-     * Delete test.
+     * Delete exam.
      *
-     * @param int $id
+     * @param int $examID
      *
      * @return bool
      */
-    public function delete($id)
+    public function delete($examID)
     {
-        $stmt = $this->db->prepare('DELETE FROM tests WHERE id = :id');
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt = $this->db->prepare('DELETE FROM exams WHERE id = :id');
+        $stmt->bindValue(':id', $examID, PDO::PARAM_INT);
 
         return $stmt->execute();
     }

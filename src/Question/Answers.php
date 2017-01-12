@@ -37,10 +37,10 @@ class Answers extends Model
         return $array;
     }
 
-    public function getAnswersByOneQuestionId($id)
+    public function getAnswersByOneQuestionId($questionID)
     {
         $stmt = $this->db->prepare('SELECT * FROM answers WHERE question_id = :qid');
-        $stmt->bindValue(':qid', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':qid', $questionID, PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

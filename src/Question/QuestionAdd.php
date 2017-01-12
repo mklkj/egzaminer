@@ -6,7 +6,7 @@ use Egzaminer\Admin\Dashboard as Controller;
 
 class QuestionAdd extends Controller
 {
-    public function addAction($testId)
+    public function addAction($examID)
     {
         $question = [
             'content' => '',
@@ -22,7 +22,7 @@ class QuestionAdd extends Controller
 
         $this->render('admin-question', [
             'title'    => 'Dodawanie pytania',
-            'testId'   => $testId,
+            'examID'   => $examID,
             'question' => $question,
             'answers'  => $answers,
         ]);
@@ -34,13 +34,13 @@ class QuestionAdd extends Controller
 
         if ($id = $model->add($examID, $_POST)) {
             $this->redirectWithMessage(
-                '/admin/test/edit/'.$examID.'/question/edit/'.$id,
+                '/admin/exam/edit/'.$examID.'/question/edit/'.$id,
                 'success',
                 'Dodano pomyślnie!'
             );
         } else {
             $this->redirectWithMessage(
-                '/admin/test/edit/'.$examID.'/question/add',
+                '/admin/exam/edit/'.$examID.'/question/add',
                 'warning',
                 'Coś się zepsuło!'
             );

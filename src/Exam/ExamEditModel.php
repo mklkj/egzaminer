@@ -8,16 +8,16 @@ use PDO;
 class ExamEditModel extends Model
 {
     /**
-     * Edit test.
+     * Edit exam.
      *
-     * @param int   $id
+     * @param int   $examID
      * @param array $post
      *
      * @return bool
      */
-    public function edit($id, $post)
+    public function edit($examID, $post)
     {
-        $stmt = $this->db->prepare('UPDATE tests SET title = :title,
+        $stmt = $this->db->prepare('UPDATE exams SET title = :title,
             questions = :questions, threshold = :threshold, group_id = :group_id
             WHERE id = :id'
         );
@@ -25,7 +25,7 @@ class ExamEditModel extends Model
         $stmt->bindValue(':questions', $post['questions'], PDO::PARAM_INT);
         $stmt->bindValue(':threshold', $post['threshold'], PDO::PARAM_INT);
         $stmt->bindValue(':group_id', $post['group_id'], PDO::PARAM_INT);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $examID, PDO::PARAM_INT);
 
         return $stmt->execute();
     }

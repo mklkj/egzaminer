@@ -48,7 +48,7 @@
     </div>
 
     <hr>
-    <a href="{{ dir }}/admin/test/edit/{{ exam.id }}/question/add" class="btn btn-success">Dodaj pytanie</a>
+    <a href="{{ dir }}/admin/exam/edit/{{ exam.id }}/question/add" class="btn btn-success">Dodaj pytanie</a>
     <hr>
 
     <div class="table-responsive">
@@ -68,11 +68,11 @@
               <td>{{ item.correct }}</td>
               <td>{{ item.content|raw }}</td>
               <td>
-                <a href="{{ dir }}/admin/test/edit/{{ exam.id }}/question/edit/{{ item.id }}"
+                <a href="{{ dir }}/admin/exam/edit/{{ exam.id }}/question/edit/{{ item.id }}"
                   class="btn btn-xs btn-primary">
                   <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edytuj
                 </a>
-                <a href="{{ dir }}/admin/test/edit/{{ exam.id }}/question/del/{{ item.id }}"
+                <a href="{{ dir }}/admin/exam/edit/{{ exam.id }}/question/del/{{ item.id }}"
                   class="btn btn-xs btn-danger">
                   <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Usuń
                 </a>

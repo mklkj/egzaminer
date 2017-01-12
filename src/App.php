@@ -76,7 +76,7 @@ class App
         $this->router->map('GET', '/group/[i:id]', [
             'Egzaminer\Roll\ExamsGroup', 'indexAction', ]);
 
-        $this->router->map('GET|POST', '/test/[i:id]', [
+        $this->router->map('GET|POST', '/exam/[i:id]', [
             'Egzaminer\Exam\Exam', 'showAction', ]);
 
         $this->router->map('GET', '/admin', [
@@ -90,34 +90,34 @@ class App
         $this->router->map('GET', '/admin/logout', [
             'Egzaminer\Admin\Logout', 'logoutAction', ]);
 
-        $this->router->map('GET', '/admin/test/add', [
+        $this->router->map('GET', '/admin/exam/add', [
             'Egzaminer\Exam\ExamAdd', 'addAction', ]);
-        $this->router->map('POST', '/admin/test/add', [
+        $this->router->map('POST', '/admin/exam/add', [
             'Egzaminer\Exam\ExamAdd', 'postAddAction', ]);
 
-        $this->router->map('GET', '/admin/test/edit/[i:id]', [
+        $this->router->map('GET', '/admin/exam/edit/[i:id]', [
             'Egzaminer\Exam\ExamEdit', 'editAction', ]);
-        $this->router->map('POST', '/admin/test/edit/[i:id]', [
+        $this->router->map('POST', '/admin/exam/edit/[i:id]', [
             'Egzaminer\Exam\ExamEdit', 'postEditAction', ]);
 
-        $this->router->map('GET', '/admin/test/del/[i:id]', [
+        $this->router->map('GET', '/admin/exam/del/[i:id]', [
             'Egzaminer\Exam\ExamDelete', 'deleteAction', ]);
-        $this->router->map('POST', '/admin/test/del/[i:id]', [
+        $this->router->map('POST', '/admin/exam/del/[i:id]', [
             'Egzaminer\Exam\ExamDelete', 'postDeleteAction', ]);
 
-        $this->router->map('GET', '/admin/test/edit/[i:tid]/question/add', [
+        $this->router->map('GET', '/admin/exam/edit/[i:tid]/question/add', [
             'Egzaminer\Question\QuestionAdd', 'addAction', ]);
-        $this->router->map('POST', '/admin/test/edit/[i:tid]/question/add', [
+        $this->router->map('POST', '/admin/exam/edit/[i:tid]/question/add', [
             'Egzaminer\Question\QuestionAdd', 'postAddAction', ]);
 
-        $this->router->map('GET', '/admin/test/edit/[i:tid]/question/edit/[i:qid]', [
+        $this->router->map('GET', '/admin/exam/edit/[i:tid]/question/edit/[i:qid]', [
             'Egzaminer\Question\QuestionEdit', 'editAction', ]);
-        $this->router->map('POST', '/admin/test/edit/[i:tid]/question/edit/[i:qid]', [
+        $this->router->map('POST', '/admin/exam/edit/[i:tid]/question/edit/[i:qid]', [
             'Egzaminer\Question\QuestionEdit', 'postEditAction', ]);
 
-        $this->router->map('GET', '/admin/test/edit/[i:tid]/question/del/[i:qid]', [
+        $this->router->map('GET', '/admin/exam/edit/[i:tid]/question/del/[i:qid]', [
             'Egzaminer\Question\QuestionDelete', 'deleteAction', ]);
-        $this->router->map('POST', '/admin/test/edit/[i:tid]/question/del/[i:qid]', [
+        $this->router->map('POST', '/admin/exam/edit/[i:tid]/question/del/[i:qid]', [
             'Egzaminer\Question\QuestionDelete', 'postDeleteAction', ]);
 
         $match = $this->router->match($this->url);

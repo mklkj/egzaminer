@@ -6,15 +6,15 @@ use Egzaminer\Admin\Dashboard as Controller;
 
 class QuestionEdit extends Controller
 {
-    public function editAction($testId, $id)
+    public function editAction($examID, $questionID)
     {
-        $question = (new Questions($this->get('dbh')))->getByQuestionId($id);
-        $answers = (new Answers($this->get('dbh')))->getAnswersByOneQuestionId($id);
+        $question = (new Questions($this->get('dbh')))->getByQuestionId($questionID);
+        $answers = (new Answers($this->get('dbh')))->getAnswersByOneQuestionId($questionID);
 
         $this->render('admin-question', [
             'title'        => 'Edycja pytania',
-            'id'           => $id,
-            'testId'       => $testId,
+            'id'           => $questionID,
+            'examID'       => $examID,
             'question'     => $question,
             'answers'      => $answers,
             'templateType' => 'edit',
@@ -27,13 +27,13 @@ class QuestionEdit extends Controller
 
         if ($editModel->edit($questionID, $_POST)) {
             $this->redirectWithMessage(
-                '/admin/test/edit/'.$examID.'/question/edit/'.$questionID,
+                '/admin/exam/edit/'.$examID.'/question/edit/'.$questionID,
                 'success',
                 'Uaktualniono pomyślnie!'
             );
         } else {
             $this->redirectWithMessage(
-                '/admin/test/edit/'.$examID.'/question/edit/'.$questionID,
+                '/admin/exam/edit/'.$examID.'/question/edit/'.$questionID,
                 'warning',
                 'Coś się zepsuło!'
             );

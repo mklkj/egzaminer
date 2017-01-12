@@ -4,15 +4,15 @@ namespace Egzaminer\Exam;
 
 class CalculateScore
 {
-    private $test;
+    private $exam;
 
     private $comparedAnswers;
 
     private $score = 0;
 
-    public function __construct(array $test, array $comparedAnswers)
+    public function __construct(array $exam, array $comparedAnswers)
     {
-        $this->test = $test;
+        $this->exam = $exam;
         $this->comparedAnswers = $comparedAnswers;
 
         $this->calculate();
@@ -34,14 +34,14 @@ class CalculateScore
 
     public function calculatePercentageScore()
     {
-        if ($this->test['questions'] > 0) {
-            return round($this->score / $this->test['questions'] * 100, 2);
+        if ($this->exam['questions'] > 0) {
+            return round($this->score / $this->exam['questions'] * 100, 2);
         }
     }
 
     public function isPass()
     {
-        if ($this->getScore() >= $this->test['threshold']) {
+        if ($this->getScore() >= $this->exam['threshold']) {
             return true;
         }
 

@@ -6,9 +6,9 @@ use Egzaminer\Admin\Dashboard as Controller;
 
 class QuestionDelete extends Controller
 {
-    public function deleteAction($testId, $id)
+    public function deleteAction($examID, $questionID)
     {
-        $question = (new Questions($this->get('dbh')))->getByQuestionId($id);
+        $question = (new Questions($this->get('dbh')))->getByQuestionId($questionID);
 
         $this->render('admin-delete', [
             'title'   => 'Usuwanie pytania',
@@ -22,13 +22,13 @@ class QuestionDelete extends Controller
 
         if ($delModel->delete($questionID)) {
             $this->redirectWithMessage(
-                '/admin/test/edit/'.$examID,
+                '/admin/exam/edit/'.$examID,
                 'success',
                 'Usunięto pomyślnie!'
             );
         } else {
             $this->redirectWithMessage(
-                '/admin/test/edit/'.$examID.'/question/del/'.$questionID,
+                '/admin/exam/edit/'.$examID.'/question/del/'.$questionID,
                 'warning',
                 'Coś się zepsuło!'
             );

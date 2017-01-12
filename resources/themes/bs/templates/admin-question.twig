@@ -3,12 +3,12 @@
 {% block content %}
   <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
 
-    <a href="{{ dir }}/admin/test/edit/{{ testId }}" class="btn btn-default">
+    <a href="{{ dir }}/admin/exam/edit/{{ examID }}" class="btn btn-default">
       Wróć do edycji testu
     </a>
 
     {% if templateType == 'edit' %}
-      <a href="{{ dir }}/admin/test/edit/{{ testId }}/question/add" class="btn btn-default">
+      <a href="{{ dir }}/admin/exam/edit/{{ examID }}/question/add" class="btn btn-default">
         Dodaj nowe pytanie
       </a>
     {% endif %}

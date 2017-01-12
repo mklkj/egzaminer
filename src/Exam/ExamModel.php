@@ -7,11 +7,11 @@ use PDO;
 
 class ExamModel extends Model
 {
-    public function getInfo($id)
+    public function getInfo($examID)
     {
         $stmt = $this->db->prepare('SELECT id, title, questions, threshold, group_id
-            FROM tests WHERE id = :id');
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            FROM exams WHERE id = :id');
+        $stmt->bindValue(':id', $examID, PDO::PARAM_INT);
         $stmt->execute();
 
         $data = $stmt->fetch();
