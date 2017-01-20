@@ -130,7 +130,7 @@ class Controller
     /**
      * Redirect.
      *
-     * @param string $path    Path to redirect
+     * @param string $path Path to redirect
      *
      * @return void
      */

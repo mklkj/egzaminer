@@ -12,7 +12,7 @@ class Dashboard extends Controller
         parent::__construct($container);
 
         if (!$this->isLogged()) {
-            header('Location: '.$this->dir().'/admin/login');
+            $this->redirect('/admin/login');
             $this->terminate();
         }
     }
