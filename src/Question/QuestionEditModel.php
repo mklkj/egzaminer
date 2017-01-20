@@ -2,7 +2,6 @@
 
 namespace Egzaminer\Question;
 
-use Egzaminer\App;
 use Egzaminer\Model;
 use PDO;
 

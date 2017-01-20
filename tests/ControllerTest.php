@@ -22,8 +22,8 @@ class ControllerTest extends PHPUnit_Framework_TestCase
     {
         $controller = new Controller([
             'config' => [
-                'key' => 'value'
-            ]
+                'key' => 'value',
+            ],
         ]);
 
         $this->assertEquals($controller->config('key'), 'value');
@@ -33,8 +33,8 @@ class ControllerTest extends PHPUnit_Framework_TestCase
     {
         $controller = new Controller([
             'config' => [
-                'null' => 'null'
-            ]
+                'null' => 'null',
+            ],
         ]);
 
         $this->assertNull($controller->config('key'));
@@ -46,8 +46,8 @@ class ControllerTest extends PHPUnit_Framework_TestCase
             'request' => [
                 'type' => [
                     'key' => 'value',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertEquals($controller->getFromRequest('type', 'key'), 'value');
@@ -59,8 +59,8 @@ class ControllerTest extends PHPUnit_Framework_TestCase
             'request' => [
                 'type' => [
                     'key' => 'value',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertNull($controller->getFromRequest('unknow_type'));
@@ -72,8 +72,8 @@ class ControllerTest extends PHPUnit_Framework_TestCase
             'request' => [
                 'type' => [
                     'key' => 'value',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertEquals($controller->getFromRequest('type'), ['key' => 'value']);
@@ -85,8 +85,8 @@ class ControllerTest extends PHPUnit_Framework_TestCase
             'request' => [
                 'type' => [
                     'key' => 'value',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertNull($controller->getFromRequest('type', 'other_key'));

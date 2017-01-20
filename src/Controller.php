@@ -40,8 +40,6 @@ class Controller
         if (isset($this->container[$name])) {
             return $this->container[$name];
         }
-
-        return;
     }
 
     /**
@@ -54,8 +52,6 @@ class Controller
         if (isset($this->get('config')[$name])) {
             return $this->get('config')[$name];
         }
-
-        return;
     }
 
     /**
@@ -83,8 +79,6 @@ class Controller
         if (isset($request[$type][$name])) {
             return $request[$type][$name];
         }
-
-        return;
     }
 
     /**
