@@ -22,8 +22,8 @@ class ExamDelete extends Controller
 
         if ($delModel->delete($examID)) {
             $this->redirectWithMessage('/admin', 'success', 'Usunięto pomyślnie!');
-        } else {
-            $this->redirectWithMessage('/admin/exam/del/'.$examID, 'warning', 'Coś się zepsuło!');
         }
+
+        $this->redirectWithMessage('/admin/exam/del/'.$examID, 'warning', 'Coś się zepsuło!');
     }
 }

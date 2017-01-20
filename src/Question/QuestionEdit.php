@@ -36,12 +36,12 @@ class QuestionEdit extends Controller
                 'success',
                 'Uaktualniono pomyślnie!'
             );
-        } else {
-            $this->redirectWithMessage(
-                '/admin/exam/edit/'.$examID.'/question/edit/'.$questionID,
-                'warning',
-                'Coś się zepsuło!'
-            );
         }
+
+        $this->redirectWithMessage(
+            '/admin/exam/edit/'.$examID.'/question/edit/'.$questionID,
+            'warning',
+            'Coś się zepsuło!'
+        );
     }
 }

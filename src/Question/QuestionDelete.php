@@ -26,12 +26,12 @@ class QuestionDelete extends Controller
                 'success',
                 'Usunięto pomyślnie!'
             );
-        } else {
-            $this->redirectWithMessage(
-                '/admin/exam/edit/'.$examID.'/question/del/'.$questionID,
-                'warning',
-                'Coś się zepsuło!'
-            );
         }
+
+        $this->redirectWithMessage(
+            '/admin/exam/edit/'.$examID.'/question/del/'.$questionID,
+            'warning',
+            'Coś się zepsuło!'
+        );
     }
 }

@@ -14,10 +14,10 @@ class QuestionAdd extends Controller
             'image'   => '',
         ];
         $answers = [
-                ['content' => '', 'id' => '1'],
-                ['content' => '', 'id' => '2'],
-                ['content' => '', 'id' => '3'],
-                ['content' => '', 'id' => '4'],
+            ['content' => '', 'id' => '1'],
+            ['content' => '', 'id' => '2'],
+            ['content' => '', 'id' => '3'],
+            ['content' => '', 'id' => '4'],
         ];
 
         $this->render('admin-question', [
@@ -38,12 +38,12 @@ class QuestionAdd extends Controller
                 'success',
                 'Dodano pomyślnie!'
             );
-        } else {
-            $this->redirectWithMessage(
-                '/admin/exam/edit/'.$examID.'/question/add',
-                'warning',
-                'Coś się zepsuło!'
-            );
         }
+
+        $this->redirectWithMessage(
+            '/admin/exam/edit/'.$examID.'/question/add',
+            'warning',
+            'Coś się zepsuło!'
+        );
     }
 }
