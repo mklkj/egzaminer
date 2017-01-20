@@ -100,25 +100,12 @@ class Controller
     }
 
     /**
-     * Terminate app.
-     *
-     * @param int $code Exit code
-     *
-     * @return void
-     */
-    public function terminate($code = 1)
-    {
-        exit($code);
-    }
-
-    /**
-     * @param string $path    Path to redirect
      * @param string $type    Message type
      * @param mixed  $message Message content
      *
      * @return void
      */
-    public function redirectWithMessage($path, $type = 'success', $message = 'Success')
+    public function setMessage($type = 'success', $message = 'Success')
     {
         switch ($type) {
             case 'success':
@@ -138,10 +125,23 @@ class Controller
                 $this->get('flash')->error($message);
                 break;
         }
+    }
 
+    /**
+     * Redirect.
+     *
+     * @param string $path    Path to redirect
+     *
+     * @return void
+     */
+    public function redirect($path)
+    {
         header('Location: '.$this->dir().$path);
+    }
 
-        $this->terminate();
+    public function terminate($code = 1)
+    {
+        exit($code);
     }
 
     private function selectMessagesTemplate()

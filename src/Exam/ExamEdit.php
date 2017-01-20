@@ -24,9 +24,11 @@ class ExamEdit extends Controller
         $editModel = new ExamEditModel($this->get('dbh'));
 
         if ($editModel->edit($examID, $this->getFromRequest('post'))) {
-            $this->redirectWithMessage('/admin/exam/edit/'.$examID, 'success', 'Uaktualniono pomyślnie!');
+            $this->setMessage('success', 'Uaktualniono pomyślnie!');
+        } else {
+            $this->setMessage('warning', 'Coś się zepsuło!');
         }
 
-        $this->redirectWithMessage('/admin/exam/edit/'.$examID, 'warning', 'Coś się zepsuło!');
+        $this->redirect('/admin/exam/edit/'.$examID);
     }
 }

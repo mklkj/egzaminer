@@ -31,17 +31,11 @@ class QuestionEdit extends Controller
                 $this->getFromRequest('files', 'image'),
                 $this->get('rootDir')
             )) {
-            $this->redirectWithMessage(
-                '/admin/exam/edit/'.$examID.'/question/edit/'.$questionID,
-                'success',
-                'Uaktualniono pomyślnie!'
-            );
+            $this->setMessage('success', 'Uaktualniono pomyślnie!');
+        } else {
+            $this->setMessage('warning', 'Coś się zepsuło!');
         }
 
-        $this->redirectWithMessage(
-            '/admin/exam/edit/'.$examID.'/question/edit/'.$questionID,
-            'warning',
-            'Coś się zepsuło!'
-        );
+        $this->redirect('/admin/exam/edit/'.$examID.'/question/edit/'.$questionID);
     }
 }

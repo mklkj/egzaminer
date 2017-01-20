@@ -18,9 +18,13 @@ class ExamAdd extends Controller
         $model = new ExamAddModel($this->get('dbh'));
 
         if ($id = $model->add($this->getFromRequest('post'))) {
-            $this->redirectWithMessage('/admin/exam/edit/'.$id, 'success', 'Dodano pomyślnie');
+            $this->setMessage('success', 'Dodano pomyślnie');
+            $this->redirect('/admin/exam/edit/'.$id);
+
+            return;
         }
 
-        $this->redirectWithMessage('/admin/exam/add', 'warning', 'Coś się zepsuło');
+        $this->setMessage('warning', 'Coś się zepsuło');
+        $this->redirect('/admin/exam/add');
     }
 }

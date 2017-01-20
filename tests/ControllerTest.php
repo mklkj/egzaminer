@@ -91,4 +91,11 @@ class ControllerTest extends PHPUnit_Framework_TestCase
 
         $this->assertNull($controller->getFromRequest('type', 'other_key'));
     }
+
+    public function testDir()
+    {
+        $controller = new Controller(['dir' => '/egzaminer']);
+
+        $this->assertEquals($controller->dir(), '/egzaminer');
+    }
 }

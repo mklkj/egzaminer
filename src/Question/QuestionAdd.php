@@ -33,17 +33,13 @@ class QuestionAdd extends Controller
         $model = new QuestionAddModel($this->get('dbh'));
 
         if ($id = $model->add($examID, $this->getFromRequest('post'))) {
-            $this->redirectWithMessage(
-                '/admin/exam/edit/'.$examID.'/question/edit/'.$id,
-                'success',
-                'Dodano pomyślnie!'
-            );
+            $this->setMessage('success', 'Dodano pomyślnie!');
+            $this->redirect('/admin/exam/edit/'.$examID.'/question/edit/'.$id);
+
+            return;
         }
 
-        $this->redirectWithMessage(
-            '/admin/exam/edit/'.$examID.'/question/add',
-            'warning',
-            'Coś się zepsuło!'
-        );
+        $this->setMessage('warning', 'Coś się zepsuło!');
+        $this->redirect('/admin/exam/edit/'.$examID.'/question/add');
     }
 }

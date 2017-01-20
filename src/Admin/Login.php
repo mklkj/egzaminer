@@ -8,14 +8,12 @@ class Login extends Controller
 {
     public function loginAction()
     {
-        if ($this->get('auth')->isLogged()) {
-            header('Location: '.$this->dir().'/admin');
+        if ($this->isLogged()) {
+            $this->redirect('/admin');
             $this->terminate();
         }
 
-        $this->render('login', [
-            'title' => 'Logowanie',
-        ]);
+        $this->render('login', ['title' => 'Logowanie']);
     }
 
     public function postLoginAction()
@@ -24,9 +22,13 @@ class Login extends Controller
                 $this->getFromRequest('post', 'username'),
                 $this->getFromRequest('post', 'password')
             )) {
-            $this->redirectWithMessage('/admin', 'success', 'Zalogowano pomyślnie!');
+            $this->setMessage('success', 'Zalogowano pomyślnie!');
+            $this->redirect('/admin');
+
+            return;
         }
 
-        $this->redirectWithMessage('/admin/login', 'warning', 'Złe hasło!');
+        $this->setMessage('warning', 'Złe hasło!');
+        $this->redirect('/admin/login');
     }
 }

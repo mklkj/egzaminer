@@ -21,17 +21,13 @@ class QuestionDelete extends Controller
         $delModel = new QuestionDeleteModel($this->get('dbh'));
 
         if ($delModel->delete($questionID)) {
-            $this->redirectWithMessage(
-                '/admin/exam/edit/'.$examID,
-                'success',
-                'Usunięto pomyślnie!'
-            );
+            $this->setMessage('success', 'Usunięto pomyślnie!');
+            $this->redirect('/admin/exam/edit/'.$examID);
+
+            return;
         }
 
-        $this->redirectWithMessage(
-            '/admin/exam/edit/'.$examID.'/question/del/'.$questionID,
-            'warning',
-            'Coś się zepsuło!'
-        );
+        $this->setMessage('warning', 'Coś się zepsuło!');
+        $this->redirect('/admin/exam/edit/'.$examID.'/question/del/'.$questionID);
     }
 }
