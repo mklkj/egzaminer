@@ -8,21 +8,23 @@ use PDO;
 
 class QuestionEditModel extends Model
 {
-    public function edit($questionID, $post)
+    public function edit($questionID, $post, $thumbUpload, $rootDir)
     {
-        return $this->editQuestion($questionID, $post['question'])
+        return $this->editQuestion($questionID, $post['question'], $thumbUpload, $rootDir)
         && $this->editAnswers($post['answers']);
     }
 
     /**
      * Edit question in exam.
      *
-     * @param int   $questionID
-     * @param array $question
+     * @param int    $questionID
+     * @param array  $question
+     * @param array  $thumbUpload
+     * @param string $rootDir
      *
      * @return book
      */
-    private function editQuestion($questionID, $question)
+    private function editQuestion($questionID, $question, $thumbUpload, $rootDir)
     {
         $stmt = $this->db->prepare('UPDATE questions SET content = :content,
             correct = :correct WHERE id = :id');
@@ -32,18 +34,18 @@ class QuestionEditModel extends Model
         $status = $stmt->execute();
 
         if (isset($question['delete-img'])) {
-            array_map('unlink', glob(App::getRootDir().'/public/storage/'.$questionID.'_*'));
+            array_map('unlink', glob($rootDir.'/public/storage/'.$questionID.'_*'));
             $stmt = $this->db->prepare('UPDATE questions SET image = \'\' WHERE id = ?');
             $stmt->execute([$questionID]);
-        } elseif (!empty($_FILES['image']['name'])) {
-            if (is_uploaded_file($_FILES['image']['tmp_name'])) {
-                array_map('unlink', glob(App::getRootDir().'/public/storage/'.$questionID.'_*'));
-                $file = App::getRootDir().'/public/storage/'.$questionID.'_'.$_FILES['image']['name'];
-                move_uploaded_file($_FILES['image']['tmp_name'], $file);
+        } elseif (!empty($thumbUpload['name'])) {
+            if (is_uploaded_file($thumbUpload['tmp_name'])) {
+                array_map('unlink', glob($rootDir.'/public/storage/'.$questionID.'_*'));
+                $file = $rootDir.'/public/storage/'.$questionID.'_'.$thumbUpload['name'];
+                move_uploaded_file($thumbUpload['tmp_name'], $file);
             }
 
             $stmt = $this->db->prepare('UPDATE questions SET image = ? WHERE id = ?');
-            $stmt->execute([$_FILES['image']['name'], $questionID]);
+            $stmt->execute([$thumbUpload['name'], $questionID]);
         }
 
         return $status;

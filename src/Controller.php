@@ -37,7 +37,11 @@ class Controller
      */
     public function get($name)
     {
-        return $this->container[$name];
+        if (isset($this->container[$name])) {
+            return $this->container[$name];
+        }
+
+        return;
     }
 
     /**
@@ -47,7 +51,40 @@ class Controller
      */
     public function config($name)
     {
-        return $this->get('config')[$name];
+        if (isset($this->get('config')[$name])) {
+            return $this->get('config')[$name];
+        }
+
+        return;
+    }
+
+    /**
+     * Get request variable.
+     *
+     * @param string $type Request type
+     * @param string $name Index name. Null for all
+     *
+     * @return mixed
+     */
+    public function getFromRequest($type = 'get', $name = null)
+    {
+        $request = $this->get('request');
+
+        // if unknow request type
+        if (!isset($request[$type])) {
+            return;
+        }
+
+        // for get all indexes from type
+        if (null === $name) {
+            return $request[$type];
+        }
+
+        if (isset($request[$type][$name])) {
+            return $request[$type][$name];
+        }
+
+        return;
     }
 
     /**
@@ -68,6 +105,13 @@ class Controller
         return $this->get('auth')->isLogged();
     }
 
+    /**
+     * Terminate app.
+     *
+     * @param int $code Exit code
+     *
+     * @return void
+     */
     public function terminate($code = 1)
     {
         exit($code);

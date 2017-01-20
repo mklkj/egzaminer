@@ -25,7 +25,12 @@ class QuestionEdit extends Controller
     {
         $editModel = new QuestionEditModel($this->get('dbh'));
 
-        if ($editModel->edit($questionID, $_POST)) {
+        if ($editModel->edit(
+                $questionID,
+                $this->getFromRequest('post'),
+                $this->getFromRequest('files', 'image'),
+                $this->get('rootDir')
+            )) {
             $this->redirectWithMessage(
                 '/admin/exam/edit/'.$examID.'/question/edit/'.$questionID,
                 'success',

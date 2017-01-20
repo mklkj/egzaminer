@@ -53,6 +53,14 @@ class App
                 'dbh'     => $this->dbConnect(include $this->getRootDir().'/config/db.php'),
                 'dir'     => $this->getDir(),
                 'flash'   => new Flash(),
+                'request' => [
+                    'get'     => $_GET,
+                    'post'    => $_POST,
+                    'session' => $_SESSION,
+                    'cookie'  => $_COOKIE,
+                    'files'   => $_FILES,
+                    'server'  => $_SERVER,
+                ],
                 'rootDir' => $this->getRootDir(),
                 'version' => self::VERSION,
             ];
@@ -191,14 +199,9 @@ class App
      *
      * @return string
      */
-    public static function getRootDir()
+    public function getRootDir()
     {
         return dirname(__DIR__);
-    }
-
-    public function dir()
-    {
-        return $this->getDir();
     }
 
     /**
@@ -206,12 +209,12 @@ class App
      *
      * @return string
      */
-    public static function getDir()
+    public function getDir()
     {
         if (dirname($_SERVER['SCRIPT_NAME']) == '/') {
             return '';
-        } else {
-            return dirname($_SERVER['SCRIPT_NAME']);
         }
+
+        return dirname($_SERVER['SCRIPT_NAME']);
     }
 }

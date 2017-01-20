@@ -21,8 +21,11 @@ class Exam extends Controller
         $answers = (new Answers($this->get('dbh')))->getAnswersByQuestions($questions);
 
         // if form was send
-        if (!empty($_POST)) {
-            $compareAnswers = new CompareUserAnswersWithQuestions($_POST, $questions);
+        if (!empty($this->getFromRequest('post'))) {
+            $compareAnswers = new CompareUserAnswersWithQuestions(
+                $this->getFromRequest('post'),
+                $questions
+            );
             $questions = $compareAnswers->getCompared();
 
             $score = new CalculateScore($examInfo, $questions);

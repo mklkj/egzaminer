@@ -32,7 +32,7 @@ class QuestionAdd extends Controller
     {
         $model = new QuestionAddModel($this->get('dbh'));
 
-        if ($id = $model->add($examID, $_POST)) {
+        if ($id = $model->add($examID, $this->getFromRequest('post'))) {
             $this->redirectWithMessage(
                 '/admin/exam/edit/'.$examID.'/question/edit/'.$id,
                 'success',

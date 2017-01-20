@@ -20,7 +20,10 @@ class Login extends Controller
 
     public function postLoginAction()
     {
-        if (true === $this->get('auth')->login($_POST['username'], $_POST['password'])) {
+        if (true === $this->get('auth')->login(
+                $this->getFromRequest('post', 'username'),
+                $this->getFromRequest('post', 'password')
+            )) {
             $this->redirectWithMessage('/admin', 'success', 'Zalogowano pomyślnie!');
         }
 
