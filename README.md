@@ -10,14 +10,12 @@
 
 Via composer
 
-`$ composer create-project mklkj/egzaminer`
+```bash
+$ composer create-project mklkj/egzaminer
+$ cd egzaminer
+$ npm install
+$ gulp build
+$ cp docs/config-examples/* config/
+```
 
-`$ cd egzaminer`
-
-`$ npm install`
-
-`$ gulp build`
-
-`$ cp docs/config-examples/* config/`
-
-Then adjust the settings files in config/ to your preferences.
+Then adjust the settings files in config/ to your preferences and import `docs/database_mysql.sql` tables.
