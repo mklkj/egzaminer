@@ -8,6 +8,8 @@ use Exception;
 use PDO;
 use PDOException;
 use Tamtamchik\SimpleFlash\Flash;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run as Whoops;
 
 class App
 {
@@ -47,6 +49,12 @@ class App
                 throw new Exception('Config file site.php does not exist');
             }
             $this->config = include $configPath;
+
+            if ($this->config['debug']) {
+                $whoops = new Whoops();
+                $whoops->pushHandler(new PrettyPageHandler());
+                $whoops->register();
+            }
 
             $this->container = [
                 'auth'    => new Auth(),
@@ -143,7 +151,7 @@ class App
             }
         } catch (Exception $e) {
             if ($this->config['debug']) {
-                echo $e->getMessage();
+                throw new DebugException($e->getMessage());
             } else {
                 (new Error($this->container))->showAction(404);
             }
@@ -173,7 +181,7 @@ class App
             http_response_code(500);
 
             if ($this->config['debug']) {
-                echo $e->getMessage();
+                throw new DebugException($e->getMessage());
             } else {
                 echo 'Error 500';
             }
