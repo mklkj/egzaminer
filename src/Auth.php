@@ -2,8 +2,6 @@
 
 namespace Egzaminer;
 
-use Exception;
-
 class Auth
 {
     /**

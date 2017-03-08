@@ -133,7 +133,7 @@ class App
                     $route[0][1],
                     [
                         'Egzaminer\Controller\\'.$route[0][2][0],
-                        $route[0][2][1]
+                        $route[0][2][1],
                     ],
                     $key.'/'.$route[0][0]
                 );
@@ -145,7 +145,7 @@ class App
                 $route[1],
                 [
                     'Egzaminer\Controller\\'.$route[2][0],
-                    $route[2][1]
+                    $route[2][1],
                 ],
                 $key.'/'.$route[0]
             );
