@@ -36,13 +36,13 @@ before_deploy:
   - cp docs/config-examples/* config/
   - rename 's/.php$/.example.php/' config/*.php
   - find . -type f -name '.gitkeep' -delete
-  - zip -r release config docs public src vendor resources LICENSE
+  - zip -r egzaminer config docs public src vendor resources LICENSE
 
 deploy:
   provider: releases
   api_key:
     secure: "bn0bVm/OL2chNyeFFPmLQXoi3Vl8a5Ak/yKxWtYv+JJW3V0pa8BmZl5mWWdyec99/dtLucoNI57/rBqtswT11Fc3v8EvMHVAzIw+AzbLX1rdeEq0SH+nhqimSbkSYSXNx6LXTCKgVQpEa0Ooy7kYoS8jF4Pysk0xQvMSfnmY9Q2cTyOY1tqU63cKyNt9UMZ8pP1TVNZGO40rLWFy2+skhrO1Cd0vud2grBOCr6dfMI8OK8QQ+jbJMjSiyaSa8IuRrqpWNdwJvF4N+kgD5xe5mduPkYDxUIDBRXhw2mUcWLX7aZxf+G4ejprbIcUHhdTL8TzaA0ia4IUZBJG1uz7wo0wFvdi9fTfj6YH0RsxUclGLmMJWXdQnmvw0FMCW+d6KmWe0COEU6iZ6kJk3jmF+aiI0fIkz9T/2XLI3nurOXliK9MDlBRIafBR/2Opto4riENotc2Qx47JoIy8I1yrN/5WTwhRcQWOixdt/6rm4H9fFVf9+iCi4+jFY8eXrrdpJLtxZQr5lfI5akVmux/mHY1BCVyD3K5LADUfKm7b1CU6kwJ7H/q65BcqJy36vsphmMMqB1vjDWWvA3eTNTrRnHgnfK+OlBgi5PMrccGt22GpaK6EtlDwdrsJPJEzz3vGMSzqqLYTI0uOslhPZLrsKjuPdmAggq6Jay0wH7kb8vwI="
-  file: release.zip
+  file: egzaminer.zip
   skip_cleanup: true
   on:
     tags: true
