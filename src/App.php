@@ -63,7 +63,7 @@ class App
                 'request' => [
                     'get'     => $_GET,
                     'post'    => $_POST,
-                    'session' => $_SESSION,
+                    'session' => &$_SESSION,
                     'cookie'  => $_COOKIE,
                     'files'   => $_FILES,
                     'server'  => $_SERVER,
@@ -79,7 +79,6 @@ class App
             }
 
             $this->container['auth'] = new Auth(include $configPath, $this->container['request']);
-
         } catch (Exception $e) {
             http_response_code(500);
             echo $e->getMessage();
@@ -95,55 +94,7 @@ class App
      */
     public function invoke()
     {
-        $this->router->map('GET', '/', [
-            'Egzaminer\Controller\HomepageController', 'indexAction', ]);
-
-        $this->router->map('GET', '/group/[i:id]', [
-            'Egzaminer\Controller\ExamsGroupController', 'indexAction', ]);
-
-        $this->router->map('GET|POST', '/exam/[i:id]', [
-            'Egzaminer\Controller\ExamController', 'showAction', ]);
-
-        $this->router->map('GET', '/admin', [
-            'Egzaminer\Controller\DashboardController', 'indexAction', ]);
-
-        $this->router->map('GET', '/admin/login', [
-            'Egzaminer\Controller\LoginController', 'loginAction', ]);
-        $this->router->map('POST', '/admin/login', [
-            'Egzaminer\Controller\LoginController', 'postLoginAction', ]);
-
-        $this->router->map('GET', '/admin/logout', [
-            'Egzaminer\Controller\LogoutController', 'logoutAction', ]);
-
-        $this->router->map('GET', '/admin/exam/add', [
-            'Egzaminer\Controller\ExamAddController', 'addAction', ]);
-        $this->router->map('POST', '/admin/exam/add', [
-            'Egzaminer\Controller\ExamAddController', 'postAddAction', ]);
-
-        $this->router->map('GET', '/admin/exam/edit/[i:id]', [
-            'Egzaminer\Controller\ExamEditController', 'editAction', ]);
-        $this->router->map('POST', '/admin/exam/edit/[i:id]', [
-            'Egzaminer\Controller\ExamEditController', 'postEditAction', ]);
-
-        $this->router->map('GET', '/admin/exam/del/[i:id]', [
-            'Egzaminer\Controller\ExamDeleteController', 'deleteAction', ]);
-        $this->router->map('POST', '/admin/exam/del/[i:id]', [
-            'Egzaminer\Controller\ExamDeleteController', 'postDeleteAction', ]);
-
-        $this->router->map('GET', '/admin/exam/edit/[i:id]/question/add', [
-            'Egzaminer\Controller\QuestionAddController', 'addAction', ]);
-        $this->router->map('POST', '/admin/exam/edit/[i:id]/question/add', [
-            'Egzaminer\Controller\QuestionAddController', 'postAddAction', ]);
-
-        $this->router->map('GET', '/admin/exam/edit/[i:id]/question/edit/[i:qid]', [
-            'Egzaminer\Controller\QuestionEditController', 'editAction', ]);
-        $this->router->map('POST', '/admin/exam/edit/[i:id]/question/edit/[i:qid]', [
-            'Egzaminer\Controller\QuestionEditController', 'postEditAction', ]);
-
-        $this->router->map('GET', '/admin/exam/edit/[i:id]/question/del/[i:qid]', [
-            'Egzaminer\Controller\QuestionDeleteController', 'deleteAction', ]);
-        $this->router->map('POST', '/admin/exam/edit/[i:id]/question/del/[i:qid]', [
-            'Egzaminer\Controller\QuestionDeleteController', 'postDeleteAction', ]);
+        $this->loadRoutes();
 
         $match = $this->router->match($this->url);
 
@@ -163,6 +114,41 @@ class App
                 (new Error($this->container))->showAction(404);
             }
             $this->terminate();
+        }
+    }
+
+    /**
+     * Load routes.
+     *
+     * @return void
+     */
+    public function loadRoutes()
+    {
+        $routesArray = include __DIR__.'/routes.php';
+
+        foreach ($routesArray as $key => $route) {
+            if (2 === count($route)) {
+                $this->router->map(
+                    $route[0][0],
+                    $route[0][1],
+                    [
+                        'Egzaminer\Controller\\'.$route[0][2][0],
+                        $route[0][2][1]
+                    ],
+                    $key.'/'.$route[0][0]
+                );
+                $route = $route[1];
+            }
+
+            $this->router->map(
+                $route[0],
+                $route[1],
+                [
+                    'Egzaminer\Controller\\'.$route[2][0],
+                    $route[2][1]
+                ],
+                $key.'/'.$route[0]
+            );
         }
     }
 
