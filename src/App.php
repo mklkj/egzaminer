@@ -56,7 +56,6 @@ class App
             }
 
             $this->container = [
-                'auth'    => new Auth(),
                 'config'  => $this->config,
                 'dbh'     => $this->dbConnect(include $this->getRootDir().'/config/db.php'),
                 'dir'     => $this->getDir(),
@@ -72,6 +71,15 @@ class App
                 'rootDir' => $this->getRootDir(),
                 'version' => self::VERSION,
             ];
+
+            $configPath = $this->getRootDir().'/config/users.php';
+            if (!file_exists($configPath)) {
+                http_response_code(500);
+                throw new Exception('Config file users.php does not exist');
+            }
+
+            $this->container['auth'] = new Auth(include $configPath, $this->container['request']);
+
         } catch (Exception $e) {
             http_response_code(500);
             echo $e->getMessage();

@@ -6,15 +6,26 @@ use Exception;
 
 class Auth
 {
+    /**
+     * @var array
+     */
     private $users;
 
-    public function __construct()
+    /**
+     * @var array
+     */
+    private $request;
+
+    /**
+     * Construct.
+     *
+     * @param array $users
+     * @param array $request
+     */
+    public function __construct(array $users, array $request)
     {
-        $configPath = dirname(__DIR__).'/config/users.php';
-        if (!file_exists($configPath)) {
-            throw new Exception('Config file users.php does not exist');
-        }
-        $this->users = include $configPath;
+        $this->users = $users;
+        $this->request = $request;
     }
 
     /**
@@ -30,8 +41,8 @@ class Auth
         foreach ($this->users as $user) {
             if (password_verify($password, $user['pass_hash'])
                 && $login === $user['login']) {
-                $_SESSION['egzaminer_auth_un'] = $user['login'];
-                $_SESSION['ga_cookie'] = password_hash($user['login'], PASSWORD_DEFAULT);
+                $this->request['session']['egzaminer_auth_un'] = $user['login'];
+                $this->request['session']['ga_cookie'] = password_hash($user['login'], PASSWORD_DEFAULT);
 
                 return true;
             }
@@ -45,13 +56,13 @@ class Auth
      */
     public function isLogged()
     {
-        if (!isset($_SESSION['ga_cookie'])) {
+        if (!isset($this->request['session']['ga_cookie'])) {
             return false;
         }
 
         foreach ($this->users as $user) {
-            if (password_verify($user['login'], $_SESSION['ga_cookie'])
-                && $_SESSION['egzaminer_auth_un'] === $user['login']) {
+            if (password_verify($user['login'], $this->request['session']['ga_cookie'])
+                && $this->request['session']['egzaminer_auth_un'] === $user['login']) {
                 return true;
             }
         }
@@ -66,8 +77,8 @@ class Auth
      */
     public function logout()
     {
-        $_SESSION['egzaminer_auth_un'] = false;
-        $_SESSION['ga_cookie'] = false;
+        $this->request['session']['egzaminer_auth_un'] = false;
+        $this->request['session']['ga_cookie'] = false;
 
         return session_destroy();
     }
