@@ -3,7 +3,6 @@
 namespace Egzaminer;
 
 use AltoRouter;
-use Egzaminer\Auth;
 use Exception;
 use PDO;
 use PDOException;

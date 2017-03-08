@@ -20,7 +20,7 @@ class ExamsListModel extends AbstractModel
     }
 
     /**
-     * Get exams list by group ID
+     * Get exams list by group ID.
      *
      * @param int $groupID Group ID
      *

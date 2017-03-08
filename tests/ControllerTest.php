@@ -1,6 +1,5 @@
 <?php
 
-use Egzaminer\Controller\AbstractController;
 
 class ControllerTest extends PHPUnit_Framework_TestCase
 {
@@ -9,7 +8,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase
         $testData = ['key' => 'value'];
 
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
-            ->setConstructorArgs(array($testData))
+            ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
 
         $this->assertEquals('value', $mock->get('key'));
@@ -18,7 +17,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase
     public function testGetWhenKeyNotExist()
     {
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
-            ->setConstructorArgs(array([]))
+            ->setConstructorArgs([[]])
             ->getMockForAbstractClass();
 
         $this->assertNull($mock->get('key'));
@@ -29,11 +28,11 @@ class ControllerTest extends PHPUnit_Framework_TestCase
         $testData = [
             'config' => [
                 'key' => 'value',
-            ]
+            ],
         ];
 
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
-            ->setConstructorArgs(array($testData))
+            ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
 
         $this->assertEquals($mock->config('key'), 'value');
@@ -44,11 +43,11 @@ class ControllerTest extends PHPUnit_Framework_TestCase
         $testData = [
             'config' => [
                 'null' => 'null',
-            ]
+            ],
         ];
 
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
-            ->setConstructorArgs(array($testData))
+            ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
 
         $this->assertNull($mock->config('key'));
@@ -65,7 +64,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase
         ];
 
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
-            ->setConstructorArgs(array($testData))
+            ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
 
         $this->assertEquals($mock->getFromRequest('type', 'key'), 'value');
@@ -82,7 +81,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase
         ];
 
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
-            ->setConstructorArgs(array($testData))
+            ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
 
         $this->assertNull($mock->getFromRequest('unknow_type'));
@@ -99,7 +98,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase
         ];
 
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
-            ->setConstructorArgs(array($testData))
+            ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
 
         $this->assertEquals($mock->getFromRequest('type'), ['key' => 'value']);
@@ -116,7 +115,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase
         ];
 
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
-            ->setConstructorArgs(array($testData))
+            ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
 
         $this->assertNull($mock->getFromRequest('type', 'other_key'));
@@ -127,7 +126,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase
         $testData = ['dir' => '/egzaminer'];
 
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
-            ->setConstructorArgs(array($testData))
+            ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
 
         $this->assertEquals($mock->dir(), '/egzaminer');

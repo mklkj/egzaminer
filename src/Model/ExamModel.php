@@ -10,7 +10,6 @@ class ExamModel extends AbstractModel
      * Get exam info by ID.
      *
      * @param int $examID Exam ID
-     *
      * @param array
      */
     public function getInfo($examID)

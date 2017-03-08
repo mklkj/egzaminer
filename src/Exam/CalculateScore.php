@@ -20,7 +20,7 @@ class CalculateScore
     private $score = 0;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param array $exam
      * @param array $comparedAnswers

@@ -13,7 +13,7 @@ class QuestionEditController extends AdminController
      *
      * GET /admin/exam/edit/[i:id]/question/edit/[i:qid]
      *
-     * @param int $examID Exam id
+     * @param int $examID     Exam id
      * @param int $questionID Question ID
      *
      * @return void
@@ -38,7 +38,7 @@ class QuestionEditController extends AdminController
      *
      * POST /admin/exam/edit/[i:id]/question/edit/[i:qid]
      *
-     * @param int $examID Exam id
+     * @param int $examID     Exam id
      * @param int $questionID Question ID
      *
      * @return void

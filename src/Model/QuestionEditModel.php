@@ -9,9 +9,9 @@ class QuestionEditModel extends AbstractModel
     /**
      * Edit question.
      *
-     * @param int $questionID
-     * @param array $post
-     * @param array $thumbUpload
+     * @param int    $questionID
+     * @param array  $post
+     * @param array  $thumbUpload
      * @param string $rootDir
      *
      * @return bool

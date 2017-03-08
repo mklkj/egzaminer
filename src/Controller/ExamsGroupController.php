@@ -2,9 +2,9 @@
 
 namespace Egzaminer\Controller;
 
-use Exception;
 use Egzaminer\Model\ExamsGroupModel;
 use Egzaminer\Model\ExamsListModel;
+use Exception;
 
 class ExamsGroupController extends AbstractController
 {
