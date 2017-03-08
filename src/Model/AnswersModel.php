@@ -9,7 +9,7 @@ class AnswersModel extends AbstractModel
     /**
      * Get answers by questions (ID).
      *
-     * @param array $anwers
+     * @param array $answers
      *
      * @return array
      */

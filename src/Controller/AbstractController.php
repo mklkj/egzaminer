@@ -101,7 +101,7 @@ abstract class AbstractController
 
     /**
      * @param string $type    Message type
-     * @param mixed  $message Message content
+     * @param string $message Message content
      *
      * @return void
      */
