@@ -4,12 +4,27 @@ namespace Egzaminer\Exam;
 
 class CalculateScore
 {
+    /**
+     * @var array
+     */
     private $exam;
 
+    /**
+     * @var array
+     */
     private $comparedAnswers;
 
+    /**
+     * @var int
+     */
     private $score = 0;
 
+    /**
+     * Constructor
+     *
+     * @param array $exam
+     * @param array $comparedAnswers
+     */
     public function __construct(array $exam, array $comparedAnswers)
     {
         $this->exam = $exam;
@@ -18,6 +33,11 @@ class CalculateScore
         $this->calculate();
     }
 
+    /**
+     * Calculate score.
+     *
+     * @return void
+     */
     public function calculate()
     {
         foreach ($this->comparedAnswers as $key => $value) {
@@ -27,11 +47,21 @@ class CalculateScore
         }
     }
 
+    /**
+     * Get score.
+     *
+     * @return int
+     */
     public function getScore()
     {
         return $this->score;
     }
 
+    /**
+     * Calculate percentage score.
+     *
+     * @return float|null
+     */
     public function calculatePercentageScore()
     {
         if ($this->exam['questions'] > 0) {
@@ -39,6 +69,11 @@ class CalculateScore
         }
     }
 
+    /**
+     * Check is exam passed.
+     *
+     * @return bool
+     */
     public function isPass()
     {
         if ($this->getScore() >= $this->exam['threshold']) {
@@ -48,6 +83,11 @@ class CalculateScore
         return false;
     }
 
+    /**
+     * Get all score info.
+     *
+     * @return array
+     */
     public function getScoreInfo()
     {
         return [

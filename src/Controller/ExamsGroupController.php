@@ -1,15 +1,25 @@
 <?php
 
-namespace Egzaminer\Roll;
+namespace Egzaminer\Controller;
 
-use Egzaminer\Controller;
 use Exception;
+use Egzaminer\Model\ExamsGroupModel;
+use Egzaminer\Model\ExamsListModel;
 
-class ExamsGroup extends Controller
+class ExamsGroupController extends AbstractController
 {
+    /**
+     * Exams group index action.
+     *
+     * GET /group/[i:id]
+     *
+     * @param int $examID Exam ID
+     *
+     * @return void
+     */
     public function indexAction($examID)
     {
-        $list = new ExamsList($this->get('dbh'));
+        $list = new ExamsListModel($this->get('dbh'));
         $examsList = $list->getExamsByGroupId($examID);
 
         $one = new ExamsGroupModel($this->get('dbh'));

@@ -1,15 +1,27 @@
 <?php
 
-namespace Egzaminer\Question;
+namespace Egzaminer\Controller;
 
-use Egzaminer\Admin\Dashboard as Controller;
+use Egzaminer\Model\AnswersModel;
+use Egzaminer\Model\QuestionEditModel;
+use Egzaminer\Model\QuestionsModel;
 
-class QuestionEdit extends Controller
+class QuestionEditController extends AdminController
 {
+    /**
+     * Edit question.
+     *
+     * GET /admin/exam/edit/[i:id]/question/edit/[i:qid]
+     *
+     * @param int $examID Exam id
+     * @param int $questionID Question ID
+     *
+     * @return void
+     */
     public function editAction($examID, $questionID)
     {
-        $question = (new Questions($this->get('dbh')))->getByQuestionId($questionID);
-        $answers = (new Answers($this->get('dbh')))->getAnswersByOneQuestionId($questionID);
+        $question = (new QuestionsModel($this->get('dbh')))->getByQuestionId($questionID);
+        $answers = (new AnswersModel($this->get('dbh')))->getAnswersByOneQuestionId($questionID);
 
         $this->render('admin/question', [
             'title'        => 'Edycja pytania',
@@ -21,6 +33,16 @@ class QuestionEdit extends Controller
         ]);
     }
 
+    /**
+     * Edit question post action.
+     *
+     * POST /admin/exam/edit/[i:id]/question/edit/[i:qid]
+     *
+     * @param int $examID Exam id
+     * @param int $questionID Question ID
+     *
+     * @return void
+     */
     public function postEditAction($examID, $questionID)
     {
         $editModel = new QuestionEditModel($this->get('dbh'));

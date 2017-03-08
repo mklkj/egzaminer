@@ -1,14 +1,25 @@
 <?php
 
-namespace Egzaminer\Question;
+namespace Egzaminer\Controller;
 
-use Egzaminer\Admin\Dashboard as Controller;
+use Egzaminer\Model\QuestionDeleteModel;
+use Egzaminer\Model\QuestionsModel;
 
-class QuestionDelete extends Controller
+class QuestionDeleteController extends AdminController
 {
+    /**
+     * Delete question.
+     *
+     * GET /admin/exam/edit/[i:id]/question/del/[i:qid]
+     *
+     * @param int $examID
+     * @param int $questionID
+     *
+     * @return void
+     */
     public function deleteAction($examID, $questionID)
     {
-        $question = (new Questions($this->get('dbh')))->getByQuestionId($questionID);
+        $question = (new QuestionsModel($this->get('dbh')))->getByQuestionId($questionID);
 
         $this->render('admin/delete', [
             'title'   => 'Usuwanie pytania',
@@ -16,6 +27,16 @@ class QuestionDelete extends Controller
         ]);
     }
 
+    /**
+     * Delete question post action.
+     *
+     * POST /admin/exam/edit/[i:id]/question/del/[i:qid]
+     *
+     * @param int $examID
+     * @param int $questionID
+     *
+     * @return void
+     */
     public function postDeleteAction($examID, $questionID)
     {
         $delModel = new QuestionDeleteModel($this->get('dbh'));

@@ -4,16 +4,33 @@ namespace Egzaminer\Exam;
 
 class CompareUserAnswersWithQuestions
 {
+    /**
+     * @var array
+     */
     private $post;
 
+    /**
+     * @var array
+     */
     private $questions;
 
-    public function __construct($post, $questions)
+    /**
+     * Constructor.
+     *
+     * @param array $post
+     * @param array $questions
+     */
+    public function __construct(array $post, $questions)
     {
         $this->post = $post;
         $this->questions = $questions;
     }
 
+    /**
+     * Get normalized user post.
+     *
+     * @return array
+     */
     public function getNormalizeUserPost()
     {
         unset($this->post['send']);
@@ -30,6 +47,11 @@ class CompareUserAnswersWithQuestions
         return $post;
     }
 
+    /**
+     * Get compared data.
+     *
+     * @return array
+     */
     public function getCompared()
     {
         $post = $this->getNormalizeUserPost();

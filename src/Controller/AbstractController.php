@@ -1,14 +1,14 @@
 <?php
 
-namespace Egzaminer;
+namespace Egzaminer\Controller;
 
-use Egzaminer\Roll\ExamsGroupModel;
+use Egzaminer\Model\ExamsGroupModel;
 use Egzaminer\Themes\MaterialDesignLite;
 use Exception;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
 
-class Controller
+abstract class AbstractController
 {
     /**
      * @var array
@@ -25,7 +25,7 @@ class Controller
      *
      * @param array $container
      */
-    public function __construct(array $container)
+    public function __construct($container)
     {
         $this->container = $container;
     }

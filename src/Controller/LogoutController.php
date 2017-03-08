@@ -1,9 +1,16 @@
 <?php
 
-namespace Egzaminer\Admin;
+namespace Egzaminer\Controller;
 
-class Logout extends Dashboard
+class LogoutController extends AdminController
 {
+    /**
+     * User logout.
+     *
+     * GET /admin/logout
+     *
+     * @return void
+     */
     public function logoutAction()
     {
         $this->get('auth')->logout();

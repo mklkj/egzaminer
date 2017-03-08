@@ -1,11 +1,10 @@
 <?php
 
-namespace Egzaminer\Exam;
+namespace Egzaminer\Model;
 
-use Egzaminer\Model;
 use PDO;
 
-class ExamEditModel extends Model
+class ExamEditModel extends AbstractModel
 {
     /**
      * Edit exam.

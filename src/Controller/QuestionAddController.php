@@ -1,11 +1,20 @@
 <?php
 
-namespace Egzaminer\Question;
+namespace Egzaminer\Controller;
 
-use Egzaminer\Admin\Dashboard as Controller;
+use Egzaminer\Model\QuestionAddModel;
 
-class QuestionAdd extends Controller
+class QuestionAddController extends AdminController
 {
+    /**
+     * Add question.
+     *
+     * GET /admin/exam/edit/[i:tid]/question/add
+     *
+     * @param int $examID Exam id
+     *
+     * @return void
+     */
     public function addAction($examID)
     {
         $question = [
@@ -28,6 +37,15 @@ class QuestionAdd extends Controller
         ]);
     }
 
+    /**
+     * Add question post action.
+     *
+     * POST /admin/exam/edit/[i:tid]/question/add
+     *
+     * @param int $examID Exam id
+     *
+     * @return void
+     */
     public function postAddAction($examID)
     {
         $model = new QuestionAddModel($this->get('dbh'));

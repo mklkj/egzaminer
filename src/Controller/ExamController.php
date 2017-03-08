@@ -1,14 +1,25 @@
 <?php
 
-namespace Egzaminer\Exam;
+namespace Egzaminer\Controller;
 
-use Egzaminer\Controller as Controller;
-use Egzaminer\Question\Answers;
-use Egzaminer\Question\Questions;
+use Egzaminer\Exam\CalculateScore;
+use Egzaminer\Exam\CompareUserAnswersWithQuestions;
+use Egzaminer\Model\AnswersModel;
+use Egzaminer\Model\ExamModel;
+use Egzaminer\Model\QuestionsModel;
 use Exception;
 
-class Exam extends Controller
+class ExamController extends AbstractController
 {
+    /**
+     * Exam page with questions.
+     *
+     * GET /exam/[i:id]
+     *
+     * @param int $examID Exam ID
+     *
+     * @return void
+     */
     public function showAction($examID)
     {
         $examInfo = (new ExamModel($this->get('dbh')))->getInfo($examID);
@@ -17,8 +28,8 @@ class Exam extends Controller
             throw new Exception('Exam not exists!');
         }
 
-        $questions = (new Questions($this->get('dbh')))->getByExamId($examID);
-        $answers = (new Answers($this->get('dbh')))->getAnswersByQuestions($questions);
+        $questions = (new QuestionsModel($this->get('dbh')))->getByExamId($examID);
+        $answers = (new AnswersModel($this->get('dbh')))->getAnswersByQuestions($questions);
 
         // if form was send
         if (!empty($this->getFromRequest('post'))) {

@@ -1,11 +1,16 @@
 <?php
 
-namespace Egzaminer\Admin;
+namespace Egzaminer\Controller;
 
-use Egzaminer\Controller;
-
-class Login extends Controller
+class LoginController extends AbstractController
 {
+    /**
+     * Login page.
+     *
+     * GET /admin/login
+     *
+     * @return void
+     */
     public function loginAction()
     {
         if ($this->isLogged()) {
@@ -16,6 +21,13 @@ class Login extends Controller
         $this->render('front/login', ['title' => 'Logowanie']);
     }
 
+    /**
+     * Login post action.
+     *
+     * POST /admin/login
+     *
+     * @return void
+     */
     public function postLoginAction()
     {
         if (true === $this->get('auth')->login(

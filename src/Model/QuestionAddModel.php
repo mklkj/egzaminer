@@ -1,11 +1,10 @@
 <?php
 
-namespace Egzaminer\Question;
+namespace Egzaminer\Model;
 
-use Egzaminer\Model;
 use PDO;
 
-class QuestionAddModel extends Model
+class QuestionAddModel extends AbstractModel
 {
     public function add($examID, $post)
     {

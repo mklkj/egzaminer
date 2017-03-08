@@ -1,11 +1,18 @@
 <?php
 
-namespace Egzaminer\Exam;
+namespace Egzaminer\Controller;
 
-use Egzaminer\Admin\Dashboard as Controller;
+use Egzaminer\Model\ExamAddModel;
 
-class ExamAdd extends Controller
+class ExamAddController extends AbstractController
 {
+    /**
+     * Add exam.
+     *
+     * GET /admin/exam/add
+     *
+     * @return void
+     */
     public function addAction()
     {
         $this->render('admin/exam/add', [
@@ -13,6 +20,13 @@ class ExamAdd extends Controller
         ]);
     }
 
+    /**
+     * Add exam post action.
+     *
+     * POST /admin/exam/add
+     *
+     * @return void
+     */
     public function postAddAction()
     {
         $model = new ExamAddModel($this->get('dbh'));

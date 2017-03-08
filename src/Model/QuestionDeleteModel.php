@@ -1,11 +1,10 @@
 <?php
 
-namespace Egzaminer\Question;
+namespace Egzaminer\Model;
 
-use Egzaminer\Model;
 use PDO;
 
-class QuestionDeleteModel extends Model
+class QuestionDeleteModel extends AbstractModel
 {
     /**
      * Delete question.

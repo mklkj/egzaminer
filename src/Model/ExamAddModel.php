@@ -1,12 +1,18 @@
 <?php
 
-namespace Egzaminer\Exam;
+namespace Egzaminer\Model;
 
-use Egzaminer\Model;
 use PDO;
 
-class ExamAddModel extends Model
+class ExamAddModel extends AbstractModel
 {
+    /**
+     * Add exam.
+     *
+     * @param array $post
+     *
+     * @return int
+     */
     public function add($post)
     {
         $stmt = $this->db->prepare('INSERT INTO exams (title, questions, threshold, group_id)

@@ -1,101 +1,135 @@
 <?php
 
-use Egzaminer\Controller;
+use Egzaminer\Controller\AbstractController;
 
 class ControllerTest extends PHPUnit_Framework_TestCase
 {
     public function testGet()
     {
-        $controller = new Controller(['key' => 'value']);
+        $testData = ['key' => 'value'];
 
-        $this->assertEquals($controller->get('key'), 'value');
+        $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
+            ->setConstructorArgs(array($testData))
+            ->getMockForAbstractClass();
+
+        $this->assertEquals('value', $mock->get('key'));
     }
 
     public function testGetWhenKeyNotExist()
     {
-        $controller = new Controller([]);
+        $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
+            ->setConstructorArgs(array([]))
+            ->getMockForAbstractClass();
 
-        $this->assertNull($controller->get('key'));
+        $this->assertNull($mock->get('key'));
     }
 
     public function testConfig()
     {
-        $controller = new Controller([
+        $testData = [
             'config' => [
                 'key' => 'value',
-            ],
-        ]);
+            ]
+        ];
 
-        $this->assertEquals($controller->config('key'), 'value');
+        $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
+            ->setConstructorArgs(array($testData))
+            ->getMockForAbstractClass();
+
+        $this->assertEquals($mock->config('key'), 'value');
     }
 
     public function testConfigWhenKeyNotExist()
     {
-        $controller = new Controller([
+        $testData = [
             'config' => [
                 'null' => 'null',
-            ],
-        ]);
+            ]
+        ];
 
-        $this->assertNull($controller->config('key'));
+        $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
+            ->setConstructorArgs(array($testData))
+            ->getMockForAbstractClass();
+
+        $this->assertNull($mock->config('key'));
     }
 
     public function testGetFromRequest()
     {
-        $controller = new Controller([
+        $testData = [
             'request' => [
                 'type' => [
                     'key' => 'value',
                 ],
             ],
-        ]);
+        ];
 
-        $this->assertEquals($controller->getFromRequest('type', 'key'), 'value');
+        $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
+            ->setConstructorArgs(array($testData))
+            ->getMockForAbstractClass();
+
+        $this->assertEquals($mock->getFromRequest('type', 'key'), 'value');
     }
 
     public function testGetFromRequestWhenUnknowType()
     {
-        $controller = new Controller([
+        $testData = [
             'request' => [
                 'type' => [
                     'key' => 'value',
                 ],
             ],
-        ]);
+        ];
 
-        $this->assertNull($controller->getFromRequest('unknow_type'));
+        $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
+            ->setConstructorArgs(array($testData))
+            ->getMockForAbstractClass();
+
+        $this->assertNull($mock->getFromRequest('unknow_type'));
     }
 
     public function testGetFromRequestForAll()
     {
-        $controller = new Controller([
+        $testData = [
             'request' => [
                 'type' => [
                     'key' => 'value',
                 ],
             ],
-        ]);
+        ];
 
-        $this->assertEquals($controller->getFromRequest('type'), ['key' => 'value']);
+        $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
+            ->setConstructorArgs(array($testData))
+            ->getMockForAbstractClass();
+
+        $this->assertEquals($mock->getFromRequest('type'), ['key' => 'value']);
     }
 
     public function testGetFromRequestWhenNoIndex()
     {
-        $controller = new Controller([
+        $testData = [
             'request' => [
                 'type' => [
                     'key' => 'value',
                 ],
             ],
-        ]);
+        ];
 
-        $this->assertNull($controller->getFromRequest('type', 'other_key'));
+        $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
+            ->setConstructorArgs(array($testData))
+            ->getMockForAbstractClass();
+
+        $this->assertNull($mock->getFromRequest('type', 'other_key'));
     }
 
     public function testDir()
     {
-        $controller = new Controller(['dir' => '/egzaminer']);
+        $testData = ['dir' => '/egzaminer'];
 
-        $this->assertEquals($controller->dir(), '/egzaminer');
+        $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
+            ->setConstructorArgs(array($testData))
+            ->getMockForAbstractClass();
+
+        $this->assertEquals($mock->dir(), '/egzaminer');
     }
 }

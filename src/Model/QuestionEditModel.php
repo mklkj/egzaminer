@@ -1,12 +1,21 @@
 <?php
 
-namespace Egzaminer\Question;
+namespace Egzaminer\Model;
 
-use Egzaminer\Model;
 use PDO;
 
-class QuestionEditModel extends Model
+class QuestionEditModel extends AbstractModel
 {
+    /**
+     * Edit question.
+     *
+     * @param int $questionID
+     * @param array $post
+     * @param array $thumbUpload
+     * @param string $rootDir
+     *
+     * @return bool
+     */
     public function edit($questionID, $post, $thumbUpload, $rootDir)
     {
         return $this->editQuestion($questionID, $post['question'], $thumbUpload, $rootDir)

@@ -1,12 +1,18 @@
 <?php
 
-namespace Egzaminer\Exam;
+namespace Egzaminer\Model;
 
-use Egzaminer\Model;
 use PDO;
 
-class ExamModel extends Model
+class ExamModel extends AbstractModel
 {
+    /**
+     * Get exam info by ID.
+     *
+     * @param int $examID Exam ID
+     *
+     * @param array
+     */
     public function getInfo($examID)
     {
         $stmt = $this->db->prepare('SELECT id, title, questions, threshold, group_id

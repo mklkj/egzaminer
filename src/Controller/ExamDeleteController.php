@@ -1,11 +1,21 @@
 <?php
 
-namespace Egzaminer\Exam;
+namespace Egzaminer\Controller;
 
-use Egzaminer\Admin\Dashboard as Controller;
+use Egzaminer\Model\ExamDeleteModel;
+use Egzaminer\Model\ExamModel;
 
-class ExamDelete extends Controller
+class ExamDeleteController extends AdminController
 {
+    /**
+     * Delete exam.
+     *
+     * GET /admin/exam/del/[i:id]
+     *
+     * @param int $examID
+     *
+     * @return void
+     */
     public function deleteAction($examID)
     {
         $exam = (new ExamModel($this->get('dbh')))->getInfo($examID);
@@ -16,6 +26,15 @@ class ExamDelete extends Controller
         ]);
     }
 
+    /**
+     * Delete exam post action.
+     *
+     * POST /admin/exam/del/[i:id]
+     *
+     * @param int $examID
+     *
+     * @return void
+     */
     public function postDeleteAction($examID)
     {
         $delModel = new ExamDeleteModel($this->get('dbh'));

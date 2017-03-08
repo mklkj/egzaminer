@@ -1,6 +1,6 @@
 <?php
 
-namespace Egzaminer\Admin;
+namespace Egzaminer;
 
 use Exception;
 
@@ -10,7 +10,7 @@ class Auth
 
     public function __construct()
     {
-        $configPath = dirname(dirname(__DIR__)).'/config/users.php';
+        $configPath = dirname(__DIR__).'/config/users.php';
         if (!file_exists($configPath)) {
             throw new Exception('Config file users.php does not exist');
         }

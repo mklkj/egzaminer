@@ -1,12 +1,18 @@
 <?php
 
-namespace Egzaminer\Question;
+namespace Egzaminer\Model;
 
-use Egzaminer\Model;
 use PDO;
 
-class Answers extends Model
+class AnswersModel extends AbstractModel
 {
+    /**
+     * Get answers by questions (ID).
+     *
+     * @param array $anwers
+     *
+     * @return array
+     */
     public function getAnswersByQuestions(array $answers)
     {
         if (empty($answers)) {
@@ -37,6 +43,13 @@ class Answers extends Model
         return $array;
     }
 
+    /**
+     * Get answers by one question ID.
+     *
+     * @param int $questionID
+     *
+     * @return array
+     */
     public function getAnswersByOneQuestionId($questionID)
     {
         $stmt = $this->db->prepare('SELECT * FROM answers WHERE question_id = :qid');

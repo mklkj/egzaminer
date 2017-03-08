@@ -3,7 +3,7 @@
 namespace Egzaminer;
 
 use AltoRouter;
-use Egzaminer\Admin\Auth;
+use Egzaminer\Auth;
 use Exception;
 use PDO;
 use PDOException;
@@ -81,54 +81,54 @@ class App
     public function invoke()
     {
         $this->router->map('GET', '/', [
-            'Egzaminer\Roll\HomePage', 'indexAction', ]);
+            'Egzaminer\Controller\HomepageController', 'indexAction', ]);
 
         $this->router->map('GET', '/group/[i:id]', [
-            'Egzaminer\Roll\ExamsGroup', 'indexAction', ]);
+            'Egzaminer\Controller\ExamsGroupController', 'indexAction', ]);
 
         $this->router->map('GET|POST', '/exam/[i:id]', [
-            'Egzaminer\Exam\Exam', 'showAction', ]);
+            'Egzaminer\Controller\ExamController', 'showAction', ]);
 
         $this->router->map('GET', '/admin', [
-            'Egzaminer\Admin\Dashboard', 'indexAction', ]);
+            'Egzaminer\Controller\DashboardController', 'indexAction', ]);
 
         $this->router->map('GET', '/admin/login', [
-            'Egzaminer\Admin\Login', 'loginAction', ]);
+            'Egzaminer\Controller\LoginController', 'loginAction', ]);
         $this->router->map('POST', '/admin/login', [
-            'Egzaminer\Admin\Login', 'postLoginAction', ]);
+            'Egzaminer\Controller\LoginController', 'postLoginAction', ]);
 
         $this->router->map('GET', '/admin/logout', [
-            'Egzaminer\Admin\Logout', 'logoutAction', ]);
+            'Egzaminer\Controller\LogoutController', 'logoutAction', ]);
 
         $this->router->map('GET', '/admin/exam/add', [
-            'Egzaminer\Exam\ExamAdd', 'addAction', ]);
+            'Egzaminer\Controller\ExamAddController', 'addAction', ]);
         $this->router->map('POST', '/admin/exam/add', [
-            'Egzaminer\Exam\ExamAdd', 'postAddAction', ]);
+            'Egzaminer\Controller\ExamAddController', 'postAddAction', ]);
 
         $this->router->map('GET', '/admin/exam/edit/[i:id]', [
-            'Egzaminer\Exam\ExamEdit', 'editAction', ]);
+            'Egzaminer\Controller\ExamEditController', 'editAction', ]);
         $this->router->map('POST', '/admin/exam/edit/[i:id]', [
-            'Egzaminer\Exam\ExamEdit', 'postEditAction', ]);
+            'Egzaminer\Controller\ExamEditController', 'postEditAction', ]);
 
         $this->router->map('GET', '/admin/exam/del/[i:id]', [
-            'Egzaminer\Exam\ExamDelete', 'deleteAction', ]);
+            'Egzaminer\Controller\ExamDeleteController', 'deleteAction', ]);
         $this->router->map('POST', '/admin/exam/del/[i:id]', [
-            'Egzaminer\Exam\ExamDelete', 'postDeleteAction', ]);
+            'Egzaminer\Controller\ExamDeleteController', 'postDeleteAction', ]);
 
-        $this->router->map('GET', '/admin/exam/edit/[i:tid]/question/add', [
-            'Egzaminer\Question\QuestionAdd', 'addAction', ]);
-        $this->router->map('POST', '/admin/exam/edit/[i:tid]/question/add', [
-            'Egzaminer\Question\QuestionAdd', 'postAddAction', ]);
+        $this->router->map('GET', '/admin/exam/edit/[i:id]/question/add', [
+            'Egzaminer\Controller\QuestionAddController', 'addAction', ]);
+        $this->router->map('POST', '/admin/exam/edit/[i:id]/question/add', [
+            'Egzaminer\Controller\QuestionAddController', 'postAddAction', ]);
 
-        $this->router->map('GET', '/admin/exam/edit/[i:tid]/question/edit/[i:qid]', [
-            'Egzaminer\Question\QuestionEdit', 'editAction', ]);
-        $this->router->map('POST', '/admin/exam/edit/[i:tid]/question/edit/[i:qid]', [
-            'Egzaminer\Question\QuestionEdit', 'postEditAction', ]);
+        $this->router->map('GET', '/admin/exam/edit/[i:id]/question/edit/[i:qid]', [
+            'Egzaminer\Controller\QuestionEditController', 'editAction', ]);
+        $this->router->map('POST', '/admin/exam/edit/[i:id]/question/edit/[i:qid]', [
+            'Egzaminer\Controller\QuestionEditController', 'postEditAction', ]);
 
-        $this->router->map('GET', '/admin/exam/edit/[i:tid]/question/del/[i:qid]', [
-            'Egzaminer\Question\QuestionDelete', 'deleteAction', ]);
-        $this->router->map('POST', '/admin/exam/edit/[i:tid]/question/del/[i:qid]', [
-            'Egzaminer\Question\QuestionDelete', 'postDeleteAction', ]);
+        $this->router->map('GET', '/admin/exam/edit/[i:id]/question/del/[i:qid]', [
+            'Egzaminer\Controller\QuestionDeleteController', 'deleteAction', ]);
+        $this->router->map('POST', '/admin/exam/edit/[i:id]/question/del/[i:qid]', [
+            'Egzaminer\Controller\QuestionDeleteController', 'postDeleteAction', ]);
 
         $match = $this->router->match($this->url);
 

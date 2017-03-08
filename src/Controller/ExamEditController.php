@@ -1,16 +1,25 @@
 <?php
 
-namespace Egzaminer\Exam;
+namespace Egzaminer\Controller;
 
-use Egzaminer\Admin\Dashboard as Controller;
+use Egzaminer\Model\ExamEditModel;
+use Egzaminer\Model\ExamModel;
+use Egzaminer\Model\QuestionsModel;
 use Egzaminer\Question\Questions;
 
-class ExamEdit extends Controller
+class ExamEditController extends AdminController
 {
+    /**
+     * Edit exam action.
+     *
+     * GET /admin/exam/edit/[i:id]
+     *
+     * @return void
+     */
     public function editAction($examID)
     {
         $exam = (new ExamModel($this->get('dbh')))->getInfo($examID);
-        $questions = (new Questions($this->get('dbh')))->getByExamId($examID);
+        $questions = (new QuestionsModel($this->get('dbh')))->getByExamId($examID);
 
         $this->render('admin/exam/edit', [
             'title'     => 'Edycja testu',
@@ -19,6 +28,13 @@ class ExamEdit extends Controller
         ]);
     }
 
+    /**
+     * Edit exam post action.
+     *
+     * POST /admin/exam/edit/[i:id]
+     *
+     * @return void
+     */
     public function postEditAction($examID)
     {
         $editModel = new ExamEditModel($this->get('dbh'));
