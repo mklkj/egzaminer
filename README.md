@@ -34,6 +34,7 @@ theme/
     │   │   ├── add.twig
     │   │   └── edit.twig
     │   ├── index.twig
+    │   ├── layout.twig
     │   └── question.twig
     └── front
         ├── error.twig
