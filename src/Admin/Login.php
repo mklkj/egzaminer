@@ -13,7 +13,7 @@ class Login extends Controller
             $this->terminate();
         }
 
-        $this->render('login', ['title' => 'Logowanie']);
+        $this->render('front/login', ['title' => 'Logowanie']);
     }
 
     public function postLoginAction()

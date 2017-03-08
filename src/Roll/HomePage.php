@@ -8,7 +8,7 @@ class HomePage extends Controller
 {
     public function indexAction()
     {
-        $this->render('homepage', [
+        $this->render('front/index', [
             'title' => $this->config('homepage-header'),
         ]);
     }

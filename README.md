@@ -19,3 +19,27 @@ $ cp docs/config-examples/* config/
 ```
 
 Then adjust the settings files in config/ to your preferences and import `docs/database_mysql.sql` tables.
+
+
+## Theme structure
+
+```
+theme/
+├── main.js
+├── main.scss
+└── templates
+    ├── admin
+    │   ├── delete.twig
+    │   ├── exam
+    │   │   ├── add.twig
+    │   │   └── edit.twig
+    │   ├── index.twig
+    │   └── question.twig
+    └── front
+        ├── error.twig
+        ├── exam.twig
+        ├── index.twig
+        ├── layout.twig
+        ├── list.twig
+        └── login.twig
+```

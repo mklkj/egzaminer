@@ -21,7 +21,7 @@ class Dashboard extends Controller
     {
         $list = new ExamsList($this->get('dbh'));
 
-        $this->render('dashboard', [
+        $this->render('admin/index', [
             'title'     => 'Panel zarządzania',
             'examsList' => $list->getList(),
         ]);

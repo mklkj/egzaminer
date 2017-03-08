@@ -12,7 +12,7 @@ class ExamEdit extends Controller
         $exam = (new ExamModel($this->get('dbh')))->getInfo($examID);
         $questions = (new Questions($this->get('dbh')))->getByExamId($examID);
 
-        $this->render('admin-exam-edit', [
+        $this->render('admin/exam/edit', [
             'title'     => 'Edycja testu',
             'exam'      => $exam,
             'questions' => $questions,

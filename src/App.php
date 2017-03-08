@@ -43,6 +43,7 @@ class App
         try {
             $configPath = $this->getRootDir().'/config/site.php';
             if (!file_exists($configPath)) {
+                http_response_code(500);
                 throw new Exception('Config file site.php does not exist');
             }
             $this->config = include $configPath;
@@ -65,6 +66,7 @@ class App
                 'version' => self::VERSION,
             ];
         } catch (Exception $e) {
+            http_response_code(500);
             echo $e->getMessage();
             $this->terminate();
         }

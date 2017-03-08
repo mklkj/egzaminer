@@ -41,7 +41,7 @@ class Exam extends Controller
             }
         }
 
-        $this->render('exam', [
+        $this->render('front/exam', [
             'title'     => $examInfo['title'],
             'exam'      => $examInfo,
             'questions' => $questions,

@@ -19,6 +19,6 @@ class ExamsGroup extends Controller
             throw new Exception('Exams group does not exist!');
         }
 
-        $this->render('list', ['title' => $info->title, 'examsList' => $examsList]);
+        $this->render('front/list', ['title' => $info->title, 'examsList' => $examsList]);
     }
 }

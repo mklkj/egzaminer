@@ -20,7 +20,7 @@ class QuestionAdd extends Controller
             ['content' => '', 'id' => '4'],
         ];
 
-        $this->render('admin-question', [
+        $this->render('admin/question', [
             'title'    => 'Dodawanie pytania',
             'examID'   => $examID,
             'question' => $question,

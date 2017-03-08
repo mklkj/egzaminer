@@ -11,7 +11,7 @@ class QuestionEdit extends Controller
         $question = (new Questions($this->get('dbh')))->getByQuestionId($questionID);
         $answers = (new Answers($this->get('dbh')))->getAnswersByOneQuestionId($questionID);
 
-        $this->render('admin-question', [
+        $this->render('admin/question', [
             'title'        => 'Edycja pytania',
             'id'           => $questionID,
             'examID'       => $examID,

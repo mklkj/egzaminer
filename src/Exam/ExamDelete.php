@@ -10,7 +10,7 @@ class ExamDelete extends Controller
     {
         $exam = (new ExamModel($this->get('dbh')))->getInfo($examID);
 
-        $this->render('admin-delete', [
+        $this->render('admin/delete', [
             'title'   => 'Usuwanie testu',
             'content' => 'Czy na pewno chcesz usunąć '.$exam['title'].'?',
         ]);

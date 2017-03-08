@@ -8,7 +8,7 @@ class ExamAdd extends Controller
 {
     public function addAction()
     {
-        $this->render('admin-exam-add', [
+        $this->render('admin/exam/add', [
             'title' => 'Dodawanie testu',
         ]);
     }
