@@ -86,7 +86,7 @@ return [
                 'QuestionAddController', 'addAction',
             ],
         ], [
-            'POST', '/admin/exam/del/[i:id]', [
+            'POST', '/admin/exam/edit/[i:id]/question/add', [
                 'QuestionAddController', 'postAddAction',
             ],
         ],
