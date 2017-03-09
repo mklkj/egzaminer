@@ -2,8 +2,7 @@
 
 abstract class EgzaminerTestsDatabaseTestCase extends PHPUnit_Extensions_Database_TestCase
 {
-
-   // only instantiate pdo once for test clean-up/fixture load
+    // only instantiate pdo once for test clean-up/fixture load
     protected static $pdo = null;
 
     // only instantiate PHPUnit_Extensions_Database_DB_IDatabaseConnection once per test

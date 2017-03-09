@@ -16,11 +16,11 @@ class ExamEditModelTest extends EgzaminerTestsDatabaseTestCase
     public function testEdit()
     {
         $dataset = [
-            'id' => '1',
-            'title' => 'ExamEditModelTest title',
+            'id'        => '1',
+            'title'     => 'ExamEditModelTest title',
             'questions' => '128',
             'threshold' => '64',
-            'group_id' => '5',
+            'group_id'  => '5',
         ];
 
         $model = new ExamEditModel(self::$pdo);

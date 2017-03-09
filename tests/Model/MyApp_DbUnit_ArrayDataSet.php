@@ -5,7 +5,7 @@ class MyApp_DbUnit_ArrayDataSet extends PHPUnit_Extensions_Database_DataSet_Abst
     /**
      * @var array
      */
-    protected $tables = array();
+    protected $tables = [];
 
     /**
      * @param array $data
@@ -13,7 +13,7 @@ class MyApp_DbUnit_ArrayDataSet extends PHPUnit_Extensions_Database_DataSet_Abst
     public function __construct(array $data)
     {
         foreach ($data as $tableName => $rows) {
-            $columns = array();
+            $columns = [];
             if (isset($rows[0])) {
                 $columns = array_keys($rows[0]);
             }

@@ -16,10 +16,10 @@ class ExamAddModelTest extends EgzaminerTestsDatabaseTestCase
     public function testAdd()
     {
         $dataset = [
-            'title' => 'ExamAddModelTest title',
+            'title'     => 'ExamAddModelTest title',
             'questions' => 128,
             'threshold' => 64,
-            'group_id' => 5,
+            'group_id'  => 5,
         ];
 
         $model = new ExamAddModel(self::$pdo);
