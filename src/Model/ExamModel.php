@@ -19,7 +19,7 @@ class ExamModel extends AbstractModel
         $stmt->bindValue(':id', $examID, PDO::PARAM_INT);
         $stmt->execute();
 
-        $data = $stmt->fetch();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($data['questions'] > 0) {
             $data['thresholdPercentages'] = round($data['threshold'] / $data['questions'] * 100);
