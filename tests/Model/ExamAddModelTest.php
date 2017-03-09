@@ -13,7 +13,7 @@ class ExamAddModelTest extends EgzaminerTestsDatabaseTestCase
         ]);
     }
 
-    public function testGetAnswersByOneQuestionId()
+    public function testAdd()
     {
         $dataset = [
             'title' => 'ExamAddModelTest title',

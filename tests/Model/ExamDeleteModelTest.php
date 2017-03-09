@@ -13,7 +13,7 @@ class ExamDeleteModelTest extends EgzaminerTestsDatabaseTestCase
         ]);
     }
 
-    public function testGetAnswersByOneQuestionId()
+    public function testDelete()
     {
         $model = new ExamDeleteModel(self::$pdo);
         $status = $model->delete(1);

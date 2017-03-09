@@ -19,7 +19,7 @@ class ExamModelTest extends EgzaminerTestsDatabaseTestCase
         ]);
     }
 
-    public function testGetAnswersByOneQuestionId()
+    public function testGetInfo()
     {
         $dataset = [
             'id' => '1',
