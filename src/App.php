@@ -76,7 +76,7 @@ class App
     }
 
     /**
-     * Get config
+     * Get config.
      *
      * @param string $name Config filename
      *
