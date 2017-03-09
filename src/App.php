@@ -41,14 +41,8 @@ class App
      */
     public function __construct($url)
     {
+        $this->config = $this->loadConfig('site');
         try {
-            $configPath = $this->getRootDir().'/config/site.php';
-            if (!file_exists($configPath)) {
-                http_response_code(500);
-                throw new Exception('Config file site.php does not exist');
-            }
-            $this->config = include $configPath;
-
             if ($this->config['debug']) {
                 $whoops = new Whoops();
                 $whoops->pushHandler(new PrettyPageHandler());
@@ -57,7 +51,7 @@ class App
 
             $this->container = [
                 'config'  => $this->config,
-                'dbh'     => $this->dbConnect(include $this->getRootDir().'/config/db.php'),
+                'dbh'     => $this->dbConnect($this->loadConfig('db')),
                 'dir'     => $this->getDir(),
                 'flash'   => new Flash(),
                 'request' => [
@@ -70,13 +64,7 @@ class App
                 'version' => self::VERSION,
             ];
 
-            $configPath = $this->getRootDir().'/config/users.php';
-            if (!file_exists($configPath)) {
-                http_response_code(500);
-                throw new Exception('Config file users.php does not exist');
-            }
-
-            $this->container['auth'] = new Auth(include $configPath, $this->container['request']);
+            $this->container['auth'] = new Auth($this->loadConfig('users'), $this->container['request']);
         } catch (Exception $e) {
             http_response_code(500);
             echo $e->getMessage();
@@ -85,6 +73,29 @@ class App
 
         $this->router = new AltoRouter();
         $this->setUrl($url);
+    }
+
+    /**
+     * Get config
+     *
+     * @param string $name Config filename
+     *
+     * @return array
+     */
+    public function loadConfig($name)
+    {
+        $path = dirname(__DIR__).'/config/'.$name.'.php';
+        try {
+            if (!file_exists($path)) {
+                http_response_code(500);
+                throw new Exception('Config file '.$name.'.php does not exist');
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            $this->terminate();
+        }
+
+        return include $path;
     }
 
     /**
