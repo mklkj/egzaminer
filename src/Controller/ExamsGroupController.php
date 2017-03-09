@@ -15,7 +15,7 @@ class ExamsGroupController extends AbstractController
      *
      * @param int $examID Exam ID
      *
-     * @return void
+     * @return string
      */
     public function indexAction($examID)
     {
@@ -29,6 +29,6 @@ class ExamsGroupController extends AbstractController
             throw new Exception('Exams group does not exist!');
         }
 
-        $this->render('front/list', ['title' => $info->title, 'examsList' => $examsList]);
+        return $this->render('front/list', ['title' => $info->title, 'examsList' => $examsList]);
     }
 }

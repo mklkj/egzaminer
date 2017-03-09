@@ -16,14 +16,14 @@ class QuestionEditController extends AdminController
      * @param int $examID     Exam id
      * @param int $questionID Question ID
      *
-     * @return void
+     * @return string
      */
     public function editAction($examID, $questionID)
     {
         $question = (new QuestionsModel($this->get('dbh')))->getByQuestionId($questionID);
         $answers = (new AnswersModel($this->get('dbh')))->getAnswersByOneQuestionId($questionID);
 
-        $this->render('admin/question', [
+        return $this->render('admin/question', [
             'title'        => 'Edycja pytania',
             'id'           => $questionID,
             'examID'       => $examID,

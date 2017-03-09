@@ -10,8 +10,38 @@ class AnswersModelTest extends EgzaminerTestsDatabaseTestCase
             'answers' => [
                 ['id' => 1, 'exam_id' => 1, 'question_id' => 1, 'content' => 'Test1'],
                 ['id' => 2, 'exam_id' => 1, 'question_id' => 1, 'content' => 'Test2'],
+                ['id' => 3, 'exam_id' => 1, 'question_id' => 2, 'content' => 'Test2'],
+                ['id' => 4, 'exam_id' => 1, 'question_id' => 2, 'content' => 'Test2'],
             ],
         ]);
+    }
+
+    public function testGetAnswersByQuestionsWhenEmptyInput()
+    {
+        $model = new AnswersModel(self::$pdo);
+        $answers = $model->getAnswersByQuestions([]);
+
+        $this->assertNull($answers);
+    }
+
+    public function testGetAnswersByQuestionsWhenNoAnswers()
+    {
+        self::$pdo->exec('DELETE FROM answers');
+        $model = new AnswersModel(self::$pdo);
+        $answers = $model->getAnswersByQuestions(['id' => 1, 'id' => 2]);
+
+        $this->assertEmpty($answers);
+    }
+
+    public function testGetAnswersByQuestions()
+    {
+        $model = new AnswersModel(self::$pdo);
+        $answers = $model->getAnswersByQuestions([
+            ['id' => 1],
+            ['id' => 2],
+        ]);
+
+        $this->assertEquals(2, count($answers));
     }
 
     public function testGetAnswersByOneQuestionId()

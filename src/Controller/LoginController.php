@@ -9,16 +9,17 @@ class LoginController extends AbstractController
      *
      * GET /admin/login
      *
-     * @return void
+     * @return string
      */
     public function loginAction()
     {
         if ($this->isLogged()) {
             $this->redirect('/admin');
-            $this->terminate();
+
+            return $this->terminate();
         }
 
-        $this->render('front/login', ['title' => 'Logowanie']);
+        return $this->render('front/login', ['title' => 'Logowanie']);
     }
 
     /**
@@ -37,7 +38,7 @@ class LoginController extends AbstractController
             $this->setMessage('success', 'Zalogowano pomyślnie!');
             $this->redirect('/admin');
 
-            return;
+            return $this->terminate();
         }
 
         $this->setMessage('warning', 'Złe hasło!');

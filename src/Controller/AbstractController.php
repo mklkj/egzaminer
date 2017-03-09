@@ -156,6 +156,8 @@ abstract class AbstractController
     /**
      * @param string $template Template name
      * @param array  $data     Data to use in template
+     *
+     * @return string
      */
     public function render($template, $data = [])
     {
@@ -182,13 +184,14 @@ abstract class AbstractController
         ]);
 
         try {
-            echo $twig->render($template.'.twig', $data);
+            return $twig->render($template.'.twig', $data);
         } catch (Exception $e) {
             if ($this->config('debug')) {
                 echo $e->getMessage();
             } else {
                 echo 'Error 500';
             }
+            return false;
         }
     }
 }

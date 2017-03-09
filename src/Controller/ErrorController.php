@@ -9,12 +9,12 @@ class ErrorController extends AbstractController
      *
      * @param int $code Error response code.
      *
-     * @return void
+     * @return string
      */
     public function showAction($code = 404)
     {
         http_response_code($code);
 
-        $this->render('error', ['title' => 'Error '.$code]);
+        return $this->render('error', ['title' => 'Error '.$code]);
     }
 }

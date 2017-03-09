@@ -11,13 +11,13 @@ class DashboardController extends AdminController
      *
      * GET /admin
      *
-     * @return void
+     * @return string
      */
     public function indexAction()
     {
         $list = new ExamsListModel($this->get('dbh'));
 
-        $this->render('admin/index', [
+        return $this->render('admin/index', [
             'title'     => 'Panel zarządzania',
             'examsList' => $list->getList(),
         ]);

@@ -14,13 +14,13 @@ class ExamDeleteController extends AdminController
      *
      * @param int $examID
      *
-     * @return void
+     * @return string
      */
     public function deleteAction($examID)
     {
         $exam = (new ExamModel($this->get('dbh')))->getInfo($examID);
 
-        $this->render('admin/delete', [
+        return $this->render('admin/delete', [
             'title'   => 'Usuwanie testu',
             'content' => 'Czy na pewno chcesz usunąć '.$exam['title'].'?',
         ]);

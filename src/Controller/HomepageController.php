@@ -9,11 +9,11 @@ class HomepageController extends AbstractController
      *
      * GET /
      *
-     * @return void
+     * @return string
      */
     public function indexAction()
     {
-        $this->render('front/index', [
+        return $this->render('front/index', [
             'title' => $this->config('homepage-header'),
         ]);
     }

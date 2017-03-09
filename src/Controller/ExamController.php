@@ -18,7 +18,7 @@ class ExamController extends AbstractController
      *
      * @param int $examID Exam ID
      *
-     * @return void
+     * @return string
      */
     public function showAction($examID)
     {
@@ -52,7 +52,7 @@ class ExamController extends AbstractController
             }
         }
 
-        $this->render('front/exam', [
+        return $this->render('front/exam', [
             'title'     => $examInfo['title'],
             'exam'      => $examInfo,
             'questions' => $questions,

@@ -9,23 +9,23 @@ class AnswersModel extends AbstractModel
     /**
      * Get answers by questions (ID).
      *
-     * @param array $answers
+     * @param array $questions
      *
      * @return array
      */
-    public function getAnswersByQuestions(array $answers)
+    public function getAnswersByQuestions(array $questions)
     {
-        if (empty($answers)) {
+        if (empty($questions)) {
             return;
         }
 
         $where = '';
-        foreach ($answers as $key => $value) {
+        foreach ($questions as $key => $value) {
             $where .= ' OR question_id = :question_id_'.md5($value['id']);
         }
 
         $stmt = $this->db->prepare('SELECT * FROM answers WHERE '.trim($where, ' OR '));
-        foreach ($answers as $key => $value) {
+        foreach ($questions as $key => $value) {
             $stmt->bindValue(':question_id_'.md5($value['id']), $value['id'], PDO::PARAM_INT);
         }
 
@@ -34,10 +34,6 @@ class AnswersModel extends AbstractModel
         $array = [];
         foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $key => $value) {
             $array[$value['question_id']][] = $value;
-        }
-
-        if (!isset($array)) {
-            return;
         }
 
         return $array;

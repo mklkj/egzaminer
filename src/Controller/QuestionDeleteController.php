@@ -15,13 +15,13 @@ class QuestionDeleteController extends AdminController
      * @param int $examID
      * @param int $questionID
      *
-     * @return void
+     * @return string
      */
     public function deleteAction($examID, $questionID)
     {
         $question = (new QuestionsModel($this->get('dbh')))->getByQuestionId($questionID);
 
-        $this->render('admin/delete', [
+        return $this->render('admin/delete', [
             'title'   => 'Usuwanie pytania',
             'content' => 'Czy na pewno chcesz usunąć pytanie <i>'.$question['content'].'</i>?',
         ]);

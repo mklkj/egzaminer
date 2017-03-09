@@ -99,7 +99,7 @@ class App
         try {
             // call closure or throw 404 status
             if ($match && is_callable($match['target'])) {
-                call_user_func_array([
+                echo call_user_func_array([
                     new $match['target'][0]($this->container), $match['target'][1],
                 ], $match['params']);
             } else {

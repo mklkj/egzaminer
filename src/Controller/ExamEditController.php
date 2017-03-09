@@ -14,14 +14,14 @@ class ExamEditController extends AdminController
      *
      * GET /admin/exam/edit/[i:id]
      *
-     * @return void
+     * @return string
      */
     public function editAction($examID)
     {
         $exam = (new ExamModel($this->get('dbh')))->getInfo($examID);
         $questions = (new QuestionsModel($this->get('dbh')))->getByExamId($examID);
 
-        $this->render('admin/exam/edit', [
+        return $this->render('admin/exam/edit', [
             'title'     => 'Edycja testu',
             'exam'      => $exam,
             'questions' => $questions,

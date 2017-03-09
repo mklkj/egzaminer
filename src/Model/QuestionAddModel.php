@@ -43,7 +43,7 @@ class QuestionAddModel extends AbstractModel
      * @param int $questionID Question id
      * @param int $correct    Correct anwer id
      */
-    public function addCorrectAnswerToQuestion($questionID, $correct)
+    private function addCorrectAnswerToQuestion($questionID, $correct)
     {
         $stmt = $this->db->prepare('UPDATE questions SET correct = :correct
             WHERE id = :id');

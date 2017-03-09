@@ -13,7 +13,7 @@ class QuestionAddController extends AdminController
      *
      * @param int $examID Exam id
      *
-     * @return void
+     * @return string
      */
     public function addAction($examID)
     {
@@ -29,7 +29,7 @@ class QuestionAddController extends AdminController
             ['content' => '', 'id' => '4'],
         ];
 
-        $this->render('admin/question', [
+        return $this->render('admin/question', [
             'title'    => 'Dodawanie pytania',
             'examID'   => $examID,
             'question' => $question,
