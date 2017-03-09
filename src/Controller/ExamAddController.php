@@ -31,9 +31,9 @@ class ExamAddController extends AbstractController
     {
         $model = new ExamAddModel($this->get('dbh'));
 
-        if ($id = $model->add($this->getFromRequest('post'))) {
+        if ($examID = $model->add($this->getFromRequest('post'))) {
             $this->setMessage('success', 'Dodano pomyślnie');
-            $this->redirect('/admin/exam/edit/'.$id);
+            $this->redirect('/admin/exam/edit/'.$examID);
 
             return;
         }

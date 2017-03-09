@@ -40,7 +40,7 @@ class CalculateScore
      */
     public function calculate()
     {
-        foreach ($this->comparedAnswers as $key => $value) {
+        foreach ($this->comparedAnswers as $value) {
             if ($value['correct'] === $value['userAnswer']) {
                 $this->score++;
             }

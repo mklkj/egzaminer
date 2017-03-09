@@ -31,6 +31,8 @@ class ExamController extends AbstractController
         $questions = (new QuestionsModel($this->get('dbh')))->getByExamId($examID);
         $answers = (new AnswersModel($this->get('dbh')))->getAnswersByQuestions($questions);
 
+        $scoreInfo = null;
+
         // if form was send
         if (!empty($this->getFromRequest('post'))) {
             $compareAnswers = new CompareUserAnswersWithQuestions(
@@ -41,13 +43,11 @@ class ExamController extends AbstractController
 
             $score = new CalculateScore($examInfo, $questions);
             $scoreInfo = $score->getScoreInfo();
-        } else {
-            $scoreInfo = null;
         }
 
         // put answers to questions
         foreach ($questions as $qkey => $qvalue) {
-            foreach ($answers[$qvalue['id']] as $akey => $avalue) {
+            foreach ($answers[$qvalue['id']] as $avalue) {
                 $questions[$qkey]['answers'][] = $avalue;
             }
         }

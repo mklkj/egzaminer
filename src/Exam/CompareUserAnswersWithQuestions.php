@@ -57,10 +57,10 @@ class CompareUserAnswersWithQuestions
         $post = $this->getNormalizeUserPost();
 
         foreach ($this->questions as $key => $value) {
+            $userAnswer = null;
+
             if (isset($post[$value['id']])) {
                 $userAnswer = $post[$value['id']];
-            } else {
-                $userAnswer = null;
             }
 
             $this->questions[$key]['userAnswer'] = $userAnswer;
