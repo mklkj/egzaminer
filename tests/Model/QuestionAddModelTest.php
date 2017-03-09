@@ -31,7 +31,7 @@ class QuestionAddModelTest extends EgzaminerTestsDatabaseTestCase
                 2 => 'Answer content 2',
                 3 => 'Answer content 3',
                 4 => 'Answer content 4',
-            ]
+            ],
         ];
 
         $questionModel = new QuestionAddModel(self::$pdo);
@@ -52,7 +52,7 @@ class QuestionAddModelTest extends EgzaminerTestsDatabaseTestCase
                 2 => 'Answer content 2',
                 3 => 'Answer content 3',
                 4 => 'Answer content 4',
-            ]
+            ],
         ];
 
         $questionModel = new QuestionAddModel(self::$pdo);
@@ -79,7 +79,7 @@ class QuestionAddModelTest extends EgzaminerTestsDatabaseTestCase
                 2 => 'Answer content 2',
                 3 => 'Answer content 3',
                 4 => 'Answer content 4',
-            ]
+            ],
         ];
 
         $questionModel = new QuestionAddModel(self::$pdo);
@@ -106,7 +106,7 @@ class QuestionAddModelTest extends EgzaminerTestsDatabaseTestCase
                 2 => 'Answer content 2',
                 3 => 'Answer content 3',
                 4 => 'Answer content 4',
-            ]
+            ],
         ];
 
         $questionModel = new QuestionAddModel(self::$pdo);

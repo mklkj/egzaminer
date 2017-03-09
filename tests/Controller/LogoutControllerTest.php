@@ -1,12 +1,11 @@
 <?php
 
-use Egzaminer\Controller\LogoutController;
 
 class LogoutControllerTest extends EgzaminerTestsControllerTestCase
 {
     /**
-    * @runInSeparateProcess
-    */
+     * @runInSeparateProcess
+     */
     public function testLogoutAction()
     {
         session_start();

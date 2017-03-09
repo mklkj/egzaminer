@@ -7,18 +7,18 @@ class QuestionsModelTest extends EgzaminerTestsDatabaseTestCase
     private $dataset = [
         'questions' => [
             [
-                'id' => '1',
+                'id'      => '1',
                 'content' => 'Question content',
                 'correct' => '128',
                 'exam_id' => '1020',
-                'image' => 'random.gif',
+                'image'   => 'random.gif',
             ],
             [
-                'id' => '2',
+                'id'      => '2',
                 'content' => 'Another question content',
                 'correct' => '64',
                 'exam_id' => '1020',
-                'image' => 'meme.jpeg',
+                'image'   => 'meme.jpeg',
             ],
         ],
     ];

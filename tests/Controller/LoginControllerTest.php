@@ -14,7 +14,7 @@ class LoginControllerTest extends EgzaminerTestsControllerTestCase
     public function testLoginActionWhenAlreadyLogged()
     {
         $this->container['request']['session'] = [
-            'ga_cookie' => password_hash('admin', PASSWORD_DEFAULT),
+            'ga_cookie'         => password_hash('admin', PASSWORD_DEFAULT),
             'egzaminer_auth_un' => 'admin',
         ];
 

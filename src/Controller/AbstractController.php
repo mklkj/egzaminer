@@ -191,6 +191,7 @@ abstract class AbstractController
             } else {
                 echo 'Error 500';
             }
+
             return false;
         }
     }

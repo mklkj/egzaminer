@@ -15,7 +15,7 @@ class AuthTest extends PHPUnit_Framework_TestCase
 
         $this->request = [
             'session' => [
-                'ga_cookie' => '',
+                'ga_cookie'         => '',
                 'egzaminer_auth_un' => '',
             ],
         ];
@@ -46,7 +46,7 @@ class AuthTest extends PHPUnit_Framework_TestCase
     {
         $auth = new Auth($this->users, [
             'session' => [
-                'ga_cookie' => password_hash('admin', PASSWORD_DEFAULT),
+                'ga_cookie'         => password_hash('admin', PASSWORD_DEFAULT),
                 'egzaminer_auth_un' => 'admin',
             ],
         ]);
@@ -63,8 +63,8 @@ class AuthTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-    * @runInSeparateProcess
-    */
+     * @runInSeparateProcess
+     */
     public function testLogout()
     {
         session_start();

@@ -1,7 +1,7 @@
 <?php
 
-use Tamtamchik\SimpleFlash\Flash;
 use Egzaminer\Auth;
+use Tamtamchik\SimpleFlash\Flash;
 
 abstract class EgzaminerTestsControllerTestCase extends EgzaminerTestsDatabaseTestCase
 {

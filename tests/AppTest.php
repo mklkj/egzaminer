@@ -10,6 +10,7 @@ class AppTest extends PHPUnit_Framework_TestCase
 
         $_SESSION = [];
     }
+
     public function testGetRootDir()
     {
         $app = new App('test');

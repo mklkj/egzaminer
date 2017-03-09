@@ -7,44 +7,44 @@ class QuestionEditModelTest extends EgzaminerTestsDatabaseTestCase
     private $dataset = [
         'questions' => [
             [
-                'id' => '1',
+                'id'      => '1',
                 'content' => 'Question content',
                 'correct' => '128',
                 'exam_id' => '1020',
-                'image' => 'random.gif',
+                'image'   => 'random.gif',
             ],
             [
-                'id' => '2',
+                'id'      => '2',
                 'content' => 'Another question content',
                 'correct' => '64',
                 'exam_id' => '1020',
-                'image' => 'meme.jpeg',
+                'image'   => 'meme.jpeg',
             ],
         ],
         'answers' => [
             [
-                'id' => '1',
-                'exam_id' => '1020',
+                'id'          => '1',
+                'exam_id'     => '1020',
                 'question_id' => '2',
-                'content' => 'Test answers 1',
+                'content'     => 'Test answers 1',
             ],
             [
-                'id' => '2',
-                'exam_id' => '1020',
+                'id'          => '2',
+                'exam_id'     => '1020',
                 'question_id' => '2',
-                'content' => 'Test answers 2',
+                'content'     => 'Test answers 2',
             ],
             [
-                'id' => '3',
-                'exam_id' => '1020',
+                'id'          => '3',
+                'exam_id'     => '1020',
                 'question_id' => '2',
-                'content' => 'Test answers 3',
+                'content'     => 'Test answers 3',
             ],
             [
-                'id' => '4',
-                'exam_id' => '1020',
+                'id'          => '4',
+                'exam_id'     => '1020',
                 'question_id' => '2',
-                'content' => 'Test answers 4',
+                'content'     => 'Test answers 4',
             ],
         ],
     ];
@@ -61,11 +61,11 @@ class QuestionEditModelTest extends EgzaminerTestsDatabaseTestCase
         $fileArray = [];
         $dataset = [
             'question' => [
-                'id' => $questionID,
+                'id'      => $questionID,
                 'content' => 'Question content',
                 'correct' => '128',
                 'exam_id' => '1020',
-                'image' => 'random.gif',
+                'image'   => 'random.gif',
             ],
             'answers' => [],
         ];
@@ -86,16 +86,16 @@ class QuestionEditModelTest extends EgzaminerTestsDatabaseTestCase
         $questionID = '1';
 
         $fileArray = [
-            'name' => 'changed.jpg',
-            'tmp_name' => '/tmp/public/php123.tmp'
+            'name'     => 'changed.jpg',
+            'tmp_name' => '/tmp/public/php123.tmp',
         ];
         $dataset = [
             'question' => [
-                'id' => $questionID,
+                'id'      => $questionID,
                 'content' => 'Question content',
                 'correct' => '128',
                 'exam_id' => '1020',
-                'image' => 'random.gif',
+                'image'   => 'random.gif',
             ],
             'answers' => [],
         ];
@@ -119,11 +119,11 @@ class QuestionEditModelTest extends EgzaminerTestsDatabaseTestCase
         $fileArray = [];
         $dataset = [
             'question' => [
-                'id' => $questionID,
+                'id'      => $questionID,
                 'content' => 'Question content from edit answers test',
                 'correct' => '4',
                 'exam_id' => '1020',
-                'image' => 'idylla.gif',
+                'image'   => 'idylla.gif',
             ],
             'answers' => [
                 '1' => 'Tested answer1',
@@ -140,27 +140,27 @@ class QuestionEditModelTest extends EgzaminerTestsDatabaseTestCase
 
         $this->assertEquals([
                 [
-                    'id' => '1',
-                    'content' => 'Tested answer1',
-                    'exam_id' => $dataset['question']['exam_id'],
+                    'id'          => '1',
+                    'content'     => 'Tested answer1',
+                    'exam_id'     => $dataset['question']['exam_id'],
                     'question_id' => $questionID,
                 ],
                 [
-                    'id' => '2',
-                    'content' => 'Tested answer2',
-                    'exam_id' => $dataset['question']['exam_id'],
+                    'id'          => '2',
+                    'content'     => 'Tested answer2',
+                    'exam_id'     => $dataset['question']['exam_id'],
                     'question_id' => $questionID,
                 ],
                 [
-                    'id' => '3',
-                    'content' => 'Tested answer3',
-                    'exam_id' => $dataset['question']['exam_id'],
+                    'id'          => '3',
+                    'content'     => 'Tested answer3',
+                    'exam_id'     => $dataset['question']['exam_id'],
                     'question_id' => $questionID,
                 ],
                 [
-                    'id' => '4',
-                    'content' => 'Tested answer4',
-                    'exam_id' => $dataset['question']['exam_id'],
+                    'id'          => '4',
+                    'content'     => 'Tested answer4',
+                    'exam_id'     => $dataset['question']['exam_id'],
                     'question_id' => $questionID,
                 ],
             ],
