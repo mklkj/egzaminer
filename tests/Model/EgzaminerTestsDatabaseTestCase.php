@@ -1,6 +1,6 @@
 <?php
 
-abstract class EgzaminerTestsDatabaseTestCase extends PHPUnit_Extensions_Database_TestCase
+abstract class EgzaminerTestsDatabaseTestCase extends \PHPUnit_Extensions_Database_TestCase
 {
     // only instantiate pdo once for test clean-up/fixture load
     protected static $pdo = null;
