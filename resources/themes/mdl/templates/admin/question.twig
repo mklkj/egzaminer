@@ -1,19 +1,25 @@
 {% extends "admin/layout.twig" %}
 
 {% block content %}
-  <form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
+  <form class="mdl-cell mdl-cell--12-col" action="" enctype="multipart/form-data" method="post">
 
     <a href="{{ dir }}/admin/exam/edit/{{ examID }}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+      <i class="material-icons button-icon" role="presentation">arrow_back</i>
       Wróć do edycji testu
     </a>
 
     {% if templateType == 'edit' %}
       <a href="{{ dir }}/admin/exam/edit/{{ examID }}/question/add"
       class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised mdl-js-ripple-effect">
+        <i class="material-icons button-icon" role="presentation">add</i>
         Dodaj nowe pytanie
       </a>
     {% endif %}
-    <button type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect">Zapisz</button>
+
+    <button type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect pull-right">
+      <i class="material-icons button-icon" role="presentation">save</i>
+      Zapisz
+    </button>
 
     <hr>
 

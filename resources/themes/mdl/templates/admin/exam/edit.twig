@@ -1,14 +1,16 @@
 {% extends "admin/layout.twig" %}
 
 {% block content %}
-  <form action="{{ dir }}/admin/exam/edit/{{ exam.id }}" method="post">
+  <form action="{{ dir }}/admin/exam/edit/{{ exam.id }}" method="post" class="mdl-cell mdl-cell--12-col">
 
     <a href="{{ dir }}/admin/exam/edit/{{ exam.id }}/question/add"
       class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised mdl-js-ripple-effect">
-      Dodaj pytanie
+      <i class="material-icons button-icon" role="presentation">add</i>
+      Dodaj nowe pytanie
     </a>
     <button type="submit" name="edit"
-      class="mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect">
+      class="mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect pull-right">
+      <i class="material-icons button-icon" role="presentation">save</i>
       Zapisz
     </button>
 
@@ -83,9 +85,10 @@
       </table>
     </div>
 
-    <p>
-      <button type="submit" name="edit" class="mdl-button mdl-js-button
-        mdl-button--colored mdl-button--raised mdl-js-ripple-effect">Zapisz</button>
-    </p>
+    <button type="submit" name="edit"
+      class="mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect pull-right">
+      <i class="material-icons button-icon" role="presentation">save</i>
+      Zapisz
+    </button>
   </form>
 {% endblock %}

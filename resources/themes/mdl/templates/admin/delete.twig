@@ -1,10 +1,14 @@
 {% extends "admin/layout.twig" %}
 
 {% block content %}
-  <p>{{ content|raw }}</p>
 
-  <form action="" method="post">
-    <input type="submit" name="confirm" value="Usuń" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+  <form action="" method="post" class="mdl-cell mdl-cell--12-col">
+    <p>{{ content|raw }}</p>
+
+    <button type="submit" name="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <i class="material-icons button-icon" role="presentation">delete</i>
+        Usuń
+    </button>
   </form>
 
 {% endblock %}
