@@ -9,6 +9,7 @@ use PDOException;
 use Tamtamchik\SimpleFlash\Flash;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run as Whoops;
+use Egzaminer\Controller\ErrorController;
 
 class App
 {
@@ -120,7 +121,7 @@ class App
             if ($this->config['debug']) {
                 throw new DebugException($e->getMessage());
             } else {
-                (new Error($this->container))->showAction(404);
+                echo (new ErrorController($this->container))->showAction(404);
             }
             $this->terminate();
         }
