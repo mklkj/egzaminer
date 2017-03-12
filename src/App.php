@@ -3,13 +3,13 @@
 namespace Egzaminer;
 
 use AltoRouter;
+use Egzaminer\Controller\ErrorController;
 use Exception;
 use PDO;
 use PDOException;
 use Tamtamchik\SimpleFlash\Flash;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run as Whoops;
-use Egzaminer\Controller\ErrorController;
 
 class App
 {
