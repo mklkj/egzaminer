@@ -16,8 +16,8 @@ class ExamControllerTest extends EgzaminerTestsControllerTestCase
 
     public function testShowAction()
     {
-    	self::$pdo->exec("INSERT INTO exams (id, title, questions, threshold, group_id)
-    		VALUES (NULL, 'Test', 16, 7, 1)");
+        self::$pdo->exec("INSERT INTO exams (id, title, questions, threshold, group_id)
+            VALUES (NULL, 'Test', 16, 7, 1)");
         $controller = new ExamController($this->container);
 
         $controller->showAction(1);
