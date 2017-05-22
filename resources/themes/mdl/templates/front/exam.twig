@@ -4,8 +4,15 @@
   {% if score %}
     <div class="mdl-shadow--4dp alert alert--big alert--{% if score.isPass %}success{% else %}danger{% endif %}" role="alert">
       <h3>{% if score.isPass %}Zdałeś{% else %}Nie udało ci się zdać!{% endif %}</h3>
-      <p>Uzyskałeś {{ score.percentages }}% (próg zaliczenia to {{ exam.thresholdPercentages }}%).</p>
-      <p>Twój wynik punktowy to: {{ score.score }}/{{ exam.questions }}</p>
+      <div class="mdl-grid">
+        <div class="mdl-cell--6-col">
+          <p>Uzyskałeś {{ score.percentages }}% (próg zaliczenia to {{ exam.thresholdPercentages }}%).</p>
+          <p>Twój wynik punktowy to: {{ score.score }}/{{ exam.questions }}</p>
+        </div>
+        <div class="mdl-cell--6-col">
+          <a href="{{ dir }}/exam/{{ exam.id }}" class="pull-right mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect btn-again">Powtórz test</a>
+        </div>
+      </div>
     </div>
   {% endif %}
 
