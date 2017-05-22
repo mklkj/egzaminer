@@ -4,8 +4,15 @@
   {% if score %}
     <div class="alert alert-{% if score.isPass %}success{% else %}danger{% endif %}" role="alert">
       <h2>{% if score.isPass %}Zdałeś{% else %}Nie udało ci się zdać!{% endif %}</h2>
-      <p>Uzyskałeś {{ score.percentages }}% (próg zaliczenia to {{ exam.thresholdPercentages }}%).</p>
-      <p>Twój wynik punktowy to: {{ score.score }}/{{ exam.questions }}</p>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Uzyskałeś {{ score.percentages }}% (próg zaliczenia to {{ exam.thresholdPercentages }}%).</p>
+          <p>Twój wynik punktowy to: {{ score.score }}/{{ exam.questions }}</p>
+        </div>
+        <div class="col-md-6">
+          <a href="{{ dir }}/exam/{{ exam.id }}" class="btn btn-primary pull-right btn-again">Powtórz test</a>
+        </div>
+      </div>
     </div>
   {% endif %}
 

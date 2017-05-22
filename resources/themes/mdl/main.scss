@@ -29,9 +29,15 @@
   padding: 10px;
   margin: 10px;
 }
+.alert h3 {
+  line-height: inherit;
+}
+.alert p {
+  margin-bottom: 5px;
+}
 .alert--big {
-  padding: 25px;
-  margin: 10px 0 30px;
+  padding: 10px 15px;
+  margin: 10px 10px 30px;
 }
 .alert--success {
   color: #3c763d;
@@ -109,4 +115,8 @@
 .mdl-button .button-icon.material-icons {
   margin-right: 6px;
   margin-bottom: 2px;
+}
+
+.btn-again {
+  margin-top: 5px;
 }
