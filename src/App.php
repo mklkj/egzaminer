@@ -13,7 +13,7 @@ use Whoops\Run as Whoops;
 
 class App
 {
-    const VERSION = '0.12.0';
+    const VERSION = '0.13.0';
 
     /**
      * @var string
