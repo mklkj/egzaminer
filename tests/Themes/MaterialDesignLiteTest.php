@@ -1,6 +1,5 @@
 <?php
 
-use Egzaminer\Exam\CalculateScore;
 use Egzaminer\Themes\MaterialDesignLite;
 use PHPUnit\Framework\TestCase;
 
