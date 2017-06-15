@@ -6,7 +6,7 @@ class ExamsGroupModelTest extends EgzaminerTestsDatabaseTestCase
 {
     public function getDataSet()
     {
-        return new MyApp_DbUnit_ArrayDataSet([
+        return new EgzaminerArrayDataSet([
             'exams_groups' => [
                 ['id' => 1, 'title' => 'Title1', 'description' => 'fdsa'],
                 ['id' => 2, 'title' => 'Title2', 'description' => 'asdf'],

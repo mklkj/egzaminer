@@ -7,7 +7,7 @@ abstract class EgzaminerTestsControllerTestCase extends EgzaminerTestsDatabaseTe
 {
     public function getDataSet()
     {
-        return new MyApp_DbUnit_ArrayDataSet([]);
+        return new EgzaminerArrayDataSet([]);
     }
 
     public function setUp()

@@ -20,6 +20,6 @@ class ExamControllerTest extends EgzaminerTestsControllerTestCase
             VALUES (NULL, 'Test', 16, 7, 1)");
         $controller = new ExamController($this->container);
 
-        $controller->showAction(1);
+        $this->assertInternalType('string', $controller->showAction(1));
     }
 }

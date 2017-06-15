@@ -1,8 +1,9 @@
 <?php
 
 use Egzaminer\Auth;
+use PHPUnit\Framework\TestCase;
 
-class AuthTest extends PHPUnit_Framework_TestCase
+class AuthTest extends TestCase
 {
     public function setUp()
     {

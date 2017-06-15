@@ -1,8 +1,9 @@
 <?php
 
 use Egzaminer\Exam\CompareUserAnswersWithQuestions;
+use PHPUnit\Framework\TestCase;
 
-class CompareUserAnswersWithQuestionsTest extends PHPUnit_Framework_TestCase
+class CompareUserAnswersWithQuestionsTest extends TestCase
 {
     public function testGetNormalizeUserPost()
     {

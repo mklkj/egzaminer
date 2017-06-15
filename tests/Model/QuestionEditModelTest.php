@@ -51,7 +51,7 @@ class QuestionEditModelTest extends EgzaminerTestsDatabaseTestCase
 
     public function getDataSet()
     {
-        return new MyApp_DbUnit_ArrayDataSet($this->dataset);
+        return new EgzaminerArrayDataSet($this->dataset);
     }
 
     public function testEdit()

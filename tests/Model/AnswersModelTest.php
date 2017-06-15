@@ -6,7 +6,7 @@ class AnswersModelTest extends EgzaminerTestsDatabaseTestCase
 {
     public function getDataSet()
     {
-        return new MyApp_DbUnit_ArrayDataSet([
+        return new EgzaminerArrayDataSet([
             'answers' => [
                 ['id' => 1, 'exam_id' => 1, 'question_id' => 1, 'content' => 'Test1'],
                 ['id' => 2, 'exam_id' => 1, 'question_id' => 1, 'content' => 'Test2'],

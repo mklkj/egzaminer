@@ -1,8 +1,10 @@
 <?php
 
+use Egzaminer\Exam\CalculateScore;
 use Egzaminer\Themes\MaterialDesignLite;
+use PHPUnit\Framework\TestCase;
 
-class MaterialDesignLiteTest extends PHPUnit_Framework_TestCase
+class MaterialDesignLiteTest extends TestCase
 {
     public function testWrapMessages()
     {

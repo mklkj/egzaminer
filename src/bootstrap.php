@@ -2,6 +2,10 @@
 
 use Egzaminer\App;
 
+if (version_compare(PHP_VERSION, '7.0', '<')) {
+    die('Your host needs to use PHP 7.0 or higher to run Egzaminer.');
+}
+
 include dirname(__DIR__).'/vendor/autoload.php';
 
 session_start();

@@ -3,15 +3,15 @@
     "version": "0.13.0",
     "type": "project",
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0",
         "altorouter/altorouter": "^1.2",
-        "twig/twig": "~1.0",
-        "tamtamchik/simple-flash": "^1.2"
+        "tamtamchik/simple-flash": "^1.2",
+        "twig/twig": "^2.4"
     },
     "require-dev": {
         "filp/whoops": "^2.1",
-        "phpunit/dbunit": "^2",
-        "phpunit/phpunit": "5.7.*"
+        "phpunit/dbunit": "^3.0",
+        "phpunit/phpunit": "^6.2"
     },
     "license": "MIT",
     "authors": [

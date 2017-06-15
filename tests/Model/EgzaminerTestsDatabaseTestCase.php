@@ -1,7 +1,12 @@
 <?php
 
-abstract class EgzaminerTestsDatabaseTestCase extends \PHPUnit_Extensions_Database_TestCase
+use PHPUnit\DbUnit\TestCaseTrait;
+use PHPUnit\Framework\TestCase;
+
+abstract class EgzaminerTestsDatabaseTestCase extends TestCase
 {
+    use TestCaseTrait;
+
     // only instantiate pdo once for test clean-up/fixture load
     protected static $pdo = null;
 

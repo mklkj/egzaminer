@@ -1,10 +1,11 @@
 <?php
 
 use Egzaminer\Exam\CalculateScore;
+use PHPUnit\Framework\TestCase;
 
-class CalculateScoreTest extends PHPUnit_Framework_TestCase
+class CalculateScoreTest extends TestCase
 {
-    public function __construct()
+    public function setUp()
     {
         $this->test = [
             'title'     => 'Calculate Score Test',

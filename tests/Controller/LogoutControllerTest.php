@@ -1,6 +1,5 @@
 <?php
 
-
 class LogoutControllerTest extends EgzaminerTestsControllerTestCase
 {
     /**

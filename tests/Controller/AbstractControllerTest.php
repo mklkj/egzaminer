@@ -1,6 +1,8 @@
 <?php
 
-class AbstractController extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class AbstractController extends TestCase
 {
     public function testGet()
     {
