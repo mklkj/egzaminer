@@ -43,6 +43,7 @@ class App
     public function __construct($url)
     {
         $this->config = $this->loadConfig('site');
+
         try {
             if ($this->config['debug']) {
                 $whoops = new Whoops();
@@ -86,9 +87,11 @@ class App
     public function loadConfig($name)
     {
         $path = dirname(__DIR__).'/config/'.$name.'.php';
+
         try {
             if (!file_exists($path)) {
                 http_response_code(500);
+
                 throw new Exception('Config file '.$name.'.php does not exist');
             }
         } catch (Exception $e) {
