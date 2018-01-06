@@ -33,7 +33,7 @@ abstract class AbstractController
     public function get(string $name)
     {
         if (!isset($this->container[$name])) {
-            return null;
+            return;
         }
 
         return $this->container[$name];
@@ -47,7 +47,7 @@ abstract class AbstractController
     public function config(string $name)
     {
         if (!isset($this->get('config')[$name])) {
-            return null;
+            return;
         }
 
         return $this->get('config')[$name];
@@ -67,7 +67,7 @@ abstract class AbstractController
 
         // if unknown request type
         if (!isset($request[$type])) {
-            return null;
+            return;
         }
 
         // for get all indexes from type

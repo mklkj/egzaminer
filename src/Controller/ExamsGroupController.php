@@ -11,12 +11,13 @@ class ExamsGroupController extends AbstractController
 {
     /**
      * Exams group index action.
-     * GET /group/[i:id]
+     * GET /group/[i:id].
      *
      * @param int $examID Exam ID
      *
-     * @return string
      * @throws Exception
+     *
+     * @return string
      */
     public function indexAction(int $examID): string
     {

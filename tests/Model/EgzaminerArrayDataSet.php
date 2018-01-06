@@ -2,8 +2,8 @@
 
 namespace Egzaminer\Tests\Model;
 
-use PHPUnit\DbUnit\DataSet;
 use InvalidArgumentException;
+use PHPUnit\DbUnit\DataSet;
 
 class EgzaminerArrayDataSet extends DataSet\AbstractDataSet
 {

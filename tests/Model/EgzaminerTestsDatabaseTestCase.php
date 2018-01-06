@@ -11,7 +11,8 @@ abstract class EgzaminerTestsDatabaseTestCase extends TestCase
     use TestCaseTrait;
 
     /**
-     * only instantiate pdo once for test clean-up/fixture load
+     * only instantiate pdo once for test clean-up/fixture load.
+     *
      * @var PDO
      */
     protected static $pdo;

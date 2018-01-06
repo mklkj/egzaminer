@@ -13,12 +13,13 @@ class ExamController extends AbstractController
 {
     /**
      * Exam page with questions.
-     * GET /exam/[i:id]
+     * GET /exam/[i:id].
      *
      * @param int $examID Exam ID
      *
-     * @return string
      * @throws Exception
+     *
+     * @return string
      */
     public function showAction(int $examID): string
     {

@@ -162,8 +162,9 @@ class App
     /**
      * @param array $config
      *
-     * @return PDO
      * @throws DebugException
+     *
+     * @return PDO
      */
     private function dbConnect(array $config): PDO
     {
