@@ -1,13 +1,15 @@
 <?php
 
+use Egzaminer\Controller\AbstractController;
 use PHPUnit\Framework\TestCase;
 
-class AbstractController extends TestCase
+class AbstractControllerTest extends TestCase
 {
     public function testGet()
     {
         $testData = ['key' => 'value'];
 
+        /** @var AbstractController $mock */
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
             ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
@@ -17,6 +19,7 @@ class AbstractController extends TestCase
 
     public function testGetWhenKeyNotExist()
     {
+        /** @var AbstractController $mock */
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
             ->setConstructorArgs([[]])
             ->getMockForAbstractClass();
@@ -32,6 +35,7 @@ class AbstractController extends TestCase
             ],
         ];
 
+        /** @var AbstractController $mock */
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
             ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
@@ -47,6 +51,7 @@ class AbstractController extends TestCase
             ],
         ];
 
+        /** @var AbstractController $mock */
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
             ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
@@ -64,6 +69,7 @@ class AbstractController extends TestCase
             ],
         ];
 
+        /** @var AbstractController $mock */
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
             ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
@@ -81,6 +87,7 @@ class AbstractController extends TestCase
             ],
         ];
 
+        /** @var AbstractController $mock */
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
             ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
@@ -98,6 +105,7 @@ class AbstractController extends TestCase
             ],
         ];
 
+        /** @var AbstractController $mock */
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
             ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
@@ -115,6 +123,7 @@ class AbstractController extends TestCase
             ],
         ];
 
+        /** @var AbstractController $mock */
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
             ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();
@@ -126,6 +135,7 @@ class AbstractController extends TestCase
     {
         $testData = ['dir' => '/egzaminer'];
 
+        /** @var AbstractController $mock */
         $mock = $this->getMockBuilder('Egzaminer\Controller\AbstractController')
             ->setConstructorArgs([$testData])
             ->getMockForAbstractClass();

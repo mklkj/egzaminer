@@ -7,6 +7,7 @@ use Egzaminer\Controller\ErrorController;
 use Exception;
 use PDO;
 use PDOException;
+use RuntimeException;
 use Tamtamchik\SimpleFlash\Flash;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run as Whoops;
@@ -35,14 +36,9 @@ class App
      */
     private $container;
 
-    /**
-     * Constructor.
-     *
-     * @param string $url
-     */
-    public function __construct($url)
+    public function __construct(string $url)
     {
-        $this->config = $this->loadConfig('site');
+        $this->config = $this->getConfig('site');
 
         try {
             if ($this->config['debug']) {
@@ -53,7 +49,7 @@ class App
 
             $this->container = [
                 'config'  => $this->config,
-                'dbh'     => $this->dbConnect($this->loadConfig('db')),
+                'dbh'     => $this->dbConnect($this->getConfig('db')),
                 'dir'     => $this->getDir(),
                 'flash'   => new Flash(),
                 'request' => [
@@ -62,11 +58,11 @@ class App
                     'session' => &$_SESSION,
                     'files'   => $_FILES,
                 ],
-                'rootDir' => $this->getRootDir(),
+                'rootDir' => \dirname(__DIR__),
                 'version' => self::VERSION,
             ];
 
-            $this->container['auth'] = new Auth($this->loadConfig('users'), $this->container['request']);
+            $this->container['auth'] = new Auth($this->getConfig('users'), $this->container['request']);
         } catch (Exception $e) {
             http_response_code(500);
             echo $e->getMessage();
@@ -74,25 +70,18 @@ class App
         }
 
         $this->router = new AltoRouter();
-        $this->setUrl($url);
+        $this->setRequestUrl($url);
     }
 
-    /**
-     * Get config.
-     *
-     * @param string $name Config filename
-     *
-     * @return array
-     */
-    public function loadConfig($name)
+    public function getConfig(string $name): array
     {
-        $path = dirname(__DIR__).'/config/'.$name.'.php';
+        $path = \dirname(__DIR__).'/config/'.$name.'.php';
 
         try {
             if (!file_exists($path)) {
                 http_response_code(500);
 
-                throw new Exception('Config file '.$name.'.php does not exist');
+                throw new RuntimeException('Config file '.$name.'.php does not exist');
             }
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -104,6 +93,8 @@ class App
 
     /**
      * Run app.
+     *
+     * @throws Exception
      */
     public function invoke()
     {
@@ -113,19 +104,20 @@ class App
 
         try {
             // call closure or throw 404 status
-            if ($match && is_callable($match['target'])) {
-                echo call_user_func_array([
+            if ($match && \is_callable($match['target'])) {
+                echo \call_user_func_array([
                     new $match['target'][0]($this->container), $match['target'][1],
                 ], $match['params']);
             } else {
-                throw new Exception('Page not exist! No route match');
+                throw new RuntimeException('Page not exist! No route match');
             }
         } catch (Exception $e) {
             if ($this->config['debug']) {
                 throw new DebugException($e->getMessage());
-            } else {
-                echo (new ErrorController($this->container))->showAction(404);
             }
+
+            echo (new ErrorController($this->container))->showAction();
+
             $this->terminate();
         }
     }
@@ -133,14 +125,16 @@ class App
     /**
      * Load routes.
      *
+     * @throws Exception
+     *
      * @return void
      */
     public function loadRoutes()
     {
-        $routesArray = include __DIR__.'/routes.php';
+        $routesArray = (array) include __DIR__.'/routes.php';
 
         foreach ($routesArray as $key => $route) {
-            if (2 === count($route)) {
+            if (2 === \count($route)) {
                 $this->router->map(
                     $route[0][0],
                     $route[0][1],
@@ -165,8 +159,16 @@ class App
         }
     }
 
-    private function dbConnect(array $config)
+    /**
+     * @param array $config
+     *
+     * @return PDO
+     * @throws DebugException
+     */
+    private function dbConnect(array $config): PDO
     {
+        $dbh = null;
+
         try {
             $dsn = 'mysql'
             .':dbname='.$config['name']
@@ -181,18 +183,18 @@ class App
             if ($this->config['debug']) {
                 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
-
-            return $dbh;
         } catch (PDOException $e) {
             http_response_code(500);
 
             if ($this->config['debug']) {
                 throw new DebugException($e->getMessage());
-            } else {
-                echo 'Error 500';
             }
+
+            echo 'Error 500';
             $this->terminate();
         }
+
+        return $dbh;
     }
 
     public function terminate($code = 1)
@@ -200,37 +202,17 @@ class App
         exit($code);
     }
 
-    /**
-     * Set request url.
-     *
-     * @param string $request
-     */
-    public function setUrl($request)
+    public function setRequestUrl(string $request)
     {
-        $this->url = substr($request, strlen($this->getDir()));
+        $this->url = substr($request, \strlen($this->getDir()));
     }
 
-    /**
-     * Get app root dir.
-     *
-     * @return string
-     */
-    public function getRootDir()
+    public function getDir(): string
     {
-        return dirname(__DIR__);
-    }
-
-    /**
-     * Get app dir.
-     *
-     * @return string
-     */
-    public function getDir()
-    {
-        if (dirname($_SERVER['SCRIPT_NAME']) == '/') {
+        if (\dirname($_SERVER['SCRIPT_NAME']) === '/') {
             return '';
         }
 
-        return dirname($_SERVER['SCRIPT_NAME']);
+        return \dirname($_SERVER['SCRIPT_NAME']);
     }
 }

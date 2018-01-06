@@ -6,27 +6,14 @@ use PDO;
 
 class ExamsListModel extends AbstractModel
 {
-    /**
-     * Get exams list.
-     *
-     * @return array
-     */
-    public function getList()
+    public function getList(): array
     {
-        $stmt = $this->db->prepare('SELECT id, title, questions FROM exams');
-        $stmt->execute();
+        $stmt = $this->db->query('SELECT id, title, questions FROM exams');
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Get exams list by group ID.
-     *
-     * @param int $groupID Group ID
-     *
-     * @return array
-     */
-    public function getExamsByGroupId($groupID)
+    public function getExamsByGroupId(int $groupID): array
     {
         $stmt = $this->db->prepare('SELECT id, title, questions FROM exams WHERE group_id = :gid');
         $stmt->bindValue(':gid', $groupID, PDO::PARAM_INT);

@@ -1,6 +1,8 @@
 <?php
 
 use Egzaminer\Model\ExamEditModel;
+use Egzaminer\Tests\Model\EgzaminerArrayDataSet;
+use Egzaminer\Tests\Model\EgzaminerTestsDatabaseTestCase;
 
 class ExamEditModelTest extends EgzaminerTestsDatabaseTestCase
 {

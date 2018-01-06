@@ -6,7 +6,7 @@ use PDO;
 
 class QuestionAddModel extends AbstractModel
 {
-    public function add($examID, $post)
+    public function add(int $examID, array $post): int
     {
         if (!isset($post['question']['correct'])) {
             $post['question']['correct'] = 0;
@@ -18,32 +18,18 @@ class QuestionAddModel extends AbstractModel
         return $qid;
     }
 
-    /**
-     * Add question for exam.
-     *
-     * @param int   $examID
-     * @param array $question
-     *
-     * @return book
-     */
-    private function addQuestion($examID, $question)
+    private function addQuestion(int $examID, array $question): int
     {
         $stmt = $this->db->prepare('INSERT INTO questions (exam_id, content)
             VALUES (:exam_id, :content)');
         $stmt->bindValue(':exam_id', $examID, PDO::PARAM_INT);
-        $stmt->bindValue(':content', trim($question['content']), PDO::PARAM_STR);
+        $stmt->bindValue(':content', trim($question['content']));
         $stmt->execute();
 
         return $this->db->lastInsertId();
     }
 
-    /**
-     * Add correct answer to question.
-     *
-     * @param int $questionID Question id
-     * @param int $correct    Correct anwer id
-     */
-    private function addCorrectAnswerToQuestion($questionID, $correct)
+    private function addCorrectAnswerToQuestion(int $questionID, int $correct): bool
     {
         $stmt = $this->db->prepare('UPDATE questions SET correct = :correct
             WHERE id = :id');
@@ -53,17 +39,7 @@ class QuestionAddModel extends AbstractModel
         return $stmt->execute();
     }
 
-    /**
-     * Add answers for exam.
-     *
-     * @param int   $examID
-     * @param int   $questionID
-     * @param int   $correct
-     * @param array $answers
-     *
-     * @return bool
-     */
-    private function addAnswers($examID, $questionID, $correct, $answers)
+    private function addAnswers(int $examID, int $questionID, int $correct, array $answers): int
     {
         $stmt = $this->db->prepare('INSERT INTO answers (exam_id, question_id, content)
             VALUES (:exam_id, :question_id, :content)
@@ -73,10 +49,10 @@ class QuestionAddModel extends AbstractModel
         foreach ($answers as $key => $value) {
             $stmt->bindValue(':exam_id', $examID, PDO::PARAM_INT);
             $stmt->bindValue(':question_id', $questionID, PDO::PARAM_INT);
-            $stmt->bindValue(':content', trim($value), PDO::PARAM_STR);
+            $stmt->bindValue(':content', trim($value));
             $stmt->execute();
 
-            if ($correct == $key) {
+            if ($correct === $key) {
                 $correctId = $this->db->lastInsertId();
             }
         }

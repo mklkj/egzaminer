@@ -23,7 +23,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Egzaminer\\": "src/"
+            "Egzaminer\\": "src/",
+            "Egzaminer\\Tests\\": "src/tests"
         }
     }
 }

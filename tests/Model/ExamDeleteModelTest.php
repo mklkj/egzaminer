@@ -1,6 +1,8 @@
 <?php
 
 use Egzaminer\Model\ExamDeleteModel;
+use Egzaminer\Tests\Model\EgzaminerArrayDataSet;
+use Egzaminer\Tests\Model\EgzaminerTestsDatabaseTestCase;
 
 class ExamDeleteModelTest extends EgzaminerTestsDatabaseTestCase
 {

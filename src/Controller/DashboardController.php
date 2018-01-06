@@ -13,7 +13,7 @@ class DashboardController extends AdminController
      *
      * @return string
      */
-    public function indexAction()
+    public function indexAction(): string
     {
         $list = new ExamsListModel($this->get('dbh'));
 

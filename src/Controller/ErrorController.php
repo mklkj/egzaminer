@@ -4,14 +4,7 @@ namespace Egzaminer\Controller;
 
 class ErrorController extends AbstractController
 {
-    /**
-     * Error action.
-     *
-     * @param int $code Error response code.
-     *
-     * @return string
-     */
-    public function showAction($code = 404)
+    public function showAction(int $code = 404): string
     {
         http_response_code($code);
 

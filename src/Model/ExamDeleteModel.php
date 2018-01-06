@@ -6,14 +6,7 @@ use PDO;
 
 class ExamDeleteModel extends AbstractModel
 {
-    /**
-     * Delete exam.
-     *
-     * @param int $examID
-     *
-     * @return bool
-     */
-    public function delete($examID)
+    public function delete(int $examID): bool
     {
         $stmt = $this->db->prepare('DELETE FROM exams WHERE id = :id');
         $stmt->bindValue(':id', $examID, PDO::PARAM_INT);

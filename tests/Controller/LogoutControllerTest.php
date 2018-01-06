@@ -1,5 +1,7 @@
 <?php
 
+use Egzaminer\Tests\Controller\EgzaminerTestsControllerTestCase;
+
 class LogoutControllerTest extends EgzaminerTestsControllerTestCase
 {
     /**

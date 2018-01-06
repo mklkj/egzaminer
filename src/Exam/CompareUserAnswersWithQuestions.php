@@ -14,28 +14,17 @@ class CompareUserAnswersWithQuestions
      */
     private $questions;
 
-    /**
-     * Constructor.
-     *
-     * @param array $post
-     * @param array $questions
-     */
-    public function __construct(array $post, $questions)
+    public function __construct(array $post, array $questions)
     {
         $this->post = $post;
         $this->questions = $questions;
     }
 
-    /**
-     * Get normalized user post.
-     *
-     * @return array
-     */
-    public function getNormalizeUserPost()
+    public function getNormalizeUserPost(): array
     {
         unset($this->post['send']);
         if (empty($this->post)) {
-            return;
+            return [];
         }
 
         $post = [];
@@ -47,12 +36,7 @@ class CompareUserAnswersWithQuestions
         return $post;
     }
 
-    /**
-     * Get compared data.
-     *
-     * @return array
-     */
-    public function getCompared()
+    public function getCompared(): array
     {
         $post = $this->getNormalizeUserPost();
 

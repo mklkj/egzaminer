@@ -20,12 +20,7 @@ abstract class AbstractController
      */
     protected $data;
 
-    /**
-     * Constructor.
-     *
-     * @param array $container
-     */
-    public function __construct($container)
+    public function __construct(array $container)
     {
         $this->container = $container;
     }
@@ -35,11 +30,13 @@ abstract class AbstractController
      *
      * @return mixed Item from container
      */
-    public function get($name)
+    public function get(string $name)
     {
-        if (isset($this->container[$name])) {
-            return $this->container[$name];
+        if (!isset($this->container[$name])) {
+            return null;
         }
+
+        return $this->container[$name];
     }
 
     /**
@@ -47,11 +44,13 @@ abstract class AbstractController
      *
      * @return mixed Config value
      */
-    public function config($name)
+    public function config(string $name)
     {
-        if (isset($this->get('config')[$name])) {
-            return $this->get('config')[$name];
+        if (!isset($this->get('config')[$name])) {
+            return null;
         }
+
+        return $this->get('config')[$name];
     }
 
     /**
@@ -62,13 +61,13 @@ abstract class AbstractController
      *
      * @return mixed
      */
-    public function getFromRequest($type = 'get', $name = null)
+    public function getFromRequest(string $type = 'get', string $name = null)
     {
         $request = $this->get('request');
 
-        // if unknow request type
+        // if unknown request type
         if (!isset($request[$type])) {
-            return;
+            return null;
         }
 
         // for get all indexes from type
@@ -81,20 +80,12 @@ abstract class AbstractController
         }
     }
 
-    /**
-     * @return string
-     */
-    public function dir()
+    public function dir(): string
     {
         return $this->get('dir');
     }
 
-    /**
-     * Check is user logged.
-     *
-     * @return bool Return true, if logged
-     */
-    public function isLogged()
+    public function isLogged(): bool
     {
         return $this->get('auth')->isLogged();
     }
@@ -153,20 +144,14 @@ abstract class AbstractController
         }
     }
 
-    /**
-     * @param string $template Template name
-     * @param array  $data     Data to use in template
-     *
-     * @return string
-     */
-    public function render($template, $data = [])
+    public function render(string $template, array $data = [])
     {
         $this->selectMessagesTemplate();
 
         $data['version'] = $this->get('version');
         $data['dir'] = $this->dir();
         $data['flash'] = $this->get('flash')->display();
-        $data['headerTitle'] = isset($data['title']) ? $data['title'] : '';
+        $data['headerTitle'] = $data['title'] ?? '';
         $data['isLogged'] = $this->isLogged();
         $data['siteTitle'] = $this->config('title');
         $data['pageTitle'] = isset($data['title'])

@@ -1,6 +1,8 @@
 <?php
 
 use Egzaminer\Model\AnswersModel;
+use Egzaminer\Tests\Model\EgzaminerArrayDataSet;
+use Egzaminer\Tests\Model\EgzaminerTestsDatabaseTestCase;
 
 class AnswersModelTest extends EgzaminerTestsDatabaseTestCase
 {
@@ -19,16 +21,16 @@ class AnswersModelTest extends EgzaminerTestsDatabaseTestCase
     public function testGetAnswersByQuestionsWhenEmptyInput()
     {
         $model = new AnswersModel(self::$pdo);
-        $answers = $model->getAnswersByQuestions([]);
+        $answers = $model->getAnswersByQuestionsById([]);
 
-        $this->assertNull($answers);
+        $this->assertEmpty($answers);
     }
 
     public function testGetAnswersByQuestionsWhenNoAnswers()
     {
         self::$pdo->exec('DELETE FROM answers');
         $model = new AnswersModel(self::$pdo);
-        $answers = $model->getAnswersByQuestions(['id' => 1, 'id' => 2]);
+        $answers = $model->getAnswersByQuestionsById(['id' => 1, 'id' => 2]);
 
         $this->assertEmpty($answers);
     }
@@ -36,7 +38,7 @@ class AnswersModelTest extends EgzaminerTestsDatabaseTestCase
     public function testGetAnswersByQuestions()
     {
         $model = new AnswersModel(self::$pdo);
-        $answers = $model->getAnswersByQuestions([
+        $answers = $model->getAnswersByQuestionsById([
             ['id' => 1],
             ['id' => 2],
         ]);

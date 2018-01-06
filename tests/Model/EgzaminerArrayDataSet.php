@@ -1,6 +1,11 @@
 <?php
 
-class EgzaminerArrayDataSet extends PHPUnit\DbUnit\DataSet\AbstractDataSet
+namespace Egzaminer\Tests\Model;
+
+use PHPUnit\DbUnit\DataSet;
+use InvalidArgumentException;
+
+class EgzaminerArrayDataSet extends DataSet\AbstractDataSet
 {
     /**
      * @var array
@@ -18,8 +23,8 @@ class EgzaminerArrayDataSet extends PHPUnit\DbUnit\DataSet\AbstractDataSet
                 $columns = array_keys($rows[0]);
             }
 
-            $metaData = new PHPUnit\DbUnit\DataSet\DefaultTableMetadata($tableName, $columns);
-            $table = new PHPUnit\DbUnit\DataSet\DefaultTable($metaData);
+            $metaData = new DataSet\DefaultTableMetadata($tableName, $columns);
+            $table = new DataSet\DefaultTable($metaData);
 
             foreach ($rows as $row) {
                 $table->addRow($row);
@@ -30,7 +35,7 @@ class EgzaminerArrayDataSet extends PHPUnit\DbUnit\DataSet\AbstractDataSet
 
     protected function createIterator($reverse = false)
     {
-        return new PHPUnit\DbUnit\DataSet\DefaultTableIterator($this->tables, $reverse);
+        return new DataSet\DefaultTableIterator($this->tables, $reverse);
     }
 
     public function getTable($tableName)

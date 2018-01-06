@@ -6,14 +6,7 @@ use PDO;
 
 class QuestionsModel extends AbstractModel
 {
-    /**
-     * Get questions by exam ID.
-     *
-     * @param int $examID Exam ID
-     *
-     * @return array
-     */
-    public function getByExamId($examID)
+    public function getByExamId(int $examID): array
     {
         $stmt = $this->db->prepare('SELECT * FROM questions WHERE exam_id = :exam_id');
         $stmt->bindValue(':exam_id', $examID, PDO::PARAM_INT);
@@ -22,14 +15,7 @@ class QuestionsModel extends AbstractModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /**
-     * Get question by ID.
-     *
-     * @param int $questionID Question ID
-     *
-     * @return array
-     */
-    public function getByQuestionId($questionID)
+    public function getByQuestionId(int $questionID): array
     {
         $stmt = $this->db->prepare('SELECT * FROM questions WHERE id = :id');
         $stmt->bindValue(':id', $questionID, PDO::PARAM_INT);

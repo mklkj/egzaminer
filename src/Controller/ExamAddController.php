@@ -13,7 +13,7 @@ class ExamAddController extends AbstractController
      *
      * @return string
      */
-    public function addAction()
+    public function addAction(): string
     {
         return $this->render('admin/exam/add', [
             'title' => 'Dodawanie testu',

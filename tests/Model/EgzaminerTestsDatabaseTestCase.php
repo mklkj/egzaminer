@@ -1,5 +1,8 @@
 <?php
 
+namespace Egzaminer\Tests\Model;
+
+use PDO;
 use PHPUnit\DbUnit\TestCaseTrait;
 use PHPUnit\Framework\TestCase;
 
@@ -7,16 +10,19 @@ abstract class EgzaminerTestsDatabaseTestCase extends TestCase
 {
     use TestCaseTrait;
 
-    // only instantiate pdo once for test clean-up/fixture load
-    protected static $pdo = null;
+    /**
+     * only instantiate pdo once for test clean-up/fixture load
+     * @var PDO
+     */
+    protected static $pdo;
 
     // only instantiate PHPUnit_Extensions_Database_DB_IDatabaseConnection once per test
-    private $conn = null;
+    private $conn;
 
     final public function getConnection()
     {
         if ($this->conn === null) {
-            if (self::$pdo == null) {
+            if (self::$pdo === null) {
                 self::$pdo = new PDO('sqlite::memory:');
                 self::$pdo->exec('
                     CREATE TABLE `answers` (

@@ -13,23 +13,23 @@ class ExamController extends AbstractController
 {
     /**
      * Exam page with questions.
-     *
      * GET /exam/[i:id]
      *
      * @param int $examID Exam ID
      *
      * @return string
+     * @throws Exception
      */
-    public function showAction($examID)
+    public function showAction(int $examID): string
     {
         $examInfo = (new ExamModel($this->get('dbh')))->getInfo($examID);
 
-        if (false === $examInfo) {
+        if (empty($examInfo)) {
             throw new Exception('Exam not exists!');
         }
 
         $questions = (new QuestionsModel($this->get('dbh')))->getByExamId($examID);
-        $answers = (new AnswersModel($this->get('dbh')))->getAnswersByQuestions($questions);
+        $answers = (new AnswersModel($this->get('dbh')))->getAnswersByQuestionsById($questions);
 
         $scoreInfo = null;
 

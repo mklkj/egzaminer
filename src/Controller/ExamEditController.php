@@ -16,7 +16,7 @@ class ExamEditController extends AdminController
      *
      * @return string
      */
-    public function editAction($examID)
+    public function editAction(int $examID): string
     {
         $exam = (new ExamModel($this->get('dbh')))->getInfo($examID);
         $questions = (new QuestionsModel($this->get('dbh')))->getByExamId($examID);
@@ -35,7 +35,7 @@ class ExamEditController extends AdminController
      *
      * @return void
      */
-    public function postEditAction($examID)
+    public function postEditAction(int $examID)
     {
         $editModel = new ExamEditModel($this->get('dbh'));
 

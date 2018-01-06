@@ -6,14 +6,7 @@ use PDO;
 
 class QuestionDeleteModel extends AbstractModel
 {
-    /**
-     * Delete question.
-     *
-     * @param int $questionID
-     *
-     * @return bool
-     */
-    public function delete($questionID)
+    public function delete(int $questionID): bool
     {
         $stmt = $this->db->prepare('DELETE FROM questions WHERE id = :id');
         $stmt->bindValue(':id', $questionID, PDO::PARAM_INT);

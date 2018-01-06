@@ -1,6 +1,8 @@
 <?php
 
 use Egzaminer\Model\QuestionEditModel;
+use Egzaminer\Tests\Model\EgzaminerArrayDataSet;
+use Egzaminer\Tests\Model\EgzaminerTestsDatabaseTestCase;
 
 class QuestionEditModelTest extends EgzaminerTestsDatabaseTestCase
 {
@@ -138,7 +140,8 @@ class QuestionEditModelTest extends EgzaminerTestsDatabaseTestCase
 
         $test = self::$pdo->query('SELECT * FROM answers WHERE question_id = '.$questionID);
 
-        $this->assertEquals([
+        $this->assertEquals(
+            [
                 [
                     'id'          => '1',
                     'content'     => 'Tested answer1',

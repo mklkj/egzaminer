@@ -6,37 +6,17 @@ use PDO;
 
 class QuestionEditModel extends AbstractModel
 {
-    /**
-     * Edit question.
-     *
-     * @param int    $questionID
-     * @param array  $post
-     * @param array  $thumbUpload
-     * @param string $rootDir
-     *
-     * @return bool
-     */
-    public function edit($questionID, $post, $thumbUpload, $rootDir)
+    public function edit(int $questionID, array $post, array $thumbUpload, string $rootDir): bool
     {
         return $this->editQuestion($questionID, $post['question'], $thumbUpload, $rootDir)
         && $this->editAnswers($post['answers']);
     }
 
-    /**
-     * Edit question in exam.
-     *
-     * @param int    $questionID
-     * @param array  $question
-     * @param array  $thumbUpload
-     * @param string $rootDir
-     *
-     * @return book
-     */
-    private function editQuestion($questionID, $question, $thumbUpload, $rootDir)
+    private function editQuestion(int $questionID, array $question, array $thumbUpload, string $rootDir)
     {
         $stmt = $this->db->prepare('UPDATE questions SET content = :content,
             correct = :correct WHERE id = :id');
-        $stmt->bindValue(':content', trim($question['content']), PDO::PARAM_STR);
+        $stmt->bindValue(':content', trim($question['content']));
         $stmt->bindValue(':correct', $question['correct'], PDO::PARAM_INT);
         $stmt->bindValue(':id', $questionID, PDO::PARAM_INT);
         $status = $stmt->execute();
@@ -59,21 +39,14 @@ class QuestionEditModel extends AbstractModel
         return $status;
     }
 
-    /**
-     * Edit answers in exam.
-     *
-     * @param array $answers
-     *
-     * @return bool
-     */
-    private function editAnswers($answers)
+    private function editAnswers(array $answers): bool
     {
         $stmt = $this->db->prepare('UPDATE answers SET content = :content
             WHERE id = :id');
         $this->db->beginTransaction();
 
         foreach ($answers as $key => $value) {
-            $stmt->bindValue(':content', trim($value), PDO::PARAM_STR);
+            $stmt->bindValue(':content', trim($value));
             $stmt->bindValue(':id', $key, PDO::PARAM_INT);
             $stmt->execute();
         }

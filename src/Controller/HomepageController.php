@@ -11,7 +11,7 @@ class HomepageController extends AbstractController
      *
      * @return string
      */
-    public function indexAction()
+    public function indexAction(): string
     {
         return $this->render('front/index', [
             'title' => $this->config('homepage-header'),

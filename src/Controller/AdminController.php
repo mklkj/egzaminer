@@ -4,12 +4,7 @@ namespace Egzaminer\Controller;
 
 abstract class AdminController extends AbstractController
 {
-    /**
-     * Constructor.
-     *
-     * @param array $container
-     */
-    public function __construct($container)
+    public function __construct(array $container)
     {
         parent::__construct($container);
 

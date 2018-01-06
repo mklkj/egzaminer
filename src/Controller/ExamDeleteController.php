@@ -16,7 +16,7 @@ class ExamDeleteController extends AdminController
      *
      * @return string
      */
-    public function deleteAction($examID)
+    public function deleteAction(int $examID): string
     {
         $exam = (new ExamModel($this->get('dbh')))->getInfo($examID);
 
@@ -35,7 +35,7 @@ class ExamDeleteController extends AdminController
      *
      * @return void
      */
-    public function postDeleteAction($examID)
+    public function postDeleteAction(int $examID)
     {
         $delModel = new ExamDeleteModel($this->get('dbh'));
 

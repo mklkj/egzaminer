@@ -6,17 +6,10 @@ use PDO;
 
 class AnswersModel extends AbstractModel
 {
-    /**
-     * Get answers by questions (ID).
-     *
-     * @param array $questions
-     *
-     * @return array
-     */
-    public function getAnswersByQuestions(array $questions)
+    public function getAnswersByQuestionsById(array $questions): array
     {
         if (empty($questions)) {
-            return;
+            return [];
         }
 
         $where = '';
@@ -39,14 +32,7 @@ class AnswersModel extends AbstractModel
         return $array;
     }
 
-    /**
-     * Get answers by one question ID.
-     *
-     * @param int $questionID
-     *
-     * @return array
-     */
-    public function getAnswersByOneQuestionId($questionID)
+    public function getAnswersByOneQuestionId(int $questionID): array
     {
         $stmt = $this->db->prepare('SELECT * FROM answers WHERE question_id = :qid');
         $stmt->bindValue(':qid', $questionID, PDO::PARAM_INT);

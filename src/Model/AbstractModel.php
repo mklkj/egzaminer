@@ -11,11 +11,6 @@ abstract class AbstractModel
      */
     protected $db;
 
-    /**
-     * Contructor.
-     *
-     * @param PDO $pdo
-     */
     public function __construct(PDO $pdo)
     {
         $this->db = $pdo;

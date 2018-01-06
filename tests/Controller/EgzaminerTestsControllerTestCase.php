@@ -1,10 +1,19 @@
 <?php
 
+namespace Egzaminer\Tests\Controller;
+
 use Egzaminer\Auth;
+use Egzaminer\Tests\Model\EgzaminerArrayDataSet;
+use Egzaminer\Tests\Model\EgzaminerTestsDatabaseTestCase;
 use Tamtamchik\SimpleFlash\Flash;
 
 abstract class EgzaminerTestsControllerTestCase extends EgzaminerTestsDatabaseTestCase
 {
+    /**
+     * @var array
+     */
+    protected $container;
+
     public function getDataSet()
     {
         return new EgzaminerArrayDataSet([]);
@@ -33,7 +42,7 @@ abstract class EgzaminerTestsControllerTestCase extends EgzaminerTestsDatabaseTe
                 'session' => &$_SESSION,
                 'files'   => $_FILES,
             ],
-            'rootDir' => dirname(dirname(__DIR__)),
+            'rootDir' => \dirname(__DIR__, 2),
             'version' => '1-test',
         ];
 

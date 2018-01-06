@@ -3,9 +3,8 @@
 namespace Egzaminer\Themes;
 
 use Tamtamchik\SimpleFlash\BaseTemplate;
-use Tamtamchik\SimpleFlash\TemplateInterface;
 
-class MaterialDesignLite extends BaseTemplate implements TemplateInterface
+class MaterialDesignLite extends BaseTemplate
 {
     protected $prefix = '
         var notification = document.querySelector(".mdl-js-snackbar");
@@ -21,12 +20,12 @@ class MaterialDesignLite extends BaseTemplate implements TemplateInterface
         <script>window.addEventListener("load", function(){%s});</script>';
 
     /**
-     * @param $messages message text
-     * @param $type     message type: success, info, warning, error
+     * @param string $messages message text
+     * @param string $type     message type: success, info, warning, error
      *
      * @return string
      */
-    public function wrapMessages($messages, $type)
+    public function wrapMessages($messages, $type): string
     {
         return sprintf($this->getWrapper(), $messages);
     }

@@ -5,6 +5,12 @@ use PHPUnit\Framework\TestCase;
 
 class CalculateScoreTest extends TestCase
 {
+    private $test;
+
+    private $notPassAnswers;
+
+    private $passedAnswers;
+
     public function setUp()
     {
         $this->test = [
@@ -44,21 +50,21 @@ class CalculateScoreTest extends TestCase
     {
         $obj = new CalculateScore($this->test, $this->notPassAnswers);
 
-        $this->assertEquals($obj->getScore(), 2);
+        $this->assertEquals(2, $obj->getScore());
     }
 
     public function testCalculatePercentageScore()
     {
         $obj = new CalculateScore($this->test, $this->notPassAnswers);
 
-        $this->assertEquals($obj->calculatePercentageScore(), 20);
+        $this->assertEquals(20, $obj->calculatePercentageScore());
     }
 
     public function testCalculatePercentageScoreWhenNoQuestions()
     {
         $obj = new CalculateScore(['questions' => 0], []);
 
-        $this->assertNull($obj->calculatePercentageScore());
+        $this->assertEquals(0.0, $obj->calculatePercentageScore());
     }
 
     public function testIsPass()
@@ -79,10 +85,10 @@ class CalculateScoreTest extends TestCase
     {
         $obj = new CalculateScore($this->test, $this->notPassAnswers);
 
-        $this->assertEquals($obj->getScoreInfo(), [
+        $this->assertEquals([
             'score'       => 2,
             'percentages' => 20,
             'isPass'      => false,
-        ]);
+        ], $obj->getScoreInfo());
     }
 }

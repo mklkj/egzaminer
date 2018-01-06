@@ -18,7 +18,7 @@ class QuestionEditController extends AdminController
      *
      * @return string
      */
-    public function editAction($examID, $questionID)
+    public function editAction(int $examID, int $questionID): string
     {
         $question = (new QuestionsModel($this->get('dbh')))->getByQuestionId($questionID);
         $answers = (new AnswersModel($this->get('dbh')))->getAnswersByOneQuestionId($questionID);
@@ -43,7 +43,7 @@ class QuestionEditController extends AdminController
      *
      * @return void
      */
-    public function postEditAction($examID, $questionID)
+    public function postEditAction(int $examID, int $questionID)
     {
         $editModel = new QuestionEditModel($this->get('dbh'));
 

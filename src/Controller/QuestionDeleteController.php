@@ -17,7 +17,7 @@ class QuestionDeleteController extends AdminController
      *
      * @return string
      */
-    public function deleteAction($examID, $questionID)
+    public function deleteAction(int $examID, int $questionID): string
     {
         $question = (new QuestionsModel($this->get('dbh')))->getByQuestionId($questionID);
 
@@ -37,7 +37,7 @@ class QuestionDeleteController extends AdminController
      *
      * @return void
      */
-    public function postDeleteAction($examID, $questionID)
+    public function postDeleteAction(int $examID, int $questionID)
     {
         $delModel = new QuestionDeleteModel($this->get('dbh'));
 

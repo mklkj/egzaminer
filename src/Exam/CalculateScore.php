@@ -19,12 +19,6 @@ class CalculateScore
      */
     private $score = 0;
 
-    /**
-     * Constructor.
-     *
-     * @param array $exam
-     * @param array $comparedAnswers
-     */
     public function __construct(array $exam, array $comparedAnswers)
     {
         $this->exam = $exam;
@@ -33,11 +27,6 @@ class CalculateScore
         $this->calculate();
     }
 
-    /**
-     * Calculate score.
-     *
-     * @return void
-     */
     public function calculate()
     {
         foreach ($this->comparedAnswers as $value) {
@@ -47,48 +36,26 @@ class CalculateScore
         }
     }
 
-    /**
-     * Get score.
-     *
-     * @return int
-     */
-    public function getScore()
+    public function getScore(): int
     {
         return $this->score;
     }
 
-    /**
-     * Calculate percentage score.
-     *
-     * @return float|null
-     */
-    public function calculatePercentageScore()
+    public function calculatePercentageScore(): float
     {
-        if ($this->exam['questions'] > 0) {
-            return round($this->score / $this->exam['questions'] * 100, 2);
-        }
-    }
-
-    /**
-     * Check is exam passed.
-     *
-     * @return bool
-     */
-    public function isPass()
-    {
-        if ($this->getScore() >= $this->exam['threshold']) {
-            return true;
+        if ($this->exam['questions'] <= 0) {
+            return 0.0;
         }
 
-        return false;
+        return round($this->score / $this->exam['questions'] * 100, 2);
     }
 
-    /**
-     * Get all score info.
-     *
-     * @return array
-     */
-    public function getScoreInfo()
+    public function isPass(): bool
+    {
+        return $this->getScore() >= $this->exam['threshold'];
+    }
+
+    public function getScoreInfo(): array
     {
         return [
             'score'       => $this->getScore(),

@@ -1,11 +1,13 @@
 <?php
 
+namespace Egzaminer\Tests\Controller;
+
 use Egzaminer\Controller\ExamController;
 
 class ExamControllerTest extends EgzaminerTestsControllerTestCase
 {
     /**
-     * @expectedException Exception
+     * @expectedException \Exception
      */
     public function testShowActionWhenExamNoExist()
     {

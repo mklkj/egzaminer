@@ -20,7 +20,7 @@ class CompareUserAnswersWithQuestionsTest extends TestCase
             'question_9' => 9,
         ], []);
 
-        $this->assertEquals($obj->getNormalizeUserPost(), [
+        $this->assertEquals([
             1 => 8,
             2 => 1,
             3 => 6,
@@ -30,14 +30,14 @@ class CompareUserAnswersWithQuestionsTest extends TestCase
             7 => 8,
             8 => 8,
             9 => 9,
-        ]);
+        ], $obj->getNormalizeUserPost());
     }
 
     public function testGetNormalizeUserPostWhenIsEmpty()
     {
         $obj = new CompareUserAnswersWithQuestions(['send' => 'yes'], []);
 
-        $this->assertNull($obj->getNormalizeUserPost());
+        $this->assertEmpty($obj->getNormalizeUserPost());
     }
 
     public function testGetCompared()
@@ -63,7 +63,7 @@ class CompareUserAnswersWithQuestionsTest extends TestCase
             ['id' => 8, 'correct' => 1],
         ]);
 
-        $this->assertEquals($obj->getCompared(), [
+        $this->assertEquals([
             ['id' => 1, 'correct' => 8, 'userAnswer' => 8],
             ['id' => 2, 'correct' => 7, 'userAnswer' => 1],
             ['id' => 3, 'correct' => 6, 'userAnswer' => 6],
@@ -72,7 +72,7 @@ class CompareUserAnswersWithQuestionsTest extends TestCase
             ['id' => 6, 'correct' => 3, 'userAnswer' => 3],
             ['id' => 7, 'correct' => 2, 'userAnswer' => 8],
             ['id' => 8, 'correct' => 1, 'userAnswer' => 8],
-        ]);
+        ], $obj->getCompared());
     }
 
     public function testGetComparedWhenIsEmpty()
@@ -88,7 +88,7 @@ class CompareUserAnswersWithQuestionsTest extends TestCase
             ['id' => 8, 'correct' => 1],
         ]);
 
-        $this->assertEquals($obj->getCompared(), [
+        $this->assertEquals([
             ['id' => 1, 'correct' => 4, 'userAnswer' => null],
             ['id' => 2, 'correct' => 3, 'userAnswer' => null],
             ['id' => 3, 'correct' => 2, 'userAnswer' => null],
@@ -97,6 +97,6 @@ class CompareUserAnswersWithQuestionsTest extends TestCase
             ['id' => 6, 'correct' => 3, 'userAnswer' => null],
             ['id' => 7, 'correct' => 2, 'userAnswer' => null],
             ['id' => 8, 'correct' => 1, 'userAnswer' => null],
-        ]);
+        ], $obj->getCompared());
     }
 }

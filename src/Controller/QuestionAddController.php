@@ -15,7 +15,7 @@ class QuestionAddController extends AdminController
      *
      * @return string
      */
-    public function addAction($examID)
+    public function addAction(int $examID): string
     {
         $question = [
             'content' => '',
@@ -46,7 +46,7 @@ class QuestionAddController extends AdminController
      *
      * @return void
      */
-    public function postAddAction($examID)
+    public function postAddAction(int $examID)
     {
         $model = new QuestionAddModel($this->get('dbh'));
 
