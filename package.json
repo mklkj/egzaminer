@@ -4,7 +4,7 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
-    "del": "^3.0.0",
+    "del": "^5.0.0",
     "es6-promise": "^4.2.6",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "^6.0.0",
