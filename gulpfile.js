@@ -1,68 +1,65 @@
 require('es6-promise').polyfill();
 
-var gulp = require('gulp');
-var sourcemaps = require('gulp-sourcemaps');
-var sass = require('gulp-sass');
-var moduleImporter = require('sass-module-importer');
-var autoprefixer = require('gulp-autoprefixer');
-var gcmq = require('gulp-group-css-media-queries');
-var cleanCSS = require('gulp-clean-css');
-var include = require('gulp-include');
-var uglify = require('gulp-uglify');
-var del = require('del');
-var runSequence = require('run-sequence');
-var srcThemesPath = './resources/themes/';
-var destThemesPath = './public/assets/';
+const gulp = require('gulp');
+const sourcemaps = require('gulp-sourcemaps');
+const sass = require('gulp-sass');
+const moduleImporter = require('sass-module-importer');
+const autoprefixer = require('gulp-autoprefixer');
+const gcmq = require('gulp-group-css-media-queries');
+const cleanCSS = require('gulp-clean-css');
+const include = require('gulp-include');
+const uglify = require('gulp-uglify');
+const del = require('del');
+const srcThemesPath = './resources/themes/';
+const destThemesPath = './public/assets/';
 
-gulp.task('sass-dev', function() {
-  return gulp.src([srcThemesPath + '**/*.scss'])
+gulp.task('sass-dev', function(done) {
+  gulp.src([srcThemesPath + '**/*.scss'])
     .pipe(sourcemaps.init())
     .pipe(sass({ importer: moduleImporter() }).on('error', sass.logError))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(destThemesPath));
+    done();
 });
 
-gulp.task('sass-prod', function() {
-  return gulp.src([srcThemesPath + '**/*.scss'])
+gulp.task('sass-prod', function(done) {
+  gulp.src([srcThemesPath + '**/*.scss'])
     .pipe(sass({ importer: moduleImporter() }).on('error', sass.logError))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
+    .pipe(autoprefixer())
     .pipe(gcmq())
     .pipe(cleanCSS({debug: true}, function(details) {
       console.log(details.name + ' before: ' + details.stats.originalSize);
       console.log(details.name + ' after: ' + details.stats.minifiedSize);
     }))
     .pipe(gulp.dest(destThemesPath));
+    done();
 });
 
-gulp.task('js', function() {
-  return gulp.src([srcThemesPath + '**/*.js'])
-    .pipe(include())
+gulp.task('js', function(done) {
+  gulp.src([srcThemesPath + '**/*.js'])
     .pipe(include({
       includePaths: ['./node_modules']
     })).on('error', console.log)
     .pipe(uglify())
     .pipe(gulp.dest(destThemesPath));
+    done();
 });
 
 gulp.task('clean', function() {
-  return del.sync('./public/assets');
+  return del('./public/assets');
 })
 
-gulp.task('watch', function(){
-  gulp.watch(srcThemesPath + '**/*.scss', ['sass-dev']);
-  gulp.watch(srcThemesPath + '**/*.js', ['js']);
+gulp.task('watch', function(done){
+  gulp.watch(srcThemesPath + '**/*.scss', gulp.series('sass-dev'));
+  gulp.watch(srcThemesPath + '**/*.js', gulp.series('js'));
+  done();
 })
 
 // Build Sequences
 // ---------------
 
-gulp.task('default', function() {
-  runSequence('clean', ['sass-dev', 'js'], 'watch')
-})
+gulp.task('default', gulp.series('clean', gulp.parallel('sass-dev', 'js'), 'watch'));
 
-gulp.task('build', function() {
-  runSequence('clean', ['sass-prod', 'js'])
-})
+gulp.task('build', gulp.series('clean', gulp.parallel('sass-prod', 'js')));
+
+exports.default = gulp.series("build");
