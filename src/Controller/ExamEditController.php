@@ -5,7 +5,6 @@ namespace Egzaminer\Controller;
 use Egzaminer\Model\ExamEditModel;
 use Egzaminer\Model\ExamModel;
 use Egzaminer\Model\QuestionsModel;
-use Egzaminer\Question\Questions;
 
 class ExamEditController extends AdminController
 {
